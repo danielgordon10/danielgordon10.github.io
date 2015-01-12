@@ -1,30 +1,6 @@
-$(document).ready(function() {    
+$(document).ready(function() { 
+    // Helper functions
     var isSafari = /constructor/i.test(window.HTMLElement);
-    if (isSafari) {
-      $('#name').css('position', 'relative');
-    }
-    var blurMax = 10;
-    var shiftMax = 150;
-    $('body').scroll(function(){
-        var picHeight = $('#slide1').height() - $('#background_image').height();
-        var offset = $('#background_bottom').offset().top;
-        var shiftAmount = -1*clamp(shiftMax-offset*shiftMax/picHeight, 0, shiftMax);
-        //console.log(shiftAmount);
-        /*
-        var blurAmount = Math.min(Math.max(Math.round(blurMax-offset*blurMax/picHeight),0),blurMax);
-        if (!isSafari && !detectMob()) {
-          $('#title').css('filter', 'blur(' + blurAmount + 'px)');       
-          $('#title').css('-webkit-filter', 'blur(' + blurAmount + 'px)');
-          $('#title').css('-moz-filter', 'blur(' + blurAmount + 'px)');
-          $('#title').css('-o-filter', 'blur(' + blurAmount + 'px)');
-          $('#title').css('-ms-filter', 'blur(' + blurAmount + 'px)');
-        }
-        */
-        if (!detectMob()) {
-            $('#background_image').css('background-position', '0% ' + (shiftAmount)+ 'px');
-        }
-    });
-    
     var detectMob = function() {
         if( navigator.userAgent.match(/Android/i)
          || navigator.userAgent.match(/webOS/i)
@@ -35,13 +11,58 @@ $(document).ready(function() {
          || navigator.userAgent.match(/Windows Phone/i)
          ){
             return true;
-          }
-         else {
+        }
+        else {
             return false;
-          }
+        }
     }
     
     var clamp = function(value, minNum, maxNum) {
         return Math.max(Math.min(value, maxNum), minNum);
     }
+    if (isSafari) {
+      $('#name').css('position', 'relative');
+    }
+    
+    var minimizeTopAnimation = function() {
+        if (!detectMob()) {
+            $('#name_bar_container').addClass('top_animated');
+            $('#name').addClass('top_animated');
+            $('#im_container').addClass('top_animated');
+            $('#profile').addClass('top_animated');
+        }
+    }
+    var maximizeTopAnimation = function() {
+        if (!detectMob()) {
+            $('#name_bar_container').removeClass('top_animated');
+            $('#name').removeClass('top_animated');
+            $('#im_container').removeClass('top_animated');
+            $('#profile').removeClass('top_animated');
+        }
+    }
+    
+    var isMinimized = false;
+    var topShift = 0;
+    $('body').scroll(function(){
+        if (!isMinimized && $('#name').offset().top <= 0) {
+            minimizeTopAnimation();
+            isMinimized = true;
+        } else if (isMinimized && $('#slide1').offset().top >= 250) {
+            maximizeTopAnimation();
+            isMinimized = false;
+            topShift = 0;
+            $('#name_bar_container').css('top', '0px');
+
+        }
+        
+        if (isMinimized) {
+            var currentTopShift = $('#name_bar_container').offset().top;
+            if (currentTopShift != 0) {
+                topShift -= currentTopShift;
+                topShift = clamp(topShift, 0, Infinity);
+                $('#name_bar_container').css('top', topShift + 'px');
+            }
+        }
+        
+    });
 });
