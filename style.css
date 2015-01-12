@@ -1,0 +1,119 @@
+div {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+h1 {
+    margin-top: 1em;
+    margin-bottom: 0px;
+}
+
+html {
+    height: 100%;
+    overflow: hidden;
+}
+
+body { 
+    background-color: whitesmoke;
+    height: 100%;
+    margin:0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding:0;
+    perspective: 1px;
+    transform-style: preserve-3d;
+}
+
+p {
+    color: #333;
+    font-size: 140%;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 150%;
+    margin: 0px;
+}
+
+.slide {
+    box-sizing: border-box;
+    height: 100vh;
+    /*min-width: 100vw;*/
+    /*padding: 25vh 10%;*/
+    transform-style: inherit;
+}
+
+.slide:before {
+    bottom: 0;
+    content: "";
+    position: absolute;
+    left:0;
+    right:0;
+    top: 0;
+    width: 0px;
+}
+
+.slide, .slide:before {
+    background: 0 50% / cover;  
+}
+
+#test {
+    position: fixed;
+    top: 10px;
+}
+
+#background_image {
+    background-attachment: fixed;
+    background-image: url("skyline.jpg");
+    background-position: 0% 0px;
+    height: 75%;
+}
+
+#slide1:before {
+    transform: translateY(-1px);
+    z-index:-1;
+}
+
+#slide1 {
+    padding: 0;
+}
+
+.text_container {
+    padding: 0px 3em;
+}
+
+#name {
+    background-color: rgba(10,10,10,.7);
+    color: rgb(240,240,240);
+    display: inline-block;
+    font-size: 60px;
+    margin-top: -230px;
+    min-width: 387px;
+    padding-left: 3%;
+    padding-right: 3%;
+    z-index: 1;
+    position: absolute;
+}
+
+#im_container {
+    position: relative;
+    margin-left: 50%;
+}
+
+#profile {
+    border-radius: 50%;
+    margin-bottom: -30px;
+    margin-left: -150px;
+    margin-top: -150px;
+    width: 300px;
+}
+
+#logos {
+    margin: 0 auto;
+    padding-bottom: 50px;
+    padding-top: 150px;
+    width: 285px;
+}
+
+.logo {
+    border-radius: 50%;
+    margin: 0px 20px;
+    height: 100px;
+    width: 100px;
+}
