@@ -48,7 +48,28 @@ $(document).ready(function() {
     
     var isMinimized = false;
     var topShift = 0;
+    var shiftMax = 150;
     $('body').scroll(function(){
+        // Moves background picture.
+        var picHeight = $('#background_image').height();
+        var offset = $('#background_bottom').offset().top;
+        var shiftAmount = -1*clamp(shiftMax-offset*shiftMax/picHeight, 0, shiftMax);
+        //console.log(offset*shiftMax/picHeight);
+        /*
+        var blurAmount = Math.min(Math.max(Math.round(blurMax-offset*blurMax/picHeight),0),blurMax);
+        if (!isSafari && !detectMob()) {
+          $('#title').css('filter', 'blur(' + blurAmount + 'px)');       
+          $('#title').css('-webkit-filter', 'blur(' + blurAmount + 'px)');
+          $('#title').css('-moz-filter', 'blur(' + blurAmount + 'px)');
+          $('#title').css('-o-filter', 'blur(' + blurAmount + 'px)');
+          $('#title').css('-ms-filter', 'blur(' + blurAmount + 'px)');
+        }
+        */
+        if (!detectMob()) {
+            $('#background_image').css('background-position', '0% ' + (shiftAmount)+ 'px');
+        }   
+    
+        // Animation business
         if (!isMinimized && $('#name').offset().top <= 0) {
             minimizeTopAnimation();
             isMinimized = true;
