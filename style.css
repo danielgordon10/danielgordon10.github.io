@@ -81,6 +81,7 @@ p {
 #name_bar_container {
     position: relative;
     top: 0px;
+    width: 100%;
     transition: all 1s ease-in-out;
 }
 #name_bar_container.top_animated {
