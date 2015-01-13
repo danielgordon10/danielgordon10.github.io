@@ -85,8 +85,21 @@ p {
 }
 #name_bar_container.top_animated {
     background-color: rgba(0,0,0,.9);
-    transition: background-color 1s ease-in-out, top 0s;
+    box-shadow: 0px 4px 7px 4px rgba(0,0,0,0.75);
+    transition: background-color 1s ease-in-out, top 0s, box-shadow 1s ease-in-out;
 }
+
+#name_centerer {
+    width: 100%;
+    margin: 0 auto;
+    transition: all 1s ease-in-out;
+}
+
+#name_centerer.top_animated {
+    width: 500px;
+    transition: all 1s ease-in-out 1s;
+}
+
 
 #name {
     background-color: rgba(10,10,10,.7);
@@ -94,17 +107,17 @@ p {
     display: inline-block;
     font-size: 60px;
     margin-top: -230px;
-    min-width: 387px;
-    padding-left: 3%;
-    padding-right: 3%;
+    /* min-width: 387px; */
+    padding-left: 1%;
+    padding-right: 1%;
     position: absolute;
-    z-index: 1;
-    transition: background-color 1s ease-in-out, margin-top 1s ease-in-out;
+    transition: background-color 1s ease-in-out .5s, margin-top 1s ease-in-out 1s, padding-left 1s ease-in-out;
 }
 #name.top_animated{
     background-color: rgba(0,0,0,0);
     margin-top: 0px;
-    transition: background-color 1s ease-in-out 1s, margin-top 1s ease-in-out;
+    /*padding-left: 4em;*/
+    transition: background-color 1s ease-in-out, margin-top 1s ease-in-out, padding-left 1s ease-in-out 1s;
 }
 
 #im_container {
@@ -112,10 +125,11 @@ p {
     margin-left: 50%;
     position: relative;
     transition: all 1s ease-in-out;
+    font-size: 60px;
 }
 #im_container.top_animated {
     height: 69px;
-    margin-left: 90%;
+    margin-left: 7em;
     transition: all 1s ease-in-out;
 }
 
@@ -125,13 +139,16 @@ p {
     margin-left: -150px;
     margin-top: -150px;
     width: 300px;
-    transition: border-radius 0s, margin-top 1s ease-in-out, width 1s ease-in-out;
+    height: 300px;
+    transition: border-radius 0s, margin-top 1s ease-in-out, width 1s ease-in-out, height 1s ease-in-out, margin-left 1s ease-in-out;
 }
 #profile.top_animated {
     border-radius: 0px;
     margin-top: 0px;
+    margin-left: 0px;
     width: 69px;
-    transition: border-radius 1s ease-in-out 1s, margin-top 1s ease-in-out, width 1s ease-in-out;
+    height: 69px;
+    transition: border-radius 1s ease-in-out 1s, margin-top 1s ease-in-out, width 1s ease-in-out, height 1s ease-in-out, margin-left 1s ease-in-out;
 }
 
 #logos {

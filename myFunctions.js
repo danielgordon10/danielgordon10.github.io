@@ -26,25 +26,24 @@ $(document).ready(function() {
     var clamp = function(value, minNum, maxNum) {
         return Math.max(Math.min(value, maxNum), minNum);
     }
-    if (isSafari) {
-      $('#name').css('position', 'relative');
-    }
     
     var minimizeTopAnimation = function() {
-        if (!detectMob()) {
+        //if (!detectMob()) {
             $('#name_bar_container').addClass('top_animated');
+            $('#name_centerer').addClass('top_animated');
             $('#name').addClass('top_animated');
             $('#im_container').addClass('top_animated');
             $('#profile').addClass('top_animated');
-        }
+        //}
     }
     var maximizeTopAnimation = function() {
-        if (!detectMob()) {
+        //if (!detectMob()) {
             $('#name_bar_container').removeClass('top_animated');
+            $('#name_centerer').removeClass('top_animated');
             $('#name').removeClass('top_animated');
             $('#im_container').removeClass('top_animated');
             $('#profile').removeClass('top_animated');
-        }
+        //}
     }
     
     var isMinimized = false;
