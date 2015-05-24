@@ -166,7 +166,8 @@ p {
 
 #footer {
     margin: 0 auto;
-    width: 337px;
+    text-align: center;
+    width: 500px;
     margin-bottom: 15px;
     color: #101010;
 }
