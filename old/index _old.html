@@ -1,0 +1,105 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script type="text/javascript" src="functions.js"></script>
+    </head>
+    <body>
+    <div id="background_image" class="slide header"></div>
+    <div id="background_bottom"></div>
+    <div id="slide1" class="slide">
+        <div id="name_bar_container">
+            <div id="name_centerer">
+                <div id="name">Daniel Gordon</div>
+                <div id="im_container">
+                    <img id="profile" src="images/homepage/profile_small.jpg"/>
+                </div>
+            </div>
+        </div>
+        <div class="text_container" id="body_text">
+            <h1>About Me</h1>
+            <p>I am a 4th year graduate student at the University of Washington, advised by 
+            <a href="http://homes.cs.washington.edu/~fox/">Dieter Fox</a> and 
+            <a href="http://homes.cs.washington.edu/~ali/">Ali Farhadi</a>.
+            Previously, I graduated from Washington University in St. Louis, where I worked as an undergraduate
+            researcher with <a href="http://www.cs.wustl.edu/~pless/">Robert Pless</a>.</p>
+            <h1>Research</h1>
+            <p>
+            I am researching using convolutional neural networks (CNNs) and recurrent neural networks (RNNs) for real-time object tracking in video data. In my research, I am developing fast and robust algorithms with the eventual goal of fully tracking laboratory procedures to reduce errors in experiments and increase reproducibility. I am also working on visual planning for robots using simulation environments and a combination of reinforcement learning and supervised learning.
+            </p>
+            <h1>Publications</h1>
+            <ul>
+                <li>
+                    <a class="paper_title" href="https://arxiv.org/abs/1712.03316">IQA: Visual Question Answering in Interactive Environments</a>
+                    <div>Daniel Gordon, Aniruddha Kembhavi, Mohammad Rastegari, Joseph Redmon, Dieter Fox, Ali Farhadi</div>
+                    <div>Computer Vision and Pattern Recognition 2018</div>
+                    <a class="rpad" href="https://prior.allenai.org/projects/iqa">Project Page</a>
+                    <a class="rpad" href="https://github.com/danielgordon10/thor-iqa-cvpr-2018">Code</a>
+                    <a class="rpad" href="https://www.youtube.com/watch?v=pXd3C-1jr98">Video</a>
+                </li>
+                <li>
+                    <a class="paper_title" href="https://arxiv.org/abs/1705.06368">Re3 : Real-Time Recurrent Regression Networks for Visual Tracking of Generic Objects</a>
+                    <div>Daniel Gordon, Ali Farhadi, Dieter Fox</div>
+                    <div>Robotics and Automation Letters 2018</div>
+                    <a class="rpad" href="bibtex/re3.html">Bibtex</a>
+                    <a class="rpad" href="https://gitlab.com/danielgordon10/re3-tensorflow">Code</a>
+                    <a class="rpad" href="https://www.youtube.com/watch?v=RByCiOLlxug">Video</a>
+                </li>
+                <li>
+                    <a class="paper_title" href="https://arxiv.org/abs/1712.05474">AI2-THOR: An Interactive 3D Environment for Visual AI</a>
+                    <div>Eric Kolve, Roozbeh Mottaghi, Daniel Gordon, Yuke Zhu, Abhinav Gupta, Ali Farhadi</div>
+                    <div>Technical Report 2017</div>
+                    <a class="rpad" href="bibtex/thor.html">Bibtex</a>
+                    <a class="rpad" href="http://ai2thor.allenai.org/">Project Page</a>
+                    <a class="rpad" href="https://github.com/allenai/ai2thor">Code</a>
+                    <a class="rpad" href="https://www.youtube.com/watch?v=MvvAhF4HZ8s">Video</a>
+                </li>
+                <li>
+                    <a class="paper_title" href="https://arxiv.org/abs/1705.08080">Visual Semantic Planning using Deep Successor Representations</a>
+                    <div>Daniel Gordon*, Yuke Zhu*, Eric Kolve, Dieter Fox, Li Fei-Fei, Abhinav Gupta, Roozbeh Mottaghi, Ali Farhadi</div>
+                    <div>International Conference on Computer Vision 2017</div>
+                    <div>*Equal contribution</div>
+                    <a class="rpad" href="bibtex/vsp.html">Bibtex</a>
+                </li>
+                <li>
+                    <a class="paper_title" href="papers/collaborative_imaging.pdf">Collaborative imaging of urban forest dynamics: augmenting re-photography to visualize changes over time.</a>
+                    <div>Ruth West, Abby Halley, Jarlath O'Neil-Dunne, Daniel Gordon, and Robert Pless.</div>
+                    <div>IS&T/SPIE Electronic Imaging International Society for Optics and Photonics 2013.</div>
+                    <a class="rpad" href="bibtex/rephoto_spie.html">Bibtex</a>
+                </li>
+                <li>
+                    <a class="paper_title" href="papers/collaborative_rephotography.pdf">Collaborative rephotography</a>
+                    <div>Ruth West, Abby Halley, Daniel Gordon, Jarlath O'Neil-Dunne, and Robert Pless.</div>
+                    <div>SIGGRAPH 2013 Studio Talks</div>
+                    <a class="rpad" href="bibtex/rephoto_siggraph.html">Bibtex</a>
+                </li>
+            </ul>
+            <h1>Other Projects</h1>
+            <ul>
+                <li>
+                    <a class="paper_title" href="papers/deep_rl_for_tetris.pdf">Learning to Perform a Tetris with Deep Reinforcement Learning</a>
+                    <div>Class Project 2018</div>
+                    <a class="rpad" href="https://gitlab.cs.washington.edu/xkcd/deeprl-tetris">Code</a>
+                    <a class="rpad" href="https://youtu.be/iI6TQOQ_Ccc">Video</a>
+                </li>
+                <li>
+                    <a class="paper_title" href="iou.html">Intersection Over Union Visualizer</a>
+                </li>
+            </ul>
+            <h1>Curriculum Vitae</h1>
+            <p><a href="cv.pdf">Download</a></p>
+            <h1>Other</h1>
+            <p>I previously organized a seminar on using deep learning in practice. In it, we discussed how to apply modern techniques to solve real research problems. We also explored the effectiveness of various methods. More information, as well as slides, videos, and code are posted on the <a href="https://sites.google.com/cs.washington.edu/deeplearninginpractice/">seminar website</a>.</p>
+            <h1>Contact</h1>
+            <p><a href="http://xkcd.com/207/">xkcd@cs.washington.edu</a></p>
+        </div>
+        <div id="logos">
+            <p class="logo_link"> <a href="https://www.cs.washington.edu"> <img class="logo" src="images/homepage/uwlogo.png"/> </a> </p>
+            <p class="logo_link"> <a href="https://cse.wustl.edu/Pages/default.aspx"> <img class="logo" src="images/homepage/wustllogo.jpg"/> </a> </p>
+        </div>
+        <div id="footer">
+            Designed and coded by Daniel Gordon. &copy; 2014. Updated June 2018.
+        </div>
+    </div>
+    </body>
+</html>
