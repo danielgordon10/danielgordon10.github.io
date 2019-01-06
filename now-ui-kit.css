@@ -7431,6 +7431,7 @@ html, body {
 
 #profile-image {
   border: 6px solid whitesmoke;
+  box-shadow: 0px 2px 15px #000;
   position: relative;
   top: -50%; }
 

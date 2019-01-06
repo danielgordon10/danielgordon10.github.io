@@ -21,7 +21,7 @@ for file in files:
             import pdb
             #pdb.set_trace()
             start_padding = line[:len(line) - len(line.lstrip())]
-            line = start_padding + '<p>&copy; 2018 Daniel Gordon. Last Updated ' + datetime.now().strftime('%B') + ' ' + str(datetime.now().year) + '.</p>\n'
+            line = start_padding + '<p>&copy; ' + str(datetime.now().year) + ' Daniel Gordon. Last Updated ' + datetime.now().strftime('%B') + ' ' + str(datetime.now().year) + '.</p>\n'
         elif line == '        </div>    </div>':
             line = '         </div>\n    </div>'
 

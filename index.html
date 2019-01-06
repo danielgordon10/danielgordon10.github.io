@@ -51,12 +51,12 @@
       </div>
     </div>
   </nav>
-  <div class="text-center parallax shadow" style="background-image: url(&quot;images/homepage/seattle.jpg&quot;); background-position: center center;" id="image-background">
+  <div class="text-center parallax" style="background-image: url(&quot;images/homepage/seattle.jpg&quot;); background-position: center center;" id="image-background">
     <div class="container py-5">
       <div class="row">
-        <div class="col-md-12">
-          <h1 class="mb-4 my-5 display-2 text-light">
-            <b>Daniel Gordon</b>
+        <div class="col-md-12 my-5">
+          <h1 class="mb-4 display-2 text-light my-5">
+            <b class="my-2 py-5">Daniel Gordon</b>
           </h1>
         </div>
       </div>
@@ -66,7 +66,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <img class="img-fluid d-block rounded-circle mx-auto shadow" src="images/homepage/profile_small.jpg" id="profile-image" width="25%"> </div>
+          <img class="img-fluid d-block rounded-circle mx-auto" src="images/homepage/profile_small.jpg" id="profile-image" width="30%"> </div>
       </div>
     </div>
   </div>
@@ -76,8 +76,10 @@
         <div class="col-md-12">
           <div class="row">
             <div class="col-md-12">
-              <h2 class="text-light text-left" contenteditable="true">About Me</h2>
-              <p class="text-light text-left lead py-4">I am a 4th year graduate student at the University of Washington, advised by
+              <h2 class="text-light text-left" contenteditable="true">
+                <div>
+                  <br> </div>About Me</h2>
+              <p class="text-light text-left lead py-4">I am a 5th year graduate student at the University of Washington, advised by
                 <a class="blue-background-link" href="http://homes.cs.washington.edu/~fox/">Dieter Fox</a> and
                 <a class="blue-background-link" href="http://homes.cs.washington.edu/~ali/">Ali Farhadi</a>. Previously, I graduated from Washington University in St. Louis, where I worked as an undergraduate researcher with
                 <a href="http://www.cs.wustl.edu/~pless/" class="blue-background-link">Robert Pless</a>.</p>
@@ -101,6 +103,33 @@
       <div class="row shadow-sm">
         <div class="p-0 col-md-6">
           <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/0TtWJ_0mPfI?autoplay=0" allowfullscreen=""> </iframe>
+          </div>
+        </div>
+        <div class="col-md-6 px-3" onclick="location.href='projects/hiprl.html';" style="cursor: pointer;">
+          <div class="row">
+            <div class="col-md-12">
+              <h3 class="text-dark padding-top-1">What Should I Do Now? Marrying Reinforcement Learning and Symbolic Planning</h3>
+              <hr> </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <p class="text-dark lead">Daniel Gordon, Dieter Fox, Ali Farhadi
+                <br>
+                <b>Currently Under Review
+                  <br> </b>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-gray py-2">
+    <div class="container bg-light">
+      <div class="row shadow-sm">
+        <div class="p-0 col-md-6">
+          <div class="embed-responsive embed-responsive-16by9">
             <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/pXd3C-1jr98?autoplay=0" allowfullscreen=""> </iframe>
           </div>
         </div>
@@ -113,8 +142,9 @@
           <div class="row">
             <div class="col-md-12">
               <p class="text-dark lead">Daniel Gordon, Aniruddha Kembhavi, Mohammad Rastegari, Joseph Redmon, Dieter Fox, Ali Farhadi
-                <br>Computer Vision and Pattern Recognition 2018
                 <br>
+                <b>Computer Vision and Pattern Recognition 2018
+                  <br> </b>
                 <b>Winner of NVIDIA Pioneering Research Award</b>
               </p>
             </div>
@@ -123,6 +153,7 @@
       </div>
     </div>
   </div>
+  <!--
   <div class="bg-gray py-2">
     <div class="container bg-light">
       <div class="row shadow-sm">
@@ -140,13 +171,16 @@
           <div class="row">
             <div class="col-md-12">
               <p class="text-dark lead">Daniel Gordon&nbsp;
-                <br>Class Report 2018</p>
+                <br>
+                <b>Class Report 2018</b>
+              </p>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+	-->
   <div class="bg-gray py-2" id="projects-card-last">
     <div class="container bg-light">
       <div class="row shadow-sm">
@@ -164,7 +198,9 @@
           <div class="row">
             <div class="col-md-12">
               <p class="text-dark lead">Daniel Gordon, Ali Farhadi, Dieter Fox
-                <br>Robotics and Automation Letters 2018</p>
+                <br>
+                <b>Robotics and Automation Letters 2018</b>
+              </p>
             </div>
           </div>
         </div>
@@ -175,7 +211,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 mt-3 text-center">
-          <p>&copy; 2018 Daniel Gordon. Last Updated July 2018.</p>
+          <p>© 2018 Daniel Gordon. Last Updated October 2018.</p>
         </div>
       </div>
     </div>
@@ -187,7 +223,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
   <script>
     $(document).ready(function(){
-            $('[data-toggle="popover"]').popover();   
+            $('[data-toggle="popover"]').popover();
             $('[data-toggle="tooltip"]').tooltip();
             $('#datepicker-example').datepicker({
                 calendarWeeks: true,
@@ -196,6 +232,9 @@
             });
           });
   </script>
+  <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 10px;right:10px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:250px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;
+    <img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16">
+  </pingendo>
 </body>
 
 </html>
