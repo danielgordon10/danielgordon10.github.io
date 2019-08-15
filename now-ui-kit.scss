@@ -24,7 +24,7 @@ $yiq-contrasted-threshold: 	200 !default;
 
 // Body
 
-$body-bg: 						white;
+
 $body-color: 					#292b2c;
 $body-color-inverse: 	invert($body-color) !default;
 $text-muted: 					#9A9A9A !default;
@@ -186,6 +186,7 @@ $modal-sm:                   255px;
 // Progress bars
 
 $progress-height:   1px;
+$body-bg: #FFF;
 
 
 // Import Bootstrap 4.0.0
@@ -268,7 +269,7 @@ $progress-height:   1px;
 }
 
 
-.navbar  {  
+.navbar {  
   transition: all 0.5s;
   transition-delay: 0.25s;
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
@@ -546,7 +547,7 @@ form {
 }
 
 
-.pagination{
+.pagination {
     .page-item {
      		background-color:transparent !important;
     }
@@ -915,7 +916,7 @@ html,body {
   height: 400px !important;
 }
 
-.blue-background-link  {
+.blue-background-link {
   color: theme-color("light");
   text-decoration: underline !important;
 }
