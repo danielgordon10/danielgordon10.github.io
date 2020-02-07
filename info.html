@@ -50,72 +50,76 @@
       </div>
     </div>
   </nav>
-  <div class="py-5 text-white bg-primary">
+  <div class="py-5 text-white bg-primary" style="">
     <div class="container">
       <div class="row">
         <div class="align-self-center p-5 col-md-8">
           <h1 class="mb-4 text-center">ABOUT ME</h1>
-          <p class="mb-5 px-4 text-justify">I am working on visual environment understanding for robots using simulation environments and a combination of reinforcement learning and supervised learning. Previously,&nbsp;I used recurrent neural networks for real-time object tracking in video data.</p>
+          <p class="mb-5 px-4 text-justify">I am working on unsupervised learning from large video datasets. Previously, I focused on visual environment understanding for robots using simulation environments and a combination of reinforcement learning and supervised learning. Before that, I used recurrent neural networks for real-time object tracking in video data.</p>
           <div class="row">
-            <div class="col-md-12 text-center">
-              <a class="btn btn-lg btn-info text-center shadow text-uppercase" href="https://homes.cs.washington.edu/~xkcd/cv.pdf" target="_blank">Download CV</a>
+            <div class="col-md-12">
+              <div class="text-center py-3">
+                <a href="cv.pdf" class="btn btn-lg mx-1 text-uppercase btn-info" target="_blank">Download CV</a>
+                <a href="https://scholar.google.com/citations?user=MlxWsaIAAAAJ" class="btn btn-lg mx-1 text-uppercase btn-info" target="_blank">Google Scholar</a>
+              </div>
             </div>
           </div>
         </div>
         <div class="p-0 col-md-4 py-5">
-          <div class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner" role="listbox">
-              <div class="carousel-item info-carousel-item active" onclick="location.href='projects/splitnet.html';" style="cursor: pointer;">
-                <img src="images/info_images/splitnet.jpg" atl="first slide" class="d-block img-fluid w-100"> </div>
-              <div class="carousel-item info-carousel-item" onclick="location.href='projects/iqa.html';" style="cursor: pointer;">
-                <img class="d-block img-fluid w-100" src="images/info_images/iqa.jpg" data-holder-rendered="true"> </div>
-              <div class="carousel-item info-carousel-item" onclick="location.href='projects/re3.html';" style="cursor: pointer;">
-                <img class="d-block img-fluid w-100" src="images/info_images/re3.jpg" data-holder-rendered="true"> </div>
-              <div class="carousel-item info-carousel-item" onclick="location.href='projects/successor.html';" style="cursor: pointer;">
-                <img class="d-block img-fluid w-100" src="images/info_images/vsp.jpg" data-holder-rendered="true"> </div>
+          <div id="carouselExampleIndicators" class="carousel slide shadow-none" data-ride="carousel" data-interval="3000">
+            <div class="carousel-inner">
+              <div class="carousel-item active shadow-none"> <img class="d-block img-fluid w-100" src="images/info_images/splitnet.jpg">
+                <div class="carousel-caption"></div>
+              </div>
+              <div class="carousel-item shadow-none"> <img class="d-block img-fluid w-100" src="images/info_images/iqa.jpg">
+                <div class="carousel-caption"></div>
+              </div>
+              <div class="carousel-item shadow-none"> <img class="d-block img-fluid w-100" src="images/info_images/re3.jpg">
+                <div class="carousel-caption"></div>
+              </div>
+              <div class="carousel-item shadow-none"> <img class="d-block img-fluid w-100" src="images/info_images/vsp.jpg">
+                <div class="carousel-caption"></div>
+              </div>
+              <ol class="carousel-indicators" style="position: relative; top: 15px;">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"> </li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"> </li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"> </li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="3"> </li>
+              </ol>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <h1 class="text-center display-3 text-primary">Contact</h1>
-          <h4 class="text-center text-info">
-            <a href="http://xkcd.com/207/">xkcd@cs.washington.edu</a>
-          </h4>
-        </div>
-      </div>
+    <div class="carousel-item" style=""> <img class="d-block img-fluid w-100" src="images/info_images/splitnet.jpg">
+      <div class="carousel-caption"></div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="assets/js/parallax.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('[data-toggle="popover"]').popover();
+        $('[data-toggle="tooltip"]').tooltip();
+        $('#datepicker-example').datepicker({
+          calendarWeeks: true,
+          autoclose: true,
+          todayHighlight: true
+        });
+      });
+    </script>
   </div>
   <div class="bg-dark text-white">
     <div class="container">
       <div class="row">
         <div class="col-md-12 mt-3 text-center">
-          <p>&copy; 2019 Daniel Gordon. Last Updated August 2019.</p>
+          <p>&copy; 2020 Daniel Gordon. Last Updated February 2020.</p>
         </div>
       </div>
     </div>
   </div>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <script src="assets/js/parallax.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
-  <script>
-    $(document).ready(function() {
-      $('[data-toggle="popover"]').popover();
-      $('[data-toggle="tooltip"]').tooltip();
-      $('#datepicker-example').datepicker({
-        calendarWeeks: true,
-        autoclose: true,
-        todayHighlight: true
-      });
-    });
-  </script>
 </body>
 
 </html>
