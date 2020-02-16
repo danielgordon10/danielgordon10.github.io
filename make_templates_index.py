@@ -3,7 +3,8 @@ import json
 import pdb
 import os
 
-files = sorted(glob.glob('templates/*.json'))[1:-1]
+files = sorted(glob.glob('templates/*.json'))[1:-2]  # leave off the fake ones
+
 
 data = [(fi, json.load(open(fi, 'r'))) for fi in files]
 data = sorted(data, key=lambda x: x[1]['date'], reverse=True)
