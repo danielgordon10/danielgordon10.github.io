@@ -1,5 +1,15 @@
 
 $(document).ready(function() {
+
+    function addOrHide(text, element) {
+        if (text.length > 0) {
+            element.html(text);
+        } else {
+            element.hide();
+        }
+    }
+
+
     var href = document.location.href;
     var lastPathSegment = href.substr(href.lastIndexOf('/') + 1);
     var lastPathSegment = lastPathSegment.substring(0, lastPathSegment.length - 4) + "json";
@@ -11,14 +21,15 @@ $(document).ready(function() {
             $("#title-text").html(data.title);
         }
         $("#abstract").html(data.abstract);
-        $("#authors").html(data.authors);
+        addOrHide(data.authors, $("#authors"));
         if (data.publication.length > 0) {
             $("#publication").html(data.publication);
         } else {
             $("#publication").hide();
             $("#authors").css("margin-bottom", "");
         }
-        $("#bibtex").html(data.bibtex);
+        addOrHide(data.bibtex, $("#bibtex"));
+
         if (data.vid_id.length > 0) {
             $("#vid-frame").attr("src", "https://www.youtube.com/embed/" + data.vid_id + "?autoplay=0");
             $("#image-container").hide();

@@ -1,0 +1,28 @@
+{
+  "id": "dlclass",
+  "title": "Introduction to Deep Learning",
+  "title_project_page": "Introduction to Deep Learning (CSE 490/599 G1)",
+  "date": "2019-11-20",
+
+  "authors": "Ali Farhadi, Daniel Gordon, Samuel Gehman, James Park, Satvik Shukla,<br>Aaron Walsman, Jifan Zhang",
+  "publication": "Fall 2019",
+
+  "abstract": "I was the head TA and organizer for the Introduction to Deep Learning course at UW in Fall 2019. In this class we taught the basics of deep learning. I additionally created homeworks for the course in which students implement a neural network library using only Python, Numpy, and Numba. We additionally used Colab notebooks and PyTorch to train real models on GPUs. We had over 160 students! If other instructors are interested in using my solutions and tests, please email me.",
+
+  "bibtex": "",
+
+  "vid_id": "",
+  "img_path": "dl-class.jpg",
+  "paper": "",
+
+  "buttons": [
+    [
+      "Course Webpage",
+      "https://courses.cs.washington.edu/courses/cse599g1/19au/"
+    ],
+    [
+        "Homework Code",
+        "https://gitlab.com/danielgordon10/dl-class-2019a"
+    ]
+  ]
+}

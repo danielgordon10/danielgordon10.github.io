@@ -11,11 +11,14 @@
   <!-- End Google Analytics -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.standalone.min.css">
   <link rel="stylesheet" href="now-ui-kit.css" type="text/css">
   <link rel="stylesheet" href="assets/css/nucleo-icons.css" type="text/css">
   <script src="assets/js/navbar-ontop.js"></script>
+  <script src="assets/js/project_page.js"></script>
+
   <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
@@ -90,170 +93,12 @@
     <div class="container">
       <div class="row">
         <div class="">
-          <h2 class="m-0 py-4 col-md-12">Featured Projects and Publications</h2>
+          <h2 class="m-0 py-4 col-md-12" style="padding-bottom: 0px !important">Featured Projects and Publications</h2>
         </div>
       </div>
     </div>
   </div>
-  <div class="bg-gray py-2">
-    <div class="container bg-light">
-      <div class="row shadow-sm">
-        <div class="p-0 col-md-6">
-          <div class="embed-responsive embed-responsive-16by9">
-            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/1XoRLNmXffo?autoplay=0" allowfullscreen=""> </iframe>
-          </div>
-        </div>
-        <div class="col-md-6 px-3" onclick="location.href='projects/alfred.html';" style="cursor: pointer;">
-          <div class="row">
-            <div class="col-md-12">
-              <h3 class="text-dark padding-top-1">ALFRED: A Benchmark for Interpreting Grounded Instructions for Everyday Tasks</h3>
-              <hr>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <p class="text-dark lead">Mohit Shridhar, Jesse Thomason, Daniel Gordon, Yonatan Bisk, Winson Han, Roozbeh Mottaghi, Luke Zettlemoyer, Dieter Fox<br>
-                <!--<b>International Conference on Computer Vision 2019</b> <br>-->
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="bg-gray py-2">
-    <div class="container bg-light">
-      <div class="row shadow-sm">
-        <div class="p-0 col-md-6">
-          <div class="embed-responsive embed-responsive-16by9">
-            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/AKQE9RyOIMY?autoplay=0" allowfullscreen=""> </iframe>
-          </div>
-        </div>
-        <div class="col-md-6 px-3" onclick="location.href='projects/splitnet.html';" style="cursor: pointer;">
-          <div class="row">
-            <div class="col-md-12">
-              <h3 class="text-dark padding-top-1">SplitNet: Sim2Sim and Task2Task Transfer for Embodied Visual Navigation</h3>
-              <hr>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <p class="text-dark lead">Daniel Gordon, Abhishek Kadian, Devi Parikh, Judy Hoffman, Dhruv Batra<br>
-                <b>International Conference on Computer Vision 2019</b> <br>
-                <b>FAIR Internship Project (Winter 2019)</b>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="bg-gray py-2" id="projects-card-last" >
-    <div class="container bg-light">
-      <div class="row shadow-sm">
-        <div class="p-0 col-md-6">
-          <div class="embed-responsive embed-responsive-16by9">
-            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/0TtWJ_0mPfI?autoplay=0" allowfullscreen=""> </iframe>
-          </div>
-        </div>
-        <div class="col-md-6 px-3" onclick="location.href='projects/hiprl.html';" style="cursor: pointer;">
-          <div class="row">
-            <div class="col-md-12">
-              <h3 class="text-dark padding-top-1">What Should I Do Now? Marrying Reinforcement Learning and Symbolic Planning</h3>
-              <hr>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <p class="text-dark lead">Daniel Gordon, Dieter Fox, Ali Farhadi<br>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--
-  <div class="bg-gray py-2">
-    <div class="container bg-light">
-      <div class="row shadow-sm">
-        <div class="p-0 col-md-6">
-          <div class="embed-responsive embed-responsive-16by9">
-            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/pXd3C-1jr98?autoplay=0" allowfullscreen=""> </iframe>
-          </div>
-        </div>
-        <div class="col-md-6 px-3" onclick="location.href='projects/iqa.html';" style="cursor: pointer;">
-          <div class="row">
-            <div class="col-md-12">
-              <h3 class="text-dark padding-top-1">IQA: Visual Question Answering in Interactive Environments</h3>
-              <hr>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <p class="text-dark lead">Daniel Gordon, Aniruddha Kembhavi, Mohammad Rastegari, Joseph Redmon, Dieter Fox, Ali Farhadi<br>
-                <b>Computer Vision and Pattern Recognition 2018</b> <br>
-                <b>Winner of NVIDIA Pioneering Research Award</b>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="bg-gray py-2">
-    <div class="container bg-light">
-      <div class="row shadow-sm">
-        <div class="p-0 col-md-6">
-          <div class="embed-responsive embed-responsive-16by9">
-            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/iI6TQOQ_Ccc?autoplay=0" allowfullscreen=""> </iframe>
-          </div>
-        </div>
-        <div class="col-md-6 px-3" onclick="location.href='projects/tetris.html';" style="cursor: pointer;">
-          <div class="row">
-            <div class="col-md-12">
-              <h3 class="text-dark padding-top-1">Learning to Perform a Tetris with Deep Reinforcement Learning</h3>
-              <hr> </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <p class="text-dark lead">Daniel Gordon&nbsp;
-                <br>
-                <b>Class Report 2018</b>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="bg-gray py-2" id="projects-card-last">
-    <div class="container bg-light">
-      <div class="row shadow-sm">
-        <div class="p-0 col-md-6">
-          <div class="embed-responsive embed-responsive-16by9">
-            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/RByCiOLlxug?autoplay=0" allowfullscreen=""> </iframe>
-          </div>
-        </div>
-        <div class="col-md-6 px-3" onclick="location.href='projects/re3.html';" style="cursor: pointer;">
-          <div class="row">
-            <div class="col-md-12">
-              <h3 class="text-dark padding-top-1">Re3: Real-Time Recurrent Regression Networks for Visual Tracking of Generic Objects</h3>
-              <hr>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <p class="text-dark lead">Daniel Gordon, Ali Farhadi, Dieter Fox<br>
-                <b>Robotics and Automation Letters 2018</b>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  	-->
+  <div id="projects-container"></div>
   <div class="bg-dark text-white">
     <div class="container">
       <div class="row">
@@ -263,22 +108,6 @@
       </div>
     </div>
   </div>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <script src="assets/js/parallax.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
-  <script>
-    $(document).ready(function() {
-      $('[data-toggle="popover"]').popover();
-      $('[data-toggle="tooltip"]').tooltip();
-      $('#datepicker-example').datepicker({
-        calendarWeeks: true,
-        autoclose: true,
-        todayHighlight: true
-      });
-    });
-  </script>
 </body>
 
 </html>

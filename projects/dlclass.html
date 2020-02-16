@@ -11,11 +11,16 @@
   <!-- End Google Analytics -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.standalone.min.css">
   <link rel="stylesheet" href="../now-ui-kit.css" type="text/css">
   <link rel="stylesheet" href="../assets/css/nucleo-icons.css" type="text/css">
   <script src="../assets/js/navbar-ontop.js"></script>
+  <script src="../assets/js/project_template.js"></script>
+
+
+
   <link rel="apple-touch-icon" sizes="180x180" href="../images/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon/favicon-16x16.png">
@@ -23,7 +28,7 @@
   <link rel="mask-icon" href="../images/favicon/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#ffffff">
-  <title>Introduction to Deep Learning</title>
+  <title id="page-title"></title>
   <meta name="description">
   <meta name="keywords">
 </head>
@@ -60,13 +65,11 @@
   <div class="bg-primary" id="projects-header">
     <div class="container">
       <div class="row">
-        <div class="col-md-12">
-          <h1 class="text-center display-1">Introduction to Deep Learning (CSE 490/599 G1)</h1>
-          <p class="lead col-md-10 align-self-center  offset-md-1">Ali Farhadi, Daniel Gordon, Samuel Gehman, James Park, Satvik Shukla,<br>Aaron Walsman, Jifan Zhang <br>Fall 2019</p>
-          <div class="text-center py-3">
-            <a href="https://courses.cs.washington.edu/courses/cse599g1/19au/" class="btn btn-lg mx-1 text-uppercase btn-info" target="_blank">Course Webpage</a>
-            <a href="https://gitlab.com/danielgordon10/dl-class-2019a" class="btn btn-lg mx-1 text-uppercase btn-info" target="_blank">Homework Code</a>
-          </div>
+        <div class="col-md-12 " style="">
+          <h1 class="text-center display-1" id="title-text"></h1>
+          <p class="lead col-md-10 align-self-center  offset-md-1" id="authors" style="margin-bottom: 0px;"></p>
+          <p class="lead col-md-10 align-self-center  offset-md-1" id="publication"></p>
+          <div class="text-center py-3" id="button-div"></div>
         </div>
       </div>
     </div>
@@ -74,11 +77,9 @@
   <div class="">
     <div class="container">
       <div class="row py-4">
-        <div class="col-md-10 align-self-center  offset-md-1">
-          <p class="my-3">I was the head TA and organizer for the Introduction to Deep Learning course at UW in Fall 2019. In this class we taught the basics of deep learning. I additionally created homeworks for the course in which students implement a neural network library using only Python, Numpy, and Numba. We additionally used Colab notebooks and PyTorch to train real models on GPUs. We had over 160 students! If other instructors are interested in using my solutions and tests, please email me.<br></p>
+        <div class="align-self-center  col-md-10   offset-md-1" style="">
+          <p class="my-3" id="abstract"></p>
           <p class="my-3">Slides: </p>
-          <p>
-          </p>
           <ol style="list-style-type:decimal">
             <li><a href="https://drive.google.com/open?id=1WlYMQEkjh6oGeNAUawMo8Ai2L8lraB4HDJgcnIItaHM">Machine Learning Review</a></li>
             <li><a href="https://drive.google.com/open?id=11LFS9l4gZkg0M8e1O5XqZUfq3_1DR_wtcTLJbSpRlQk">Neural Networks and Optimization</a></li>
@@ -96,6 +97,25 @@
           </ol>
         </div>
       </div>
+      <div class="row">
+        <div class="col-md-10 offset-md-1" id="vid-container">
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe id="vid-frame" class="embed-responsive-item" allowfullscreen=""> </iframe>
+          </div>
+        </div>
+        <div class="col-md-12" id="image-container">
+          <img class="img-fluid d-block mx-auto" id="paper-image"> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 offset-md-1">
+          <pre id="bibtex"></pre>
+        </div>
+      </div>
     </div>
   </div>
   <div class="bg-dark text-white">
@@ -107,22 +127,6 @@
       </div>
     </div>
   </div>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <script src="../assets/js/parallax.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
-  <script>
-    $(document).ready(function() {
-      $('[data-toggle="popover"]').popover();
-      $('[data-toggle="tooltip"]').tooltip();
-      $('#datepicker-example').datepicker({
-        calendarWeeks: true,
-        autoclose: true,
-        todayHighlight: true
-      });
-    });
-  </script>
 </body>
 
 </html>
