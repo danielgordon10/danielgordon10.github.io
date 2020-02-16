@@ -1,0 +1,28 @@
+{
+  "id": "re3",
+  "title": "Re3: Real-Time Recurrent Regression Networks for Visual Tracking of Generic Objects",
+  "title_project_page": "Re3: Real-Time Recurrent Regression Networks<br>for Visual Tracking of Generic Objects",
+  "date": "2018-05-01",
+
+  "authors": "Daniel Gordon, Ali Farhadi, Dieter Fox",
+  "publication": "Robotics and Automation Letters (presented at ICRA) 2018",
+
+  "abstract": "Robust object tracking requires knowledge and understanding of the object being tracked: its appearance, its motion, and how it changes over time. A tracker must be able to modify its underlying model and adapt to new observations. We present Re3, a real-time deep object tracker capable of incorporating temporal information into its model. Rather than focusing on a limited set of objects or training a model at test-time to track a specific instance, we pretrain our generic tracker on a large variety of objects and efficiently update on the fly; Re3 simultaneously tracks and updates the appearance model with a single forward pass. This lightweight model is capable of tracking objects at 150 FPS, while attaining competitive results on challenging benchmarks. We also show that our method handles temporary occlusion better than other comparable trackers using experiments that directly measure performance on sequences with occlusion.",
+
+  "bibtex": "@article{gordon2018re3,\n     title={Re3: Real-Time Recurrent Regression Networks for Visual Tracking of Generic Objects},\n     author={Gordon, Daniel and Farhadi, Ali and Fox, Dieter},\n     journal={IEEE Robotics and Automation Letters},\n     volume={3},\n     number={2},\n     pages={788--795},\n     year={2018},\n     publisher={IEEE}\n}",
+
+  "vid_id": "RByCiOLlxug",
+  "img_path": "",
+  "paper": "../papers/re3.pdf",
+
+  "buttons": [
+    [
+      "View Full Paper",
+      "../papers/re3.pdf"
+    ],
+    [
+        "Download Code",
+        "https://gitlab.com/danielgordon10/re3-tensorflow"
+    ]
+  ]
+}

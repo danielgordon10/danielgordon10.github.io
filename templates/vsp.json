@@ -1,0 +1,24 @@
+{
+  "id": "vsp",
+  "title": "Visual Semantic Planning using Deep Successor Representations",
+  "title_project_page": "Visual Semantic Planning using<br>Deep Successor Representations",
+  "date": "2017-05-01",
+
+  "authors": "Daniel Gordon*, Yuke Zhu*, Eric Kolve, Dieter Fox, Li Fei-Fei, Abhinav Gupta, Roozbeh Mottaghi, Ali Farhadi",
+  "publication": "International Conference on Computer Vision 2017",
+
+  "abstract": "A crucial capability of real-world intelligent agents is their ability to<b>&nbsp;plan</b>&nbsp;a sequence of actions to achieve their goals in the visual world. In this work, we address the problem of <b>visual semantic planning</b>: the task of predicting a sequence of actions from visual observations that transform a dynamic environment from an initial state to a goal state. Doing so entails knowledge about objects and their affordances, as well as actions and their preconditions and effects. We propose learning these through interacting with a visual and dynamic environment. Our proposed solution involves bootstrapping reinforcement learning with imitation learning. To ensure cross task generalization, we develop a deep predictive model based on successor representations. Our experimental results show near optimal results across a wide range of tasks in the challenging THOR environment.",
+
+  "bibtex": "@article{zhu2017visual,\n     title={Visual semantic planning using deep successor representations},\n     author={Zhu, Yuke and Gordon, Daniel and Kolve, Eric and Fox, Dieter and Fei-Fei, Li and\n         Gupta, Abhinav and Mottaghi, Roozbeh and Farhadi, Ali},\n     booktitle={Proceedings of the IEEE International Conference on Computer Vision},\n     pages={483--492},\n     year={2017}\n }",
+
+  "vid_id": "_2pYVw6ATKo",
+  "img_path": "vsp.jpg",
+  "paper": "../papers/successor.pdf",
+
+  "buttons": [
+    [
+      "View Full Paper",
+      "../papers/successor.pdf"
+    ]
+  ]
+}

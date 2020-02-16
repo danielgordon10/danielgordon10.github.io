@@ -11,11 +11,16 @@
   <!-- End Google Analytics -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.standalone.min.css">
   <link rel="stylesheet" href="../now-ui-kit.css" type="text/css">
   <link rel="stylesheet" href="../assets/css/nucleo-icons.css" type="text/css">
   <script src="../assets/js/navbar-ontop.js"></script>
+  <script src="../assets/js/project_template.js"></script>
+
+
+
   <link rel="apple-touch-icon" sizes="180x180" href="../images/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon/favicon-16x16.png">
@@ -23,7 +28,7 @@
   <link rel="mask-icon" href="../images/favicon/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#ffffff">
-  <title>AI2-THOR: An Interactive 3D Environment for Visual AI</title>
+  <title id="page-title"></title>
   <meta name="description">
   <meta name="keywords">
 </head>
@@ -61,13 +66,10 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 " style="">
-          <h1 class="text-center display-1">AI2-THOR: An Interactive 3D Environment for Visual AI</h1>
-          <p class="lead col-md-10 align-self-center  offset-md-1"> Eric Kolve, Roozbeh Mottaghi, Winson Han, Eli VanderBilt, Luca Weihs, Alvaro Herrasti, Daniel Gordon, Yuke Zhu, Abhinav Gupta, Ali Farhadi<br>Technical Report 2017</p>
-          <div class="text-center py-3">
-            <a href="https://arxiv.org/abs/1712.05474" class="btn btn-lg mx-1 text-uppercase btn-info" target="_blank">View full Paper</a>
-            <a href="https://github.com/allenai/ai2thor" class="btn btn-lg mx-1 text-uppercase btn-info" target="_blank">Download Code</a>
-            <a href="https://ai2thor.allenai.org/demo/" class="btn btn-lg mx-1 text-uppercase btn-info" target="_blank">Online Demo</a>
-          </div>
+          <h1 class="text-center display-1" id="title-text"></h1>
+          <p class="lead col-md-10 align-self-center  offset-md-1" id="authors" style="margin-bottom: 0px;"></p>
+          <p class="lead col-md-10 align-self-center  offset-md-1" id="publication"></p>
+          <div class="text-center py-3" id="button-div"></div>
         </div>
       </div>
     </div>
@@ -76,14 +78,17 @@
     <div class="container">
       <div class="row py-4">
         <div class="align-self-center  col-md-10   offset-md-1" style="">
-          <p class="my-3">We introduce The House Of inteRactions (THOR), a framework for visual AI research, available at <a href="https://ai2thor.allenai.org/">https://ai2thor.allenai.org/</a>. AI2-THOR consists of near photo-realistic 3D indoor scenes, where AI agents can navigate in the scenes and interact with objects to perform tasks. AI2-THOR enables research in many different domains including but not limited to deep reinforcement learning, imitation learning, learning by interaction, planning, visual question answering, unsupervised representation learning, object detection and segmentation, and learning models of cognition. The goal of AI2-THOR is to facilitate building visually intelligent models and push the research forward in this domain. </p>
+          <p class="my-3" id="abstract"></p>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-10 offset-md-1">
+        <div class="col-md-10 offset-md-1" id="vid-container">
           <div class="embed-responsive embed-responsive-16by9">
-            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/MvvAhF4HZ8s?autoplay=0" allowfullscreen=""> </iframe>
+            <iframe id="vid-frame" class="embed-responsive-item" allowfullscreen=""> </iframe>
           </div>
+        </div>
+        <div class="col-md-12" id="image-container">
+          <img class="img-fluid d-block mx-auto" id="paper-image"> </div>
         </div>
       </div>
     </div>
@@ -92,13 +97,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-10 offset-md-1">
-          <pre>@article{ai2thor,
-     title={{AI2-THOR: An Interactive 3D Environment for Visual AI}},
-     author={Kolve, Eric and Mottaghi, Roozbeh and Han, Winson and VanderBilt, Eli and Weihs, Luca and
-             Herrasti, Alvaro and Gordon, Daniel and Zhu, Yuke and Gupta, Abhinav and Farhadi, Ali},
-     journal={arXiv preprint arXiv:1712.05474},
-     year={2017}
- }</pre>
+          <pre id="bibtex"></pre>
         </div>
       </div>
     </div>
@@ -112,22 +111,6 @@
       </div>
     </div>
   </div>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <script src="../assets/js/parallax.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
-  <script>
-    $(document).ready(function() {
-      $('[data-toggle="popover"]').popover();
-      $('[data-toggle="tooltip"]').tooltip();
-      $('#datepicker-example').datepicker({
-        calendarWeeks: true,
-        autoclose: true,
-        todayHighlight: true
-      });
-    });
-  </script>
 </body>
 
 </html>

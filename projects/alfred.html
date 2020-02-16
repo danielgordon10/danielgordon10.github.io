@@ -11,11 +11,16 @@
   <!-- End Google Analytics -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.standalone.min.css">
   <link rel="stylesheet" href="../now-ui-kit.css" type="text/css">
   <link rel="stylesheet" href="../assets/css/nucleo-icons.css" type="text/css">
   <script src="../assets/js/navbar-ontop.js"></script>
+  <script src="../assets/js/project_template.js"></script>
+
+
+
   <link rel="apple-touch-icon" sizes="180x180" href="../images/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon/favicon-16x16.png">
@@ -23,7 +28,7 @@
   <link rel="mask-icon" href="../images/favicon/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#ffffff">
-  <title>ALFRED: A Benchmark for Interpreting Grounded Instructions for Everyday Tasks</title>
+  <title id="page-title"></title>
   <meta name="description">
   <meta name="keywords">
 </head>
@@ -60,14 +65,11 @@
   <div class="bg-primary" id="projects-header">
     <div class="container">
       <div class="row">
-        <div class="col-md-12">
-          <h1 class="text-center display-1">ALFRED: A Benchmark for Interpreting Grounded Instructions for Everyday Tasks</h1>
-          <p class="lead col-md-10 align-self-center  offset-md-1">Mohit Shridhar, Jesse Thomason, Daniel Gordon, Yonatan Bisk, Winson Han, Roozbeh Mottaghi, Luke Zettlemoyer, Dieter Fox</p>
-          <div class="text-center py-3">
-            <a href="https://askforalfred.com/" class="btn btn-lg mx-1 text-uppercase btn-info" target="_blank">Project Page</a>
-            <a href="../papers/alfred.pdf" class="btn btn-lg mx-1 text-uppercase btn-info" target="_blank">View full Paper</a>
-            <a href="https://github.com/askforalfred/alfred" class="btn btn-lg mx-1 text-uppercase btn-info" target="_blank">Download Code</a>
-          </div>
+        <div class="col-md-12 " style="">
+          <h1 class="text-center display-1" id="title-text"></h1>
+          <p class="lead col-md-10 align-self-center  offset-md-1" id="authors" style="margin-bottom: 0px;"></p>
+          <p class="lead col-md-10 align-self-center  offset-md-1" id="publication"></p>
+          <div class="text-center py-3" id="button-div"></div>
         </div>
       </div>
     </div>
@@ -75,15 +77,18 @@
   <div class="">
     <div class="container">
       <div class="row py-4">
-        <div class="col-md-10 offset-md-1">
-            <p class="my-3">We present ALFRED (<b>A</b>ction <b>L</b>earning <b>F</b>rom <b>R</b>ealistic <b>E</b>nvironments and <b>D</b>irectives), a benchmark for learning a mapping from natural language instructions and egocentric vision to sequences of actions for household tasks. Long composition rollouts with non-reversible state changes are among the phenomena we include to shrink the gap between research benchmarks and real-world applications. ALFRED consists of expert demonstrations in interactive visual environments for 25k natural language directives. These directives contain both high-level goals like "Rinse off a mug and place it in the coffee maker." and low-level language instructions like "Walk to the coffee maker on the right." ALFRED tasks are more complex in terms of sequence length, action space, and language than existing vision-and-language task datasets. We show that a baseline model designed for recent embodied vision-and-language tasks performs poorly on ALFRED, suggesting that there is significant room for developing innovative grounded visual language understanding models with this benchmark.</p>
+        <div class="align-self-center  col-md-10   offset-md-1" style="">
+          <p class="my-3" id="abstract"></p>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-10 offset-md-1">
+        <div class="col-md-10 offset-md-1" id="vid-container">
           <div class="embed-responsive embed-responsive-16by9">
-            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/1XoRLNmXffo?autoplay=0" allowfullscreen=""> </iframe>
+            <iframe id="vid-frame" class="embed-responsive-item" allowfullscreen=""> </iframe>
           </div>
+        </div>
+        <div class="col-md-12" id="image-container">
+          <img class="img-fluid d-block mx-auto" id="paper-image"> </div>
         </div>
       </div>
     </div>
@@ -92,13 +97,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-10 offset-md-1">
-          <pre>@misc{ALFRED19,
-  title ={{ALFRED: A Benchmark for Interpreting Grounded Instructions for Everyday Tasks}},
-  author={Shridhar, Mohit and Thomason, Jesse and Gordon, Daniel and Bisk, Yonatan and Han, Winson and
-          Mottaghi, Roozbeh and Zettlemoyer, Luke and Fox, Dieter},
-  year = {2019},
-  url  = {https://arxiv.org/abs/1912.01734}
-}</pre>
+          <pre id="bibtex"></pre>
         </div>
       </div>
     </div>
@@ -112,22 +111,6 @@
       </div>
     </div>
   </div>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <script src="../assets/js/parallax.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
-  <script>
-    $(document).ready(function() {
-      $('[data-toggle="popover"]').popover();
-      $('[data-toggle="tooltip"]').tooltip();
-      $('#datepicker-example').datepicker({
-        calendarWeeks: true,
-        autoclose: true,
-        todayHighlight: true
-      });
-    });
-  </script>
 </body>
 
 </html>

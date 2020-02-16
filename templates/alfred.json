@@ -1,0 +1,30 @@
+{
+  "id": "alfred",
+  "title": "ALFRED: A Benchmark for Interpreting Grounded Instructions for Everyday Tasks",
+  "date": "2019-12-01",
+  "vid_id": "1XoRLNmXffo",
+  "img_path": "",
+  "paper": "../papers/alfred.pdf",
+
+  "authors": "Mohit Shridhar, Jesse Thomason, Daniel Gordon, Yonatan Bisk, Winson Han, Roozbeh Mottaghi, Luke Zettlemoyer, Dieter Fox",
+
+  "abstract": "We present ALFRED (<b>A</b>ction <b>L</b>earning <b>F</b>rom <b>R</b>ealistic <b>E</b>nvironments and <b>D</b>irectives), a benchmark for learning a mapping from natural language instructions and egocentric vision to sequences of actions for household tasks. Long composition rollouts with non-reversible state changes are among the phenomena we include to shrink the gap between research benchmarks and real-world applications. ALFRED consists of expert demonstrations in interactive visual environments for 25k natural language directives. These directives contain both high-level goals like \"Rinse off a mug and place it in the coffee maker.\" and low-level language instructions like \"Walk to the coffee maker on the right.\" ALFRED tasks are more complex in terms of sequence length, action space, and language than existing vision-and-language task datasets. We show that a baseline model designed for recent embodied vision-and-language tasks performs poorly on ALFRED, suggesting that there is significant room for developing innovative grounded visual language understanding models with this benchmark.",
+
+  "bibtex": "@misc{ALFRED19,\n  title ={{ALFRED: A Benchmark for Interpreting Grounded Instructions for Everyday Tasks}},\n  author={Shridhar, Mohit and Thomason, Jesse and Gordon, Daniel and Bisk, Yonatan and Han, Winson and\n          Mottaghi, Roozbeh and Zettlemoyer, Luke and Fox, Dieter},\n  year = {2019},\n  url  = {https://arxiv.org/abs/1912.01734}\n}",
+  "publication": "",
+
+  "buttons": [
+    [
+      "View Full Paper",
+      "../papers/alfred.pdf"
+    ],
+    [
+        "Project Page",
+        "https://askforalfred.com/"
+    ],
+    [
+        "Download Code",
+        "https://github.com/askforalfred/alfred"
+    ]
+  ]
+}
