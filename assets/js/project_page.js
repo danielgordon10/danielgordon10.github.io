@@ -11,7 +11,7 @@ $(document).ready(function() {
 
     var href = document.location.href;
     var lastPathSegment = href.substr(href.lastIndexOf('/') + 1);
-    if (lastPathSegment == 'index.html') {
+    if (lastPathSegment == 'index.html' || lastPathSegment == "") {
         jsonFile = "templates/zz_file_featured.json";
     } else {
         jsonFile = "templates/zz_file_order.json";
@@ -21,6 +21,11 @@ $(document).ready(function() {
         var projectsContainer = $("#projects-container");
         orderData.forEach(function(currVal, index) {
             $.getJSON("templates/" + currVal, function(data) {
+                if (data.pub_short.length > 0) {
+                    publication = data.pub_short;
+                } else {
+                    publication = data.publication
+                }
                 if (data.vid_id.length > 0) {
                     projectsContainer.append(
                           '<div class="bg-gray py-2" id="outer' + index + '">' +
@@ -41,7 +46,7 @@ $(document).ready(function() {
                                   '<div class="row">' +
                                     '<div class="col-md-12">' +
                                       '<p class="text-dark lead">' + data.authors + '<br><br>' +
-                                        '<b id="pub' + index + '">' + data.publication + '</b>' +
+                                        '<b id="pub' + index + '">' + publication + '</b>' +
                                       '</p>' +
                                     '</div>' +
                                   '</div>' +
@@ -67,7 +72,7 @@ $(document).ready(function() {
                               '<div class="row">' +
                                 '<div class="col-md-12">' +
                                   '<p class="text-dark lead">' + data.authors + '<br><br>' +
-                                    '<b id="pub' + index + '">' + data.publication + '</b>' +
+                                    '<b id="pub' + index + '">' + publication + '</b>' +
                                   '</p>' +
                                 '</div>' +
                               '</div>' +
@@ -81,7 +86,7 @@ $(document).ready(function() {
                 } else if (index == orderData.length - 1) {
                     $("#outer" + index).attr("id", "projects-card-last");
                 }
-                if (data.publication.length == 0) {
+                if (publication.length == 0) {
                     $("#pub" + index).hide();
                 }
             });

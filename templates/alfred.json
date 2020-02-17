@@ -12,6 +12,7 @@
 
   "bibtex": "@misc{ALFRED19,\n  title ={{ALFRED: A Benchmark for Interpreting Grounded Instructions for Everyday Tasks}},\n  author={Shridhar, Mohit and Thomason, Jesse and Gordon, Daniel and Bisk, Yonatan and Han, Winson and\n          Mottaghi, Roozbeh and Zettlemoyer, Luke and Fox, Dieter},\n  year = {2019},\n  url  = {https://arxiv.org/abs/1912.01734}\n}",
   "publication": "",
+  "pub_short": "",
 
   "buttons": [
     [

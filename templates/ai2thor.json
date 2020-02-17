@@ -12,6 +12,7 @@
 
   "bibtex": "@article{ai2thor,\n     title={{AI2-THOR: An Interactive 3D Environment for Visual AI}},\n     author={Kolve, Eric and Mottaghi, Roozbeh and Han, Winson and VanderBilt, Eli and Weihs, Luca and\n             Herrasti, Alvaro and Gordon, Daniel and Zhu, Yuke and Gupta, Abhinav and Farhadi, Ali},\n     journal={arXiv preprint arXiv:1712.05474},\n     year={2017}\n }\n",
   "publication": "Technical Report 2017",
+  "pub_short": "",
 
   "buttons": [
     [

@@ -6,6 +6,7 @@
 
   "authors": "Daniel Gordon",
   "publication": "Class Report 2018",
+  "pub_short": "",
 
   "abstract": "Video games and simulated environments have been a popular testing ground for many recent RL algorithms because of their speed, repeatability, and scalability. However many of the state-of-the-art algorithms still fail at games requiring long-term planning. In this work, I train an agent to consistently perform the eponymous Tetris (clearing 4 lines at once)",
 

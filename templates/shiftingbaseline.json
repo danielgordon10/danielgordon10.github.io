@@ -9,6 +9,7 @@
 
   "authors": "Jesse Thomason, Daniel Gordan, Yonatan Bisk",
   "publication": "NAACL-HLT 2019 Short Paper",
+  "pub_short": "",
 
   "abstract": "We demonstrate the surprising strength of unimodal baselines in multimodal domains, and make concrete recommendations for best practices in future research. Where existing work often compares against <b>random<\/b> or <b>majority class<\/b> baselines, we argue that unimodal approaches better capture and reflect dataset biases and therefore provide an important comparison when assessing the performance of multimodal techniques. We present unimodal ablations on three recent datasets in visual navigation and QA, seeing an up to 29% absolute gain in performance over published baselines.",
 

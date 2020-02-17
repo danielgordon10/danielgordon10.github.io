@@ -6,6 +6,7 @@
 
   "authors": "Ruth West, Abby Halley, Daniel Gordon, Jarlath O'Neil-Dunne, and Robert Pless",
   "publication": "SIGGRAPH 2013 Studio Talks",
+  "pub_short": "",
 
   "abstract": "Rephotography is the process of capturing the same scene at a different time, in order to capture changes. Previous work at SIGGRAPH [BAE2010] demonstrated the ability for smartphone apps to guide a user to the correct viewpoint, here we promote the use of such tools distributed widely over space and time, by enabling collaborative projects that allow multiple users to rephotograph multiple sites over time. These sites may be architectural, social, urban scenes or ecological. Current projects utilizing our mobile tools range from nation-scale rephotography of scenic overlooks, to monitoring of urban street trees in NYC by local conservancy group volunteers. Rephotography directly connects pictures at one time to pictures at another time. It also connects a photographer at one time to a photographer at another time, by providing a mechanism to collaboratively record the story of how our world changes.",
 

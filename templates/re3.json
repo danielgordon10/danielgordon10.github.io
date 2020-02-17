@@ -5,7 +5,8 @@
   "date": "2018-05-01",
 
   "authors": "Daniel Gordon, Ali Farhadi, Dieter Fox",
-  "publication": "Robotics and Automation Letters (presented at ICRA) 2018",
+  "pub_short": "RAL 2018",
+  "publication": "Robotics and Automation Letters 2018 (Presented at ICRA)",
 
   "abstract": "Robust object tracking requires knowledge and understanding of the object being tracked: its appearance, its motion, and how it changes over time. A tracker must be able to modify its underlying model and adapt to new observations. We present Re3, a real-time deep object tracker capable of incorporating temporal information into its model. Rather than focusing on a limited set of objects or training a model at test-time to track a specific instance, we pretrain our generic tracker on a large variety of objects and efficiently update on the fly; Re3 simultaneously tracks and updates the appearance model with a single forward pass. This lightweight model is capable of tracking objects at 150 FPS, while attaining competitive results on challenging benchmarks. We also show that our method handles temporary occlusion better than other comparable trackers using experiments that directly measure performance on sequences with occlusion.",
 
