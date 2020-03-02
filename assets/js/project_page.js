@@ -20,14 +20,19 @@ $(document).ready(function() {
     $.getJSON(jsonFile, function(orderData) {
         var projectsContainer = $("#projects-container");
         orderData.forEach(function(currVal, index) {
+            projectsContainer.append('<div id="outerContainer' + index + '"></div>');
+        });
+        orderData.forEach(function(currVal, index) {
             $.getJSON("templates/" + currVal, function(data) {
+                console.log('name ' + currVal + ' title ' + data.id + ' index ' + index);
+                var element = $("#outerContainer" + index);
                 if (data.pub_short.length > 0) {
                     publication = data.pub_short;
                 } else {
                     publication = data.publication
                 }
                 if (data.vid_id.length > 0) {
-                    projectsContainer.append(
+                    element.append(
                           '<div class="bg-gray py-2" id="outer' + index + '">' +
                             '<div class="container bg-light">' +
                               '<div class="row shadow-sm">' +
@@ -55,7 +60,7 @@ $(document).ready(function() {
                             '</div>' +
                           '</div>');
                 } else {
-                    projectsContainer.append(
+                    element.append(
                       '<div class="bg-gray py-2" id="outer' + index + '">' +
                         '<div class="container bg-light">' +
                           '<div class="row shadow-sm">' +

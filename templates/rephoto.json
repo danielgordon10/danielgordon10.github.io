@@ -3,27 +3,22 @@
   "title": "Collaborative Rephotography",
   "title_project_page": "",
   "date": "2013-01-01",
-
-  "authors": "Ruth West, Abby Halley, Daniel Gordon, Jarlath O'Neil-Dunne, and Robert Pless",
+  "authors": "Ruth&nbsp;West, Abby&nbsp;Halley, Daniel&nbsp;Gordon, Jarlath&nbsp;O'Neil-Dunne, Robert&nbsp;Pless",
   "publication": "SIGGRAPH 2013 Studio Talks",
   "pub_short": "",
-
   "abstract": "Rephotography is the process of capturing the same scene at a different time, in order to capture changes. Previous work at SIGGRAPH [BAE2010] demonstrated the ability for smartphone apps to guide a user to the correct viewpoint, here we promote the use of such tools distributed widely over space and time, by enabling collaborative projects that allow multiple users to rephotograph multiple sites over time. These sites may be architectural, social, urban scenes or ecological. Current projects utilizing our mobile tools range from nation-scale rephotography of scenic overlooks, to monitoring of urban street trees in NYC by local conservancy group volunteers. Rephotography directly connects pictures at one time to pictures at another time. It also connects a photographer at one time to a photographer at another time, by providing a mechanism to collaboratively record the story of how our world changes.",
-
   "bibtex": "@inproceedings{west2013collaborative,\n    title={Collaborative rephotography},\n    author={West, Ruth and Halley, Abby and Gordon, Daniel and O'Neil-Dunne, Jarlath and Pless, Robert},\n    booktitle={ACM SIGGRAPH 2013 Studio Talks},\n    pages={20},\n    year={2013},\n    organization={ACM}\n}",
-
   "vid_id": "",
   "img_path": "collaborative-rephotography.png",
   "paper": "../papers/collaborative_rephotography.pdf",
-
   "buttons": [
     [
       "View Full Paper",
       "../papers/collaborative_rephotography.pdf"
     ],
     [
-        "Project Page",
-        "http://projectrephoto.com/projectRephoto"
+      "Project Page",
+      "http://projectrephoto.com/projectRephoto"
     ]
   ]
 }

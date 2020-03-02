@@ -3,19 +3,14 @@
   "title": "What Should I Do Now? Marrying Reinforcement Learning and Symbolic Planning",
   "title_project_page": "What Should I Do Now? Marrying<br>Reinforcement Learning and Symbolic Planning",
   "date": "2018-12-01",
-
-  "authors": "Daniel Gordon, Dieter Fox, Ali Farhadi",
+  "authors": "Daniel&nbsp;Gordon, Dieter&nbsp;Fox, Ali&nbsp;Farhadi",
   "publication": "",
   "pub_short": "",
-
   "abstract": "Long-term planning poses a major difficulty to many reinforcement learning algorithms. This problem becomes even more pronounced in dynamic visual environments. In this work we propose Hierarchical Planning and Reinforcement Learning (HIP-RL), a method for merging the benefits and capabilities of Symbolic Planning with the learning abilities of Deep Reinforcement Learning. We apply HIP-RL to the complex visual tasks of interactive question answering and visual semantic planning and achieve state-of-the-art results on three challenging datasets all while taking fewer steps at test time and training in fewer iterations.",
-
   "bibtex": "@article{gordon2018hiprl,\n     title={What Should I Do Now? Marrying Reinforcement Learning and Symbolic Planning},\n     author={Gordon, Daniel and Fox, Dieter and Farhadi, Ali},\n     journal={arXiv preprint arXiv:1901.01492},\n     year={2018},\n }",
-
   "vid_id": "0TtWJ_0mPfI",
   "img_path": "",
   "paper": "../papers/hiprl.pdf",
-
   "buttons": [
     [
       "View Full Paper",

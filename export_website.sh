@@ -2,6 +2,7 @@
 
 python make_templates_index.py
 python remove_pingendo.py
+python fix_author_spacing.py
 chmod -R +r *
 chmod 700 old
 chmod 700 cv.docx
