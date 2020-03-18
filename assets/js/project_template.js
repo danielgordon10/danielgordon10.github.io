@@ -13,7 +13,7 @@ $(document).ready(function() {
     var href = document.location.href;
     var lastPathSegment = href.substr(href.lastIndexOf('/') + 1);
     var lastPathSegment = lastPathSegment.substring(0, lastPathSegment.length - 4) + "json";
-    $.getJSON("../templates/" + lastPathSegment, function(data) {
+    $.getJSON("../project_info/" + lastPathSegment, function(data) {
         $("#page-title").html(data.title);
         if (data.hasOwnProperty("title_project_page") && data.title_project_page.length > 0) {
             $("#title-text").html(data.title_project_page);

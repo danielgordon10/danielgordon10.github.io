@@ -1,8 +1,8 @@
 import json
 import glob
 import pdb
-files = sorted(glob.glob('templates/*.json'))
-ignore_set = {'templates/aa_empty.json', 'templates/zz_file_featured.json', 'templates/zz_file_order.json'}
+files = sorted(glob.glob('project_info/*.json'))
+ignore_set = {'project_info/aa_empty.json', 'project_info/zz_file_featured.json', 'project_info/zz_file_order.json'}
 for fi in files:
     if fi in ignore_set:
         continue

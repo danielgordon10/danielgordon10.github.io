@@ -12,9 +12,9 @@ $(document).ready(function() {
     var href = document.location.href;
     var lastPathSegment = href.substr(href.lastIndexOf('/') + 1);
     if (lastPathSegment == 'index.html' || lastPathSegment == "") {
-        jsonFile = "templates/zz_file_featured.json";
+        jsonFile = "project_info/zz_file_featured.json";
     } else {
-        jsonFile = "templates/zz_file_order.json";
+        jsonFile = "project_info/zz_file_order.json";
     }
 
     $.getJSON(jsonFile, function(orderData) {
@@ -23,7 +23,7 @@ $(document).ready(function() {
             projectsContainer.append('<div id="outerContainer' + index + '"></div>');
         });
         orderData.forEach(function(currVal, index) {
-            $.getJSON("templates/" + currVal, function(data) {
+            $.getJSON("project_info/" + currVal, function(data) {
                 console.log('name ' + currVal + ' title ' + data.id + ' index ' + index);
                 var element = $("#outerContainer" + index);
                 if (data.pub_short.length > 0) {

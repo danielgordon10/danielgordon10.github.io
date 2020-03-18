@@ -1,0 +1,20 @@
+{
+  "title_project_page": "", 
+  "publication": "Summer 2017", 
+  "pub_short": "", 
+  "vid_id": "", 
+  "abstract": "I organized a seminar on using deep learning in practice. In it, we discussed how to apply modern techniques to solve real research problems. We also explored the effectiveness of various methods. More information, as well as slides, videos, and code are posted on the project page.", 
+  "title": "Deep Learning in Practice Seminar", 
+  "buttons": [
+    [
+      "Project Page", 
+      "https://sites.google.com/cs.washington.edu/deeplearninginpractice/"
+    ]
+  ], 
+  "paper": "", 
+  "bibtex": "", 
+  "authors": "Daniel&nbsp;Gordon", 
+  "date": "2017-06-01", 
+  "id": "dlip", 
+  "img_path": "dlip.png"
+}
