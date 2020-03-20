@@ -1,24 +1,24 @@
 {
-  "title_project_page": "SplitNet: Sim2Sim and Task2Task Transfer <br> for Embodied Visual Navigation",
-  "img_path": "",
-  "pub_short": "ICCV 2019",
-  "vid_id": "AKQE9RyOIMY",
-  "abstract": "We propose SplitNet, a method for decoupling visual perception and policy learning. By incorporating auxiliary tasks and selective learning of portions of the model, we explicitly decompose the learning objectives for visual navigation into perceiving the world and acting on that perception. We show dramatic improvements over baseline models on transferring between simulators, an encouraging step towards Sim2Real. Additionally, SplitNet generalizes better to unseen environments from the same simulator and transfers faster and more effectively to novel embodied navigation tasks. Further, given only a small sample from a target domain, SplitNet can match the performance of traditional end-to-end pipelines which receive the entire dataset.",
-  "title": "SplitNet: Sim2Sim and Task2Task Transfer for Embodied Visual Navigation",
+  "title_project_page": "SplitNet: Sim2Sim and Task2Task Transfer <br> for Embodied Visual Navigation", 
+  "img_path": "", 
+  "pub_short": "ICCV 2019", 
+  "vid_id": "AKQE9RyOIMY", 
+  "abstract": "We propose SplitNet, a method for decoupling visual perception and policy learning. By incorporating auxiliary tasks and selective learning of portions of the model, we explicitly decompose the learning objectives for visual navigation into perceiving the world and acting on that perception. We show dramatic improvements over baseline models on transferring between simulators, an encouraging step towards Sim2Real. Additionally, SplitNet generalizes better to unseen environments from the same simulator and transfers faster and more effectively to novel embodied navigation tasks. Further, given only a small sample from a target domain, SplitNet can match the performance of traditional end-to-end pipelines which receive the entire dataset.", 
+  "title": "SplitNet: Sim2Sim and Task2Task Transfer for Embodied Visual Navigation", 
   "buttons": [
     [
-      "View Full Paper",
+      "View Full Paper", 
       "../papers/splitnet.pdf"
-    ],
+    ], 
     [
-      "Download Code",
+      "Download Code", 
       "https://github.com/facebookresearch/splitnet"
     ]
-  ],
-  "paper": "../papers/splitnet.pdf",
-  "bibtex": "@inproceedings{gordon2019splitnet, \n    title={SplitNet: Sim2Sim and Task2Task Transfer for Embodied Visual Navigation}, \n    author={Gordon, Daniel and Kadian, Abhishek and Parikh, Devi and Hoffman, Judy and Batra, Dhruv},\n    booktitle = {The IEEE International Conference on Computer Vision (ICCV)},\n    month = {October},\n    year={2019},\n}",
-  "authors": "Daniel&nbsp;Gordon, Abhishek&nbsp;Kadian, Devi&nbsp;Parikh, Judy&nbsp;Hoffman, Dhruv&nbsp;Batra",
-  "date": "2019-05-01",
-  "id": "splitnet",
+  ], 
+  "paper": "../papers/splitnet.pdf", 
+  "bibtex": "@inproceedings{gordon2019splitnet, \n    title={SplitNet: Sim2Sim and Task2Task Transfer for Embodied Visual Navigation}, \n    author={Gordon, Daniel and Kadian, Abhishek and Parikh, Devi and Hoffman, Judy and Batra, Dhruv},\n    booktitle = {The IEEE International Conference on Computer Vision (ICCV)},\n    month = {October},\n    year={2019},\n}", 
+  "authors": "Daniel&nbsp;Gordon, Abhishek&nbsp;Kadian, Devi&nbsp;Parikh, Judy&nbsp;Hoffman, Dhruv&nbsp;Batra", 
+  "date": "2019-05-01", 
+  "id": "splitnet", 
   "publication": "International Conference on Computer Vision 2019"
 }

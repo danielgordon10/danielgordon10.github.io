@@ -1,20 +1,20 @@
 {
-  "title_project_page": "", 
-  "publication": "", 
-  "pub_short": "", 
-  "vid_id": "", 
-  "abstract": "", 
-  "title": "", 
+  "title_project_page": "",
+  "title": "",
+  "vid_id": "",
+  "abstract": "",
   "buttons": [
     [
-      "View Full Paper", 
+      "View Full Paper",
       ""
     ]
-  ], 
-  "paper": "", 
-  "bibtex": "", 
-  "authors": "", 
-  "date": "", 
-  "id": "", 
+  ],
+  "paper": "",
+  "bibtex": "",
+  "pub_short": "",
+  "publication": "",
+  "authors": "",
+  "date": "",
+  "id": "",
   "img_path": ""
 }

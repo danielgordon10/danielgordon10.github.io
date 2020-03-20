@@ -1,8 +1,10 @@
 import json
 import glob
-import pdb
+import os
 files = sorted(glob.glob('project_info/*.json'))
-ignore_set = {'project_info/aa_empty.json', 'project_info/zz_file_featured.json', 'project_info/zz_file_order.json'}
+ignore_set = {os.path.join('project_info', key)
+              for key in ['aa_empty.json', 'zz_file_featured.json', 'zz_file_order.json']
+              }
 for fi in files:
     if fi in ignore_set:
         continue
