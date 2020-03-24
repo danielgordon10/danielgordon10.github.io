@@ -1,20 +1,20 @@
 {
-  "title_project_page": "", 
-  "publication": "IS&T/SPIE Electronic Imaging International Society for Optics and Photonics 2013", 
-  "pub_short": "", 
-  "vid_id": "", 
-  "abstract": "The ecological sciences face the challenge of making measurements to detect subtle changes sometimes over large areas across varied temporal scales. The challenge is thus to measure patterns of slow, subtle change occurring along multiple spatial and temporal scales, and then to visualize those changes in a way that makes important variations visceral to the observer. Imaging plays an important role in ecological measurement but existing techniques often rely on approaches that are limited with respect to their spatial resolution, view angle, and/or temporal resolution. Furthermore, integrating imaging acquired through different modalities is often difficult, if not impossible. <br> This research envisions a community-based and participatory approach based around augmented rephotography of ecosystems. We show a case study for the purpose of monitoring the urban tree canopy. The goal is to explore, for a set of urban locations, the integration of ground level rephotography with available LiDAR data, and to create a dynamic view of the urban forest, and its changes across various spatial and temporal scales. This case study gives the opportunity to explore various augments to improve the ground level image capture process, protocols to support 3D inference from the contributed photography, and both in-situ and web based visualizations of the temporal change over time.", 
-  "title": "Collaborative Imaging of Urban Forest Dynamics", 
+  "title_project_page": "",
+  "publication": "IS&T/SPIE Electronic Imaging International Society for Optics and Photonics 2013",
+  "pub_short": "",
+  "vid_id": "",
+  "abstract": "The ecological sciences face the challenge of making measurements to detect subtle changes sometimes over large areas across varied temporal scales. The challenge is thus to measure patterns of slow, subtle change occurring along multiple spatial and temporal scales, and then to visualize those changes in a way that makes important variations visceral to the observer. Imaging plays an important role in ecological measurement but existing techniques often rely on approaches that are limited with respect to their spatial resolution, view angle, and/or temporal resolution. Furthermore, integrating imaging acquired through different modalities is often difficult, if not impossible. <br> This research envisions a community-based and participatory approach based around augmented rephotography of ecosystems. We show a case study for the purpose of monitoring the urban tree canopy. The goal is to explore, for a set of urban locations, the integration of ground level rephotography with available LiDAR data, and to create a dynamic view of the urban forest, and its changes across various spatial and temporal scales. This case study gives the opportunity to explore various augments to improve the ground level image capture process, protocols to support 3D inference from the contributed photography, and both in-situ and web based visualizations of the temporal change over time.",
+  "title": "Collaborative Imaging of Urban Forest Dynamics",
   "buttons": [
     [
-      "View Full Paper", 
+      "View Full Paper",
       "../papers/collaborative_imaging.pdf"
     ]
-  ], 
-  "paper": "../papers/collaborative_imaging.pdf", 
-  "bibtex": "@inproceedings{west2013collaborative,\n    title={Collaborative imaging of urban forest dynamics: augmenting re-photography to visualize changes over time},\n    author={West, Ruth and Halley, Abby and O'Neil-Dunne, Jarlath and Gordon, Daniel and Pless, Robert},\n    booktitle={The Engineering Reality of Virtual Reality 2013},\n    volume={8649},\n    pages={86490L},\n    year={2013},\n    organization={International Society for Optics and Photonics}\n}", 
-  "authors": "Ruth&nbsp;West, Abby&nbsp;Halley, Jarlath&nbsp;O'Neil-Dunne, Daniel&nbsp;Gordon, &nbsp;Robert&nbsp;Pless", 
-  "date": "2013-02-01", 
-  "id": "collaborative", 
+  ],
+  "paper": "../papers/collaborative_imaging.pdf",
+  "bibtex": "@inproceedings{west2013collaborative,\n    title={Collaborative imaging of urban forest dynamics: augmenting re-photography to visualize changes over time},\n    author={West, Ruth and Halley, Abby and O'Neil-Dunne, Jarlath and Gordon, Daniel and Pless, Robert},\n    booktitle={The Engineering Reality of Virtual Reality 2013},\n    volume={8649},\n    pages={86490L},\n    year={2013},\n    organization={International Society for Optics and Photonics}\n}",
+  "authors": "Ruth&nbsp;West, Abby&nbsp;Halley, Jarlath&nbsp;O'Neil-Dunne, Daniel&nbsp;Gordon, &nbsp;Robert&nbsp;Pless",
+  "date": "2013-02-01",
+  "id": "collaborative",
   "img_path": "collaborative-imaging.png"
 }

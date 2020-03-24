@@ -43,7 +43,7 @@ $(document).ready(function() {
         }
 
         data.buttons.forEach(function(currVal, index) {
-            var buttonElement = $("<a class='btn btn-lg mx-1 text-uppercase btn-info', target='_blank'></a>");
+            var buttonElement = $("<a class='btn btn-lg mx-2 text-uppercase btn-info project-page-btn', target='_blank'></a>");
             buttonElement.attr("href", currVal[1]);
             buttonElement.html(currVal[0]);
             $("#button-div").append(buttonElement);

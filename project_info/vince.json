@@ -1,20 +1,20 @@
 {
-  "title_project_page": "Watching the World Go By:<br>Representation Learning from Unlabeled Videos", 
-  "publication": "", 
-  "title": "Watching the World Go By: Representation Learning from Unlabeled Videos", 
-  "vid_id": "", 
-  "abstract": "Recent single image unsupervised representation learning techniques show remarkable success on a variety of tasks. The basic principle in these works is instance discrimination: learning to differentiate between two augmented versions of the same image and a large batch of unrelated images. Networks learn to ignore the augmentation noise and extract semantically meaningful representations. Prior work uses artificial data augmentation techniques such as cropping, and color jitter which can only affect the image in superficial ways and are not aligned with how objects actually change e.g. occlusion, deformation, viewpoint change. In this paper, we argue that videos offer this natural augmentation for free. Videos can provide entirely new views of objects, show deformation, and even connect semantically similar but visually distinct concepts. We propose Video Noise Contrastive Estimation, a method for using unlabeled video to learn strong, transferable single image representations. We demonstrate improvements over recent unsupervised single image techniques, as well as over fully supervised ImageNet pretraining, across a variety of temporal and non-temporal tasks.", 
-  "pub_short": "", 
+  "title_project_page": "Watching the World Go By:<br>Representation Learning from Unlabeled Videos",
+  "publication": "",
+  "title": "Watching the World Go By: Representation Learning from Unlabeled Videos",
+  "vid_id": "",
+  "abstract": "Recent single image unsupervised representation learning techniques show remarkable success on a variety of tasks. The basic principle in these works is instance discrimination: learning to differentiate between two augmented versions of the same image and a large batch of unrelated images. Networks learn to ignore the augmentation noise and extract semantically meaningful representations. Prior work uses artificial data augmentation techniques such as cropping, and color jitter which can only affect the image in superficial ways and are not aligned with how objects actually change e.g. occlusion, deformation, viewpoint change. In this paper, we argue that videos offer this natural augmentation for free. Videos can provide entirely new views of objects, show deformation, and even connect semantically similar but visually distinct concepts. We propose Video Noise Contrastive Estimation, a method for using unlabeled video to learn strong, transferable single image representations. We demonstrate improvements over recent unsupervised single image techniques, as well as over fully supervised ImageNet pretraining, across a variety of temporal and non-temporal tasks.",
+  "pub_short": "",
   "buttons": [
     [
-      "View Full Paper", 
+      "View Full Paper",
       "../papers/vince.pdf"
     ]
-  ], 
-  "paper": "../papers/vince.pdf", 
-  "bibtex": "@article{gordon2018hiprl,\n     title={Watching the World Go By: Representation Learning from Unlabeled Videos},\n     author={Gordon, Daniel and Ehsani, Kiana and Fox, Dieter and Farhadi, Ali},\n     journal={arXiv preprint arXiv:2003.07990},\n     year={2020},\n }", 
-  "authors": "Daniel&nbsp;Gordon, Kiana&nbsp;Ehsani, Dieter&nbsp;Fox, Ali&nbsp;Farhadi", 
-  "date": "2020-03-17", 
-  "id": "vince", 
+  ],
+  "paper": "../papers/vince.pdf",
+  "bibtex": "@article{gordon2018hiprl,\n     title={Watching the World Go By: Representation Learning from Unlabeled Videos},\n     author={Gordon, Daniel and Ehsani, Kiana and Fox, Dieter and Farhadi, Ali},\n     journal={arXiv preprint arXiv:2003.07990},\n     year={2020},\n }",
+  "authors": "Daniel&nbsp;Gordon, Kiana&nbsp;Ehsani, Dieter&nbsp;Fox, Ali&nbsp;Farhadi",
+  "date": "2020-03-17",
+  "id": "vince",
   "img_path": "vince.jpg"
 }

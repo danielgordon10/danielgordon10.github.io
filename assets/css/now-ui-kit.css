@@ -6290,7 +6290,6 @@ a.text-gray:hover, a.text-gray:focus {
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15); }
   .navbar.navbar-ontop {
     background-color: transparent !important;
-    padding-top: 20px;
     box-shadow: none !important; }
   .navbar .nav-item .nav-link {
     font-size: 10px;
@@ -7542,3 +7541,7 @@ html, body {
 
 p {
   font-size: 16px; }
+  
+.project-page-btn {
+    min-width: 15em;
+}
