@@ -19,5 +19,5 @@ https://danielgordon10.github.io/index.html
 
 ## How it works:
 - JSON files/values are loaded using javascript calls. 
-- The code to call and process the JSON for each main page is in [assets/js/project_template.js](assets/js/project_template.js).
-- The code to call and process the JSON for the global projects page is in [assets/js/project_page.js](assets/js/project_page.js).
+- The code to call and process the JSON for each main page is in [assets/js/project_page.js](assets/js/project_page.js).
+- The code to call and process the JSON for the global projects page is in [assets/js/project_card_list.js](assets/js/project_card_list.js).

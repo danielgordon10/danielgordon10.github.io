@@ -9,94 +9,45 @@ $(document).ready(function() {
         }
     }
 
+
     var href = document.location.href;
-    var lastPathSegment = href.substr(href.lastIndexOf('/') + 1);
-    if (lastPathSegment == 'index.html' || lastPathSegment == "") {
-        jsonFile = "project_info/zz_file_featured.json";
-    } else {
-        jsonFile = "project_info/zz_file_order.json";
-    }
+    var lastPathSegment = href.substring(href.lastIndexOf('/') + 1, href.indexOf(".html")) + ".json";
+    $.getJSON("info/" + lastPathSegment, function(data) {
+        $("#page-title").html(data.title);
+        if (data.hasOwnProperty("title_project_page") && data.title_project_page.length > 0) {
+            $("#title-text").html(data.title_project_page);
+        } else {
+            $("#title-text").html(data.title);
+        }
+        $("#abstract").html(data.abstract);
+        addOrHide(data.authors, $("#authors"));
+        if (data.publication.length > 0) {
+            $("#publication").html(data.publication);
+        } else {
+            $("#publication").hide();
+            $("#authors").css("margin-bottom", "");
+        }
+        addOrHide(data.bibtex, $("#bibtex"));
 
-    $.getJSON(jsonFile, function(orderData) {
-        var projectsContainer = $("#projects-container");
-        orderData.forEach(function(currVal, index) {
-            projectsContainer.append('<div id="outerContainer' + index + '"></div>');
-        });
-        orderData.forEach(function(currVal, index) {
-            $.getJSON("project_info/" + currVal, function(data) {
-                console.log('name ' + currVal + ' title ' + data.id + ' index ' + index);
-                var element = $("#outerContainer" + index);
-                if (data.pub_short.length > 0) {
-                    publication = data.pub_short;
-                } else {
-                    publication = data.publication
-                }
-                if (data.vid_id.length > 0) {
-                    element.append(
-                          '<div class="bg-gray py-2" id="outer' + index + '">' +
-                            '<div class="container bg-light">' +
-                              '<div class="row shadow-sm">' +
-                                '<div class="p-0 col-md-6">' +
-                                  '<div class="embed-responsive embed-responsive-16by9">' +
-                                    '<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/' + data.vid_id + '?autoplay=0" allowfullscreen=""> </iframe>' +
-                                  '</div>' +
-                                '</div>' +
-                                '<div class="col-md-6 px-3" onclick="location.href=\'projects/' + data.id + '.html\';" style="cursor: pointer;">' +
-                                  '<div class="row">' +
-                                    '<div class="col-md-12">' +
-                                      '<h3 class="text-dark padding-top-1">' + data.title + '</h3>' +
-                                      '<hr>' +
-                                    '</div>' +
-                                  '</div>' +
-                                  '<div class="row">' +
-                                    '<div class="col-md-12">' +
-                                      '<p class="text-dark lead">' + data.authors + '<br><br>' +
-                                        '<b id="pub' + index + '">' + publication + '</b>' +
-                                      '</p>' +
-                                    '</div>' +
-                                  '</div>' +
-                                '</div>' +
-                              '</div>' +
-                            '</div>' +
-                          '</div>');
-                } else {
-                    element.append(
-                      '<div class="bg-gray py-2" id="outer' + index + '">' +
-                        '<div class="container bg-light">' +
-                          '<div class="row shadow-sm">' +
-                            '<div class="p-0 col-md-6">' +
-                              '<img class="img-fluid d-block" src="images/projects/' + data.img_path + '">' +
-                            '</div>' +
-                            '<div class="col-md-6 px-3" onclick="location.href=\'projects/' + data.id + '.html\';" style="cursor: pointer;">' +
-                              '<div class="row">' +
-                                '<div class="col-md-12">' +
-                                  '<h3 class="text-dark padding-top-1">' + data.title + '</h3>' +
-                                  '<hr>' +
-                                '</div>' +
-                              '</div>' +
-                              '<div class="row">' +
-                                '<div class="col-md-12">' +
-                                  '<p class="text-dark lead">' + data.authors + '<br><br>' +
-                                    '<b id="pub' + index + '">' + publication + '</b>' +
-                                  '</p>' +
-                                '</div>' +
-                              '</div>' +
-                            '</div>' +
-                          '</div>' +
-                        '</div>' +
-                      '</div>');
-                }
-                if (index == 0) {
-                    $("#outer0").attr("id", "projects-card-first");
-                } else if (index == orderData.length - 1) {
-                    $("#outer" + index).attr("id", "projects-card-last");
-                }
-                if (publication.length == 0) {
-                    $("#pub" + index).hide();
-                }
-            });
-        });
+        if (data.vid_id.length > 0) {
+            $("#vid-frame").attr("src", "https://www.youtube.com/embed/" + data.vid_id + "?autoplay=0");
+            $("#image-container").hide();
+        } else {
+            $("#vid-container").hide();
+            if (data.img_path.length > 0) {
+                $("#paper-image").attr("src", "../images/projects/" + data.img_path);
+            } else {
+                $("#image-container").hide();
+            }
+        }
 
+        data.buttons.forEach(function(currVal, index) {
+            var buttonElement = $("<a class='btn btn-lg mx-2 text-uppercase btn-info project-page-btn', target='_blank'></a>");
+            buttonElement.attr("href", currVal[1]);
+            buttonElement.html(currVal[0]);
+            $("#button-div").append(buttonElement);
+        });
     });
+
 
 });

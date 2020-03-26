@@ -1,0 +1,25 @@
+{
+  "title_project_page": "Learning to Perform a Tetris with<br>Deep Reinforcement Learning",
+  "publication": "Class Report 2018",
+  "pub_short": "",
+  "vid_id": "iI6TQOQ_Ccc",
+  "abstract": "Video games and simulated environments have been a popular testing ground for many recent RL algorithms because of their speed, repeatability, and scalability. However many of the state-of-the-art algorithms still fail at games requiring long-term planning. In this work, I train an agent to consistently perform the eponymous Tetris (clearing 4 lines at once)",
+  "title": "Learning to Perform a Tetris with Deep Reinforcement Learning",
+  "buttons": [
+    [
+      "View Full Paper",
+      "../pdfs/deep_rl_for_tetris.pdf"
+    ],
+    [
+      "Download Code",
+      "https://gitlab.cs.washington.edu/xkcd/deeprl-tetris"
+    ]
+  ],
+  "paper": "../pdfs/deep_rl_for_tetris.pdf",
+  "bibtex": "@article{gordon2018tetris,\n     author={Daniel Gordon},\n     title={{Learning to Perform a Tetris with Deep Reinforcement Learning}},\n     year={2018}\n }",
+  "authors": "Daniel&nbsp;Gordon",
+  "date": "2018-06-01",
+  "id": "tetris",
+  "url": "other/tetris.html",
+  "img_path": ""
+}
