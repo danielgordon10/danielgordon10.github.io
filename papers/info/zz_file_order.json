@@ -1,13 +1,13 @@
 [
-  "vince.json",
-  "alfred.json",
-  "splitnet.json",
-  "shiftingbaseline.json",
-  "hiprl.json",
-  "iqa.json",
-  "re3.json",
-  "ai2thor.json",
-  "vsp.json",
-  "collaborative.json",
+  "vince.json", 
+  "alfred.json", 
+  "splitnet.json", 
+  "shiftingbaseline.json", 
+  "hiprl.json", 
+  "iqa.json", 
+  "re3.json", 
+  "ai2thor.json", 
+  "vsp.json", 
+  "collaborative.json", 
   "rephoto.json"
 ]

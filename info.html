@@ -31,6 +31,46 @@
   <title>Daniel Gordon</title>
   <meta name="description">
   <meta name="keywords">
+  <style>
+    .tooltip {
+      position: relative;
+      display: inline-block;
+      opacity: 1;
+    }
+
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 170px;
+      background-color: #555;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px;
+      position: absolute;
+      z-index: 1;
+      bottom: 3em;
+      left: 50%;
+      margin-left: -85px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .tooltip .tooltiptext::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: #555 transparent transparent transparent;
+    }
+
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+      opacity: 1;
+    }
+  </style>
 </head>
 
 <body class="">
@@ -40,9 +80,21 @@
       <div class="row">
         <div class="align-self-center p-3 col-md-8">
           <h1 class="mb-4 text-center">ABOUT ME</h1>
-          <p class="mb-5 px-4">I am working on unsupervised learning from large video datasets. Previously, I focused on visual environment understanding for robots using simulation environments and a combination of reinforcement learning and supervised learning. Before that, I used recurrent neural networks for real-time object tracking in video data.</p>
+          <p class="mb-3 px-4">
+            I am working on unsupervised learning from large video datasets.
+            Previously, I focused on visual environment understanding for robots using simulation environments and a combination of reinforcement learning and supervised learning.
+            Before that, I used recurrent neural networks for real-time object tracking in videos.
+          </p>
           <div class="row">
             <div class="col-md-12">
+              <div class="text-center py-3">
+                <div class="tooltip">
+                  <a id="email-text" onclick="copyFunction()" onmouseout="outFunc()">
+                    <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>
+                    <script type="text/javascript">document.write('<div id="email-holder" style="font-size: 22px"> \u0078\u006b\u0063\u0064\u0040\u0063\u0073\u002e\u0077\u0061\u0073\u0068\u0069\u006e\u0067\u0074\u006f\u006e\u002e\u0065\u0064\u0075 </div>')</script>
+                  </a>
+                </div>
+              </div>
               <div class="text-center py-3">
                 <a href="cv.pdf" class="btn btn-lg mx-1 text-uppercase btn-info" target="_blank">Download CV</a>
                 <a href="https://scholar.google.com/citations?user=MlxWsaIAAAAJ" class="btn btn-lg mx-1 text-uppercase btn-info" target="_blank">Google Scholar</a>
@@ -88,11 +140,32 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 mt-3 text-center">
-          <p>&copy; 2020 Daniel Gordon. Last Updated March 2020.</p>
+          <p>&copy; 2020 Daniel Gordon. Last Updated April 2020.</p>
         </div>
       </div>
     </div>
   </div>
+
+<script>
+function copyFunction() {
+  var emailHolder = document.getElementById("email-holder");
+  var range = document.createRange(); // Create a new range
+  range.selectNodeContents(emailHolder); // Select the content of the node from line 1
+  var selection = window.getSelection();
+  selection.removeAllRanges(); // Delete any old ranges
+  selection.addRange(range); // Add the range to selection
+  document.execCommand("copy");
+
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copied: " + emailHolder.innerText;
+}
+
+function outFunc() {
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copy to clipboard";
+}
+</script>
+
 </body>
 
 </html>
