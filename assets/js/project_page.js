@@ -23,9 +23,10 @@ $(document).ready(function() {
         addOrHide(data.authors, $("#authors"));
         if (data.publication.length > 0) {
             $("#publication").html(data.publication);
+            $("#authors").css("margin-bottom", "1rem");
         } else {
             $("#publication").hide();
-            $("#authors").css("margin-bottom", "");
+            //$("#authors").css("margin-bottom", "0px");
         }
         addOrHide(data.bibtex, $("#bibtex"));
 
