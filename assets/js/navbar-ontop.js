@@ -38,7 +38,9 @@
                 document.querySelector("#temp-navbar-ontop").remove();
             });
             var nav = document.querySelector(".navbar");
-            nav.style.transition.length = 0.5;
+            nav.style.opacity = 1;
+            nav.style.transitionDuration = "0.5s";
+            nav.style.webkitTransitionDuration = "0.5s";
         });
         window.addEventListener("scroll", function() {
             update();
