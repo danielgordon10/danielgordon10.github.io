@@ -9,6 +9,10 @@
     [
       "View Full Paper",
       "../pdfs/vince.pdf"
+    ],
+    [
+      "Download Code",
+      "https://github.com/danielgordon10/vince"
     ]
   ],
   "paper": "../pdfs/vince.pdf",
