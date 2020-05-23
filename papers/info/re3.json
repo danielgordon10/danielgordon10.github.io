@@ -11,8 +11,12 @@
       "../pdfs/re3.pdf"
     ],
     [
-      "Download Code",
-      "https://gitlab.com/danielgordon10/re3-tensorflow"
+      "TensorFlow Code",
+       "https://github.com/danielgordon10/re3-tensorflow"
+    ],
+    [
+      "PyTorch Code",
+       "https://github.com/danielgordon10/re3-pytorch"
     ]
   ],
   "paper": "../pdfs/re3.pdf",
