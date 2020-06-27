@@ -5,3 +5,6 @@
 old
 *.CR3
 *.CR2
+*.MOV
+*.mp4
+*.DS_Store
