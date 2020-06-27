@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="39.511112mm"
+   height="39.511112mm"
+   viewBox="0 0 140 140"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="drawing.svg"
+   inkscape:export-filename="D:\Dropbox\Personal Website\images\favicon\android-chrome-512x512.png"
+   inkscape:export-xdpi="329.14001"
+   inkscape:export-ydpi="329.14001">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="3.959798"
+     inkscape:cx="86.455535"
+     inkscape:cy="73.571561"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-nodes="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1563"
+     inkscape:window-height="763"
+     inkscape:window-x="70"
+     inkscape:window-y="177"
+     inkscape:window-maximized="0"
+     inkscape:snap-bbox-midpoints="true">
+    <inkscape:grid
+       type="xygrid"
+       id="grid4136"
+       originx="-40"
+       originy="-890" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-40,-22.362206)">
+    <circle
+       style="fill:#5e81b4;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:7.19999981;stroke-opacity:1"
+       id="path4138"
+       cx="110"
+       cy="92.362206"
+       r="70" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:71.77330017px;line-height:125%;font-family:'sans serif';-inkscape-font-specification:'sans serif';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="116.42603"
+       y="113.31573"
+       id="text4142"
+       sodipodi:linespacing="125%"
+       transform="scale(0.94734883,1.0555774)"><tspan
+         sodipodi:role="line"
+         id="tspan4144"
+         x="116.42603"
+         y="113.31573"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:71.11258698px;line-height:125%;font-family:'sans serif';-inkscape-font-specification:'sans serif Bold';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1">DG</tspan></text>
+  </g>
+</svg>
