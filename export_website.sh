@@ -7,7 +7,7 @@ chmod -R +r *
 chmod 700 cv.docx
 # rsync -avW --info=progress2 * xkcd@bicycle.cs.washington.edu:/cse/web/homes/xkcd --exclude *.swp --exclude .git
 git add -A
-git commit -m "update"
+git commit -m "update `date`"
 git push origin master
 
 
