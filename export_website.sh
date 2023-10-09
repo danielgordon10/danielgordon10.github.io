@@ -9,5 +9,3 @@ chmod 700 cv.docx
 git add -A
 git commit -m "update `date`"
 git push origin master
-
-
