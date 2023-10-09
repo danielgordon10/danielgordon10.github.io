@@ -1,8 +1,8 @@
 {
-  "title_project_page": "Third Wave Automation<br>Multiply Human Potential<br>with Autonomous Forklifts",
+  "title_project_page": "Third Wave Automation: Multiply Human Potential with Autonomous Forklifts",
   "title": "Third Wave Automation",
   "vid_id": "z4Vk10MGTO0",
-  "abstract": "An autonomous forklift truck, also known as a self-driving forklift, is a type of material handling equipment that can navigate and operate without the need for a human operator. These machines use a combination of sensors, cameras, and advanced software to navigate and perform tasks such as loading and unloading materials into and out of racks.",
+  "abstract": "An autonomous forklift truck, also known as a self-driving forklift, is a type of material handling equipment that can navigate and operate without the need for a human operator. These machines use a combination of sensors, cameras, and advanced software to navigate and perform tasks such as loading and unloading materials into and out of racks.<br><br>At Third Wave Automation, I lead the Perception and Pallet Manipulation team which handles everything from detecting pallets and payloads and estimating their poses to scanning barcodes to handling the internal state machine of the forklift and interfacing with the Warehouse Management System (WMS). Using a combinaion of learned approaches and classical vision and robotics algorithms, we have developed a best-in-class system which operates in the wild in challenging environments, achieving near-human performance.",
   "buttons": [
     [
       "View Company Website",
