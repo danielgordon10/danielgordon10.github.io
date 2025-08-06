@@ -8,3 +8,4 @@ old
 *.MOV
 *.mp4
 *.DS_Store
+.~lock*
