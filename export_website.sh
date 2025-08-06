@@ -1,7 +1,7 @@
 #!/bin/bash
 
 python make_project_info_index.py
-python remove_pingendo.py
+python update_footer.py
 python fix_author_spacing.py
 chmod -R +r *
 chmod 700 cv.docx
