@@ -6,7 +6,7 @@
   "buttons": [
     [
         "Try Apple Maps DCE (Mac/iOS)", 
-        "maps://?q=Apple Park"
+        "maps://?ll=37.805824108798326,-122.474010554347&z=20&t=m"
     ],
     [
       "Read about Singapore DCE",
