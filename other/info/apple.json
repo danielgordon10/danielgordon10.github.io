@@ -5,11 +5,11 @@
   "abstract": "At Apple Maps, I work on the Detailed City Experience (DCE) which upgrades the maps from a flat low-detail view to an immersive highly detailed experience. Using high resolution imagery, we extract 3D road shape, features like lane markings, crosswalks, and medians, and even painted color areas like bike lanes. Additionally we create tree and building data for a rich 3D experience.",
   "buttons": [
     [
-        "Try Apple Maps in Browser (DCE not supported)",
-        "https://maps.apple.com/"
+        "Try Apple Maps DCE (Mac/iOS)", 
+        "maps://?q=Apple Park"
     ],
     [
-      "Singapore Detailed City Experience Released",
+      "Read about Singapore DCE",
       "https://www.prestigeonline.com/sg/lifestyle/travel/how-to-use-apple-maps-detailed-city-experience-update-singapore/"
     ]
   ],
