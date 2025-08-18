@@ -11,7 +11,7 @@ https://danielgordon10.github.io/index.html
 1. Fill in the missing values.
 1. Copy[papers/aa_template.html](papers/aa_template.html) to new file.
 1. Do any in place HTML edits there.
-1. If you want it to appear on the featured section, it must be added manually to [papers/info/zz_file_featured.json](papers/info/zz_file_featured.json).
+1. If you want it to appear on the featured section, it must be added manually to [featured_projects.json](featured_projects.json).
 1. If you need to add an image (because there's no video), add it to [images/projects](images/projects).
 1. When done call `sh export_website.sh` which does a bit of post-processing, and pushes the files to the server.
 
