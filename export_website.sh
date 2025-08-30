@@ -1,5 +1,6 @@
 #!/bin/bash
 
+prettier --write .
 python make_project_info_index.py
 python update_footer.py
 python fix_author_spacing.py

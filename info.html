@@ -1,177 +1,295 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
+  <head>
+    <!-- Google Analytics -->
+    <script>
+      window.ga =
+        window.ga ||
+        function () {
+          (ga.q = ga.q || []).push(arguments);
+        };
+      ga.l = +new Date();
+      ga("create", "UA-57678938-1", "auto");
+      ga("send", "pageview");
+    </script>
+    <script
+      async=""
+      src="https://www.google-analytics.com/analytics.js"
+    ></script>
+    <!-- End Google Analytics -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head>
-  <!-- Google Analytics -->
-  <script> window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-    ga('create', 'UA-57678938-1', 'auto');
-    ga('send', 'pageview');
-  </script>
-  <script async="" src="https://www.google-analytics.com/analytics.js"></script>
-  <!-- End Google Analytics -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="assets/css/now-ui-kit.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/nucleo-icons.css" type="text/css" />
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script src="assets/js/navbar-ontop.js"></script>
+    <script src="assets/js/project_card_list.js"></script>
+    <script src="assets/js/parallax.js"></script>
+    <script src="assets/js/data_toggle.js"></script>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="assets/css/now-ui-kit.css" type="text/css">
-  <link rel="stylesheet" href="assets/css/nucleo-icons.css" type="text/css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <script src="assets/js/navbar-ontop.js"></script>
-  <script src="assets/js/project_card_list.js"></script>
-  <script src="assets/js/parallax.js"></script>
-  <script src="assets/js/data_toggle.js"></script>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="images/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="images/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="images/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="images/favicon/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="images/favicon/safari-pinned-tab.svg"
+      color="#5bbad5"
+    />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+    <title>Daniel Gordon</title>
+    <meta name="description" />
+    <meta name="keywords" />
+    <style>
+      .tooltip {
+        position: relative;
+        display: inline-block;
+        opacity: 1;
+      }
 
-  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
-  <link rel="manifest" href="images/favicon/site.webmanifest">
-  <link rel="mask-icon" href="images/favicon/safari-pinned-tab.svg" color="#5bbad5">
-  <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="theme-color" content="#ffffff">
-  <title>Daniel Gordon</title>
-  <meta name="description">
-  <meta name="keywords">
-  <style>
-    .tooltip {
-      position: relative;
-      display: inline-block;
-      opacity: 1;
-    }
+      .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 170px;
+        background-color: #555;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px;
+        position: absolute;
+        z-index: 1;
+        bottom: 3em;
+        left: 50%;
+        margin-left: -85px;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
 
-    .tooltip .tooltiptext {
-      visibility: hidden;
-      width: 170px;
-      background-color: #555;
-      color: #fff;
-      text-align: center;
-      border-radius: 6px;
-      padding: 5px;
-      position: absolute;
-      z-index: 1;
-      bottom: 3em;
-      left: 50%;
-      margin-left: -85px;
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
+      .tooltip .tooltiptext::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #555 transparent transparent transparent;
+      }
 
-    .tooltip .tooltiptext::after {
-      content: "";
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      margin-left: -5px;
-      border-width: 5px;
-      border-style: solid;
-      border-color: #555 transparent transparent transparent;
-    }
+      .tooltip:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+      }
+    </style>
+  </head>
 
-    .tooltip:hover .tooltiptext {
-      visibility: visible;
-      opacity: 1;
-    }
-  </style>
-</head>
-
-<body class="">
-  <div id="nav-placeholder"></div>
-  <div class="py-5 text-white bg-primary" style="min-height: calc(100vh - 57.6px); display: flex; align-items: center; justify-content: center;">
-    <div class="container">
-      <div class="row">
-        <div class="align-self-center p-3 col-md-8">
-          <h1 class="mb-4 text-center">ABOUT ME</h1>
-          <p class="mb-3 px-4">
-            I currently work at Apple as a Senior Machine Learning Engineer on the Maps 3D Vision team. Prior to that, I worked at <a class="blue-background-link" href="https://www.thirdwave.ai">Third Wave Automation</a>,
-            developing visual algorithms for autonomous forklifts and managing a team of 5+ engineers.
-
-            My Ph.D. work focussed on perception for robotics applications.
-            I have worked on several exciting fields such as unsupervised learning from large video datasets, visual environment understanding for robots using simulation environments and a combination of reinforcement learning and supervised learning, and recurrent neural networks for real-time object tracking in videos.
-          </p>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="text-center py-3">
-                <div class="tooltip">
-                  <a id="email-text" onclick="copyFunction()" onmouseout="outFunc()">
-                    <span class="tooltiptext" id="myTooltip">Click the email to copy to clipboard</span>
-                    <script type="text/javascript">document.write('<div id="email-holder" style="font-size: 22px">&#100;&#097;&#110;&#105;&#101;&#108;&#103;&#111;&#114;&#100;&#111;&#110;&#064;&#099;&#115;&#046;&#119;&#097;&#115;&#104;&#105;&#110;&#103;&#116;&#111;&#110;&#046;&#101;&#100;&#117;</div>')</script>
-                  </a>
+  <body class="">
+    <div id="nav-placeholder"></div>
+    <div
+      class="py-5 text-white bg-primary"
+      style="
+        min-height: calc(100vh - 57.6px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <div class="container">
+        <div class="row">
+          <div class="align-self-center p-3 col-md-8">
+            <h1 class="mb-4 text-center">ABOUT ME</h1>
+            <p class="mb-3 px-4">
+              I currently work at Apple as a Senior Machine Learning Engineer on
+              the Maps 3D Vision team. Prior to that, I worked at
+              <a class="blue-background-link" href="https://www.thirdwave.ai"
+                >Third Wave Automation</a
+              >, developing visual algorithms for autonomous forklifts and
+              managing a team of 5+ engineers. My Ph.D. work focussed on
+              perception for robotics applications. I have worked on several
+              exciting fields such as unsupervised learning from large video
+              datasets, visual environment understanding for robots using
+              simulation environments and a combination of reinforcement
+              learning and supervised learning, and recurrent neural networks
+              for real-time object tracking in videos.
+            </p>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="text-center py-3">
+                  <div class="tooltip">
+                    <a
+                      id="email-text"
+                      onclick="copyFunction()"
+                      onmouseout="outFunc()"
+                    >
+                      <span class="tooltiptext" id="myTooltip"
+                        >Click the email to copy to clipboard</span
+                      >
+                      <script type="text/javascript">
+                        document.write(
+                          '<div id="email-holder" style="font-size: 22px">&#100;&#097;&#110;&#105;&#101;&#108;&#103;&#111;&#114;&#100;&#111;&#110;&#064;&#099;&#115;&#046;&#119;&#097;&#115;&#104;&#105;&#110;&#103;&#116;&#111;&#110;&#046;&#101;&#100;&#117;</div>',
+                        );
+                      </script>
+                    </a>
+                  </div>
+                </div>
+                <div class="text-center py-3">
+                  <a
+                    href="cv.pdf"
+                    class="btn btn-lg mx-1 text-uppercase btn-info"
+                    target="_blank"
+                    >Download CV</a
+                  >
+                  <a
+                    href="https://scholar.google.com/citations?user=MlxWsaIAAAAJ"
+                    class="btn btn-lg mx-1 text-uppercase btn-info"
+                    target="_blank"
+                    >Google Scholar</a
+                  >
                 </div>
               </div>
-              <div class="text-center py-3">
-                <a href="cv.pdf" class="btn btn-lg mx-1 text-uppercase btn-info" target="_blank">Download CV</a>
-                <a href="https://scholar.google.com/citations?user=MlxWsaIAAAAJ" class="btn btn-lg mx-1 text-uppercase btn-info" target="_blank">Google Scholar</a>
+            </div>
+          </div>
+          <div class="p-0 col-md-4 py-5">
+            <div
+              id="carouselExampleIndicators"
+              class="carousel slide shadow-none"
+              data-ride="carousel"
+              data-interval="3000"
+            >
+              <div class="carousel-inner">
+                <div class="carousel-item active shadow-none">
+                  <img
+                    class="d-block img-fluid w-100"
+                    src="images/info_images/apple_maps.jpg"
+                  />
+                  <div class="carousel-caption"></div>
+                </div>
+                <div class="carousel-item shadow-none">
+                  <img
+                    class="d-block img-fluid w-100"
+                    src="images/info_images/vince.jpg"
+                  />
+                  <div class="carousel-caption"></div>
+                </div>
+                <div class="carousel-item shadow-none">
+                  <img
+                    class="d-block img-fluid w-100"
+                    src="images/info_images/splitnet.jpg"
+                  />
+                  <div class="carousel-caption"></div>
+                </div>
+                <div class="carousel-item shadow-none">
+                  <img
+                    class="d-block img-fluid w-100"
+                    src="images/info_images/iqa.jpg"
+                  />
+                  <div class="carousel-caption"></div>
+                </div>
+                <div class="carousel-item shadow-none">
+                  <img
+                    class="d-block img-fluid w-100"
+                    src="images/info_images/re3.jpg"
+                  />
+                  <div class="carousel-caption"></div>
+                </div>
+                <div class="carousel-item shadow-none">
+                  <img
+                    class="d-block img-fluid w-100"
+                    src="images/info_images/vsp.jpg"
+                  />
+                  <div class="carousel-caption"></div>
+                </div>
+                <ol
+                  class="carousel-indicators"
+                  style="position: relative; top: 15px"
+                >
+                  <li
+                    data-target="#carouselExampleIndicators"
+                    data-slide-to="0"
+                    class="active"
+                  ></li>
+                  <li
+                    data-target="#carouselExampleIndicators"
+                    data-slide-to="1"
+                  ></li>
+                  <li
+                    data-target="#carouselExampleIndicators"
+                    data-slide-to="2"
+                  ></li>
+                  <li
+                    data-target="#carouselExampleIndicators"
+                    data-slide-to="3"
+                  ></li>
+                  <li
+                    data-target="#carouselExampleIndicators"
+                    data-slide-to="4"
+                  ></li>
+                  <li
+                    data-target="#carouselExampleIndicators"
+                    data-slide-to="5"
+                  ></li>
+                </ol>
               </div>
             </div>
           </div>
         </div>
-        <div class="p-0 col-md-4 py-5">
-          <div id="carouselExampleIndicators" class="carousel slide shadow-none" data-ride="carousel" data-interval="3000">
-            <div class="carousel-inner">
-              <div class="carousel-item active shadow-none"> <img class="d-block img-fluid w-100" src="images/info_images/apple_maps.jpg">
-                <div class="carousel-caption"></div>
-              </div>
-              <div class="carousel-item shadow-none"> <img class="d-block img-fluid w-100" src="images/info_images/vince.jpg">
-                <div class="carousel-caption"></div>
-              </div>
-              <div class="carousel-item shadow-none"> <img class="d-block img-fluid w-100" src="images/info_images/splitnet.jpg">
-                <div class="carousel-caption"></div>
-              </div>
-              <div class="carousel-item shadow-none"> <img class="d-block img-fluid w-100" src="images/info_images/iqa.jpg">
-                <div class="carousel-caption"></div>
-              </div>
-              <div class="carousel-item shadow-none"> <img class="d-block img-fluid w-100" src="images/info_images/re3.jpg">
-                <div class="carousel-caption"></div>
-              </div>
-              <div class="carousel-item shadow-none"> <img class="d-block img-fluid w-100" src="images/info_images/vsp.jpg">
-                <div class="carousel-caption"></div>
-              </div>
-              <ol class="carousel-indicators" style="position: relative; top: 15px;">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"> </li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"> </li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"> </li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="3"> </li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="4"> </li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="5"> </li>
-              </ol>
-            </div>
+      </div>
+      <div class="carousel-item" style="">
+        <img
+          class="d-block img-fluid w-100"
+          src="images/info_images/splitnet.jpg"
+        />
+        <div class="carousel-caption"></div>
+      </div>
+    </div>
+    <div class="bg-dark text-white">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mt-3 text-center">
+            <p>&copy; 2025 Daniel Gordon. Last Updated August 2025.</p>
           </div>
         </div>
       </div>
     </div>
-    <div class="carousel-item" style=""> <img class="d-block img-fluid w-100" src="images/info_images/splitnet.jpg">
-      <div class="carousel-caption"></div>
-    </div>
-  </div>
-  <div class="bg-dark text-white">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 mt-3 text-center">
-          <p>&copy; 2025 Daniel Gordon. Last Updated August 2025.</p>
-        </div>
-      </div>
-    </div>
-  </div>
 
-<script>
-function copyFunction() {
-  var emailHolder = document.getElementById("email-holder");
-  var range = document.createRange(); // Create a new range
-  range.selectNodeContents(emailHolder); // Select the content of the node from line 1
-  var selection = window.getSelection();
-  selection.removeAllRanges(); // Delete any old ranges
-  selection.addRange(range); // Add the range to selection
-  document.execCommand("copy");
+    <script>
+      function copyFunction() {
+        var emailHolder = document.getElementById("email-holder");
+        var range = document.createRange(); // Create a new range
+        range.selectNodeContents(emailHolder); // Select the content of the node from line 1
+        var selection = window.getSelection();
+        selection.removeAllRanges(); // Delete any old ranges
+        selection.addRange(range); // Add the range to selection
+        document.execCommand("copy");
 
-  var tooltip = document.getElementById("myTooltip");
-  tooltip.innerHTML = "Copied: " + emailHolder.innerText;
-}
+        var tooltip = document.getElementById("myTooltip");
+        tooltip.innerHTML = "Copied: " + emailHolder.innerText;
+      }
 
-function outFunc() {
-  var tooltip = document.getElementById("myTooltip");
-  tooltip.innerHTML = "Click the email to copy to clipboard";
-}
-</script>
-
-</body>
-
+      function outFunc() {
+        var tooltip = document.getElementById("myTooltip");
+        tooltip.innerHTML = "Click the email to copy to clipboard";
+      }
+    </script>
+  </body>
 </html>
