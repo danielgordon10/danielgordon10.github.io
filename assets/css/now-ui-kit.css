@@ -66,7 +66,11 @@ body {
   line-height: 1.6;
   color: #292b2c;
   text-align: left;
-  background-color: #FFF; }
+  background-color: #FFF; 
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
 [tabindex="-1"]:focus {
   outline: 0 !important; }
@@ -5261,6 +5265,10 @@ button.bg-gray:focus {
 .ml-auto,
 .mx-auto {
   margin-left: auto !important; }
+
+.main-body {
+  flex: 1;
+}
 
 @media (min-width: 576px) {
   .m-sm-0 {
