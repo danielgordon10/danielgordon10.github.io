@@ -121,10 +121,47 @@ AUDIT_JS = r"""
     }
   }
 
+  // True for a link that sits inside a running sentence: an inline element with
+  // text flowing on both sides of it. WCAG 2.5.8 exempts exactly this case
+  // ("the target is in a sentence or block of text"), and the exemption is the
+  // right call rather than a loophole - a 24px floor on a word in a paragraph
+  // can only be met by padding the paragraph, which costs line height and
+  // breaks the rhythm of the text it is protecting.
+  //
+  // Anchors with `display: block/flex/grid` or in a list are standalone controls
+  // and still get measured, so this only silences prose links.
+  const BLOCK_TEXT = new Set(["P", "LI", "TD", "TH", "DD", "DT", "BLOCKQUOTE", "FIGCAPTION", "CAPTION", "H1", "H2", "H3", "H4"]);
+  const isInlineInText = (el) => {
+    if (el.tagName !== "A") return false;
+    const display = getComputedStyle(el).display;
+    if (display !== "inline" && display !== "inline-block") return false;
+
+    // Walk up to the nearest block-level text container. The `authors()` macro
+    // wraps each name in a <span class="me">, and prose runs through <strong>
+    // and <em>, so the immediate parent is usually not the block - the test has
+    // to be against the paragraph, not the span.
+    let block = el;
+    while (block.parentElement && !BLOCK_TEXT.has(block.tagName)) {
+      const d = getComputedStyle(block).display;
+      if (d !== "inline" && d !== "inline-block" && d !== "contents") return false;
+      block = block.parentElement;
+    }
+    if (!BLOCK_TEXT.has(block.tagName)) return false;
+
+    // A link wrapping an icon, image or badge is a button in disguise and is
+    // still held to the minimum - only real prose counts.
+    if (el.querySelector("img, svg, icon")) return false;
+
+    // The block must hold more prose than this link does, otherwise the link is
+    // the whole of the block and is standing alone.
+    return block.textContent.trim().length > el.textContent.trim().length;
+  };
+
   for (const el of document.querySelectorAll("a, button, input, [role=button]")) {
     const r = el.getBoundingClientRect();
     if (r.width === 0 || r.height === 0) continue;
     if (el.closest(".visually-hidden")) continue;
+    if (isInlineInText(el)) continue;
     if (r.height < minTap) {
       problems.push({
         kind: "tap-target-small",

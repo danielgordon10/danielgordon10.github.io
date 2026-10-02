@@ -22,7 +22,7 @@ from jinja2 import Environment
 
 from .data import ROOT, STATIC_DIR, SiteContext
 from .models import Item, ItemType
-from .render import build_env, plain, srcset
+from .render import build_env, markdown, plain, srcset
 
 ASSETS = ROOT / "assets"
 TS_ENTRY = ASSETS / "ts" / "site.ts"
@@ -166,6 +166,10 @@ class SiteBuilder:
         # srcset renders site-relative URLs, so it has to be bound to this
         # page's root prefix the same way the `link` global is.
         env.filters["srcset"] = lambda value: srcset(value, link)
+        # Same reason: Markdown fields can hold site-relative links (the person
+        # intro links to /work/apple/ and /work/thirdwave/), and those have to
+        # be rebased for the page they land on.
+        env.filters["md"] = lambda value: markdown(value, link)
         env.globals.update(
             root=root,
             link=link,
@@ -263,7 +267,6 @@ class SiteBuilder:
             items=self.ctx.by_date,
             tag_groups=self.ctx.tag_groups,
             tag_counts=self.ctx.tag_counts,
-            years=self.ctx.years,
             page_class="page-work",
         )
 

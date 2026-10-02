@@ -6,7 +6,6 @@ summary: >
   I was head TA and organizer for the University of Washington's Introduction to Deep Learning course, including a from-scratch neural network library in NumPy.
 org: "University of Washington"
 role: "Head TA and Organizer"
-instructor: "Ali Farhadi"
 date: 2019-09-01
 end: 2019-12-01
 
@@ -58,9 +57,14 @@ notes:
   - title: "Generative Adversarial Networks"
     href: "https://drive.google.com/open?id=1tYoIO4kaN1oU0eJvVg1NyQoSqpMWtNtAgnT6E8eN49w"
 
-# Me first: this is the list of TAs I taught with, and I was the head one, so
-# the page should not open with someone else's name.
-collaborators:
+# The full teaching roster, as an author list like every other entry: Ali ran the
+# course and the rest were the TAs, with me among them. This was a
+# `collaborators:` list, which rendered as a second line under a separate
+# "Instructor / With" heading and opened with my own name - so the entry read
+# differently from every other one on the site for no reason. Ali leads because
+# he ran the course; I am second as head TA.
+authors:
+  - "Ali Farhadi"
   - "Daniel Gordon"
   - "Aaron Walsman"
   - "Jifan Zhang"

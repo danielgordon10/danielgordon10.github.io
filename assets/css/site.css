@@ -294,21 +294,17 @@ section + section {
   position: sticky;
   top: calc(var(--header-h) - 1px);
   z-index: 30;
-  /* Same three ramped properties as .site-header, read from the same :root
-     custom properties, so the head is the same glass the bar is. They were
-     `background: var(--bg)` - fully opaque - which meant rows passing underneath
-     disappeared at a hard edge instead of blurring out, and the head read as a
-     second, heavier bar sitting under the first.
-
-     Defaults here are the ramp's ceiling, not its floor. A head only becomes
-     visible once the page has scrolled well past RANGE, so it is always stuck
-     by the time it is seen; falling back to 0% would only matter for the
-     no-JS case, and there a transparent fill would let rows show through
-     unguarded, which is the artefact the blur exists to soften. */
-  background: color-mix(in oklab, var(--bg) var(--header-veil, 52%), transparent);
-  backdrop-filter: saturate(var(--header-sat, 160%)) blur(var(--header-blur, 20px));
-  -webkit-backdrop-filter: saturate(var(--header-sat, 160%))
-    blur(var(--header-blur, 20px));
+  /* Fully opaque, no backdrop-filter. This was the header's glass at one point,
+     reading three ramped custom properties off :root so the two bars would be
+     the same material - and that is exactly what made them look wrong together.
+     Blurred and adjacent, the header and the head met in a visible line, which
+     read as a seam between them. The head now paints `var(--bg)` flat, the same
+     colour as the page behind it, so the only edge at the boundary is the
+     header's own hairline. Opaque also means no reliance on JS: with no
+     backdrop-filter there is nothing for a no-JS visit to lose, where the glass
+     version needed a fallback fill on the ramp's ceiling just to stay legible
+     over passing rows. */
+  background: var(--bg);
   /* The top margin stays at 0.7rem while the top padding grows past it, and the
      difference is the point: an exactly matching negative margin would swallow
      every added pixel and leave the title sitting where it was, growing only
@@ -431,6 +427,23 @@ section + section {
   opacity: var(--grain-opacity);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
   mix-blend-mode: overlay;
+  /* Faded out over the bottom quarter, and this is not cosmetic - it was the
+     cause of a visible line where the hero meets Featured in dark mode. The
+     hero is `.grain`, and `inset: 0` stopped this overlay dead at the hero's
+     bottom edge. Overlay blending is not neutral on every backdrop: on the
+     near-black dark `--bg` it lifts the pixels, so the last row inside the hero
+     painted lighter than the page background it was supposed to blend into,
+     then the overlay vanished and the background took over at full strength.
+     Measured across that boundary: delta 8 per channel without the mask,
+     3 with it. On the near-white light `--bg` the same blend is close to a
+     no-op, which is why this only ever showed up in dark mode and looked
+     like a problem with the hero image or the tint gradient. Neither of those
+     was at fault: with the grain removed the boundary measured clean.
+     75% keeps full grain over the name and intro, which is where it does its
+     job, and only eases it out where the section change has to read as one
+     continuous surface. */
+  -webkit-mask-image: linear-gradient(180deg, #000 0 75%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 0 75%, transparent 100%);
 }
 
 /* --------------------------------------------------------------- header --- */
@@ -455,23 +468,24 @@ section + section {
   backdrop-filter: saturate(var(--header-sat, 100%)) blur(var(--header-blur, 0px));
   -webkit-backdrop-filter: saturate(var(--header-sat, 100%))
     blur(var(--header-blur, 0px));
-  border-bottom: 1px solid transparent;
-  /* No transition: the veil is already a continuous function of scroll, and
-     transitioning it would lag the scroll it is supposed to be tracking. The
-     hairline fades in with it for the same reason. */
+  /* No border-bottom at all: the stuck hairline is gone, see below. No
+     transition either - the veil is already a continuous function of scroll,
+     and transitioning it would lag the scroll it is supposed to be tracking. */
 }
 
-/* The hairline rides the same ramp as the fill, so it grows in rather than
-   popping on at scrollY > 0 - which is exactly the line that was showing at the
-   top of an unscrolled page. --line is itself a translucent black/white, so
-   colour-mix against transparent scales that alpha by the veil. */
-.site-header[data-stuck="true"] {
-  border-bottom-color: color-mix(
-    in oklab,
-    var(--line) calc(var(--header-veil, 0%) * 1),
-    transparent
-  );
-}
+/* No border-bottom on the stuck header, and no rule to replace it with. The
+   hairline used to ride the same ramp as the fill so it would grow in rather
+   than pop on at scrollY > 0, and with the fill now reaching a full 100% it was
+   the last hard edge anywhere in the header: a 1px line across the viewport
+   directly under the bar, separating it from the content it was sitting on top
+   of. It read as a seam for the same reason the blurred bars did - two
+   materials meeting where the eye expects one continuous surface.
+
+   The fill now does all the separating. At scrollY > 0 the bar is fully opaque
+   `var(--bg)`, and everything it can sit over - the hero, the section heads, the
+   /work/ filter bar - is that same colour, so there is nothing for a rule to be
+   telling the eye. Keeping the border property around would only leave a
+   transparent one that paints nothing. */
 
 .site-header .wrap {
   display: flex;
@@ -486,13 +500,15 @@ section + section {
 
 .brand {
   display: inline-flex;
-  /* baseline, so the "DG" mark and the name share a baseline. A flex container
-     takes its own baseline from its FIRST child, which is the mark - so with
-     `center` here the mark's baseline became the reference for the whole header
-     bar and the name ended up about a pixel off the nav links even though the
-     header itself was correctly baseline-aligned. Aligning the two children to
-     each other makes the name's baseline the one the nav is measured against. */
-  align-items: baseline;
+  /* center, so the mark and the name sit at the same vertical centre at any
+     size. Baseline used to tie the two together and it worked only because the
+     30px mark and the 17px name happened to land centre-on-centre. Growing the
+     mark to 34px to match the icon buttons breaks that coincidence - under
+     baseline alignment the mark is hung off the name's baseline, so a taller
+     square pushes its own centre up and the name ends up sitting low inside it.
+     The mark opts out of the baseline below, so this change does not disturb the
+     name's baseline relationship with the nav links - see the comments there. */
+  align-items: center;
   gap: 0.6rem;
   font-weight: 600;
   letter-spacing: -0.015em;
@@ -507,17 +523,28 @@ section + section {
 .brand__mark {
   display: grid;
   place-items: center;
-  width: 30px;
-  height: 30px;
-  /* Baseline alignment anchors the mark by its "DG" text, which leaves the
-     30px square about half a pixel low against the 17px name. -0.1em puts it
-     back on the name's optical centre. */
-  position: relative;
-  top: -0.1em;
-  border-radius: 9px;
+  /* 38px, not 30px. Two reasons, both measured.
+
+     The buttons either side are 34px, so a 30px mark left them hanging 3px
+     below it and the logo read as pinned to the top of the bar. Growing the mark
+     fixes that without shrinking the 34px tap targets.
+
+     And it has to clear the nav links' 36px boxes to land exactly. The header
+     `.wrap` is baseline-aligned, so the line box is as tall as its tallest
+     item: at 34px the nav links still set the height and the buttons centring
+     in that box left the mark 0.6px high. At 38px the mark is the tallest item,
+     so everything - mark, name, both buttons - centres on one line. */
+  width: 38px;
+  height: 38px;
+  /* Opts out of the brand's baseline calculation (see .brand above), so the
+     brand's baseline - the one the nav links are measured against - comes from
+     the name and nothing else. Without this the grid mark becomes the reference
+     and the name drifts off the nav. */
+  align-self: center;
+  border-radius: 11px;
   background: linear-gradient(145deg, var(--accent), var(--warm));
   color: var(--accent-ink);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 700;
   letter-spacing: -0.03em;
   flex: none;
@@ -531,6 +558,14 @@ section + section {
   display: flex;
   align-items: baseline;
   gap: 0.15rem;
+  /* 1.2px down, to put the nav back on the name's baseline. Growing the mark to
+     38px made it the tallest item in the header's line box, which moved the
+     brand's baseline up with it and left the nav 1.2px high of the name - a
+     regression against the value this site tuned to (+1.00px). Shifting the nav
+     down by the same amount restores it exactly and leaves the mark and name
+     perfectly centred, which are the two things that matter more. */
+  position: relative;
+  top: 1.2px;
 }
 
 /* The slack goes between the nav and the controls, so the nav stays beside the
@@ -687,6 +722,10 @@ section + section {
   gap: clamp(1.5rem, 1rem + 3vw, 4rem);
 }
 
+/* The hero's h1. Carries "About Me" rather than the name - the name lives in
+   the header brand and the footer now. Everything else here is unchanged from
+   when this styled the name, so the heading keeps the exact size, weight,
+   leading, tracking and inherited font it always had; only the text changed. */
 .hero__name {
   font-size: var(--step-4);
   font-weight: 500;
@@ -706,6 +745,34 @@ section + section {
   font-weight: 600;
 }
 
+/* Light theme only: the hero's description sits on the photograph, not on a flat
+   surface, so contrast has to be measured against the image. Sampled across the
+   intro's box at 1440px, over every pixel it covers:
+
+     --text-2 (#4a5162)  mean 4.63  worst 2.44   <- was unreadable in patches
+     #1e2230             mean 9.23  worst 4.85   <- clears AA everywhere
+
+   Dark is left alone: --text-2 there measures mean 6.64, and the user asked
+   about light mode specifically. */
+[data-theme="light"] .hero__intro {
+  color: #1e2230;
+}
+
+/* The two links in that paragraph were the worst of it - the accent blue is
+   light enough that over the brighter parts of the photo it fell to 1.81:1,
+   far below anything readable. Darkened to the point where the worst pixel in
+   the block clears AA (4.71), while staying visibly blue so it still reads as a
+   link rather than as more body text. Scoped to the hero for the same reason:
+   the accent works fine on the flat surfaces everywhere else. */
+[data-theme="light"] .hero__intro a {
+  color: #191e58;
+  text-decoration-color: #191e5870;
+}
+
+[data-theme="light"] .hero__intro a:hover {
+  color: #10143f;
+}
+
 /* The hero no longer needs a row of buttons - the contact card carries every
    link - but the 404 page reuses the name for its pair of recovery links. */
 .hero__actions {
@@ -716,11 +783,17 @@ section + section {
 
 @media (max-width: 720px) {
   .hero__inner {
+    /* One column, so the hero's children stack in DOM order. */
     grid-template-columns: 1fr;
   }
-  .hero__inner > .contact-card {
-    order: -1;
-  }
+  /* No `order: -1` on the contact card any more. It used to be lifted above the
+     name here, which put a 21rem portrait and a column of buttons before
+     anything said who this page belonged to — on a phone that is the first
+     thing anyone sees, and it read as a contact sheet rather than as a person.
+     The name and intro are already first in the markup, so with the card left
+     at its default order they now lead and the card follows the description.
+     The card carries the portrait, so it is still the first *image* on the
+     page, just no longer the first block. */
 }
 
 /* --------------------------------------------------------------- button --- */
@@ -1033,17 +1106,33 @@ section + section {
   align-self: center;
 }
 
-@media (max-width: 640px) {
+/* 840px, not the 640px this used to be: the two-column row needs a thumbnail
+   track (clamp(224px, 24vw, 360px)) plus a text track plus a date track plus
+   two gaps, and below ~840px that leaves the text column too narrow for titles
+   to sit on one line. Phones were the only case that mattered before, because
+   nothing else was ever narrow enough to hit 640px in practice — a 768px
+   tablet or a small laptop window was getting the cramped three-column desktop
+   row instead. The `.role` breakpoint below stays at 640px: a role entry has
+   no thumbnail, so it has room to keep two columns well below this. */
+@media (max-width: 840px) {
   .row {
     /* One column. The image goes above the title at full width rather than
-       sitting in a 46% column beside it: on a phone a side-by-side thumbnail
-       left the text about 170px wide, which is narrow enough that titles broke
-       over three lines and the image read as a thumbnail of a caption rather
-       than as the work. Stacked, both blocks get the full measure.
+       sitting in a 46% column beside it: stacked narrow, a side-by-side
+       thumbnail left the text about 170px wide, which is narrow enough that
+       titles broke over three lines and the image read as a thumbnail of a
+       caption rather than as the work. Stacked, both blocks get the full
+       measure.
        The markup order is already thumb | main | when, so no order property is
        needed - the two-column layout was the only reason they interleaved. */
     grid-template-columns: minmax(0, 1fr);
-    row-gap: 0.7rem;
+    /* Tight, because every gap here falls between two lines of the same entry -
+       title, authors, venue, date. At 0.7rem each, four stacked items spent more
+       vertical space on leading than on text, and the entry read as four
+       disconnected lines rather than one block. The space that earns its keep is
+       above the title (see .row__thumb and .row__title below) and below it
+       before the tags (.row__main .chips), so both are added back explicitly
+       rather than by inflating the one gap that affects everything. */
+    row-gap: 0.15rem;
     padding: 0.95rem 1rem 1.1rem;
   }
   .row__thumb {
@@ -1059,6 +1148,12 @@ section + section {
        goes display:contents, and the default is 0 - which would have landed the
        title above this. */
     order: -3;
+    /* The one gap that should be generous: this is the break between the image
+       and the text it belongs to, and at the tightened 0.3rem row-gap above the
+       title butted straight up against the bottom of the photo. Pushed out on
+       the thumb rather than the title so it also separates the image from the
+       card's own top padding. */
+    margin-bottom: 0.85rem;
   }
   .row__main {
     min-width: 0;
@@ -1073,6 +1168,17 @@ section + section {
     text-align: left;
     padding-right: 0;
     font-size: 0.9rem;
+    /* The one gap below the text that stays generous. The date is the last line
+       of prose in the entry and the chips below it are the first interactive
+       thing, so this is the break between description and controls - the same
+       role the break above the chips plays on the desktop row, and the reason
+       the row still has exactly one clear division in it. Everything above the
+       date is packed tight. */
+    margin-top: 0.45rem;
+    /* Space *below* the date, which is the only generous gap left in the row.
+       Sits on the date rather than on the chips above it so it reads as "end of
+       the entry" instead of "start of the tags". */
+    margin-bottom: 0.75rem;
     /* Between the venue line and the chips, so the tags finish the row. Placed
        here rather than left at the end because the chips are nested inside
        .row__main, which sits above this cell in the markup; `order` cannot move
@@ -1092,6 +1198,18 @@ section + section {
     /* One step up from desktop: the title is what the row is, and at the
        desktop's 1.2rem floor it was the smallest thing on the screen. */
     font-size: var(--step-2);
+    /* Extra space above the title, on top of the thumb's margin-bottom. This is
+       the second half of the same break the image wants, and it is what makes
+       the title read as the head of the entry rather than as another line in a
+       stack - the thumb's margin is about the image, this is about the text
+       starting. Together they are the room the tightened row-gap gave up. */
+    margin-top: 0.5rem;
+    /* Air under the title too, but only just. The authors and venue lines below
+       it are set small and muted, and with literally nothing between them and
+       the largest text on the card the hierarchy the font-size jump creates
+       disappears. This is the floor - enough to read as a heading, not enough
+       to start a new block. */
+    margin-bottom: 0.15rem;
   }
   .row__sub,
   .row__venue {
@@ -1099,16 +1217,28 @@ section + section {
     /* Off the 0.8rem floor, which is below comfortable reading size on a
        phone. */
     font-size: var(--step-0);
+    /* Tighter than the 0.3rem row-gap between the two of them. Authors and venue
+       are the same piece of information about the same thing - who and where it
+       appeared - so they read as one two-line block, not as two items. */
+    line-height: 1.45;
+  }
+  .row__venue {
+    /* Pulled up into the authors line, so the pair reads as one two-line block.
+       Same information about the same thing - who wrote it and where it
+       appeared - so they should not be spaced like separate items. */
+    margin-top: -0.1rem;
   }
   .row__main .chips {
     /* `order: 2` and the default 0 above puts title/sub/venue first, then the
        date, then the tags. 0 would place the chips between the sub and the
        venue instead, since order sorts every item in the track together. */
     order: 2;
-    margin-top: 0.2rem;
+    /* Just the row-gap plus the date's own margin above it - the tags hang off
+       the bottom of the entry rather than starting a third block. */
+    margin-top: 0.15rem;
   }
   .row__main .chips .chip {
-    /* 0.76rem is a tag in a dense desktop card. Full-size on a phone. */
+    /* 0.76rem is a tag in a dense desktop card. Full-size in the stacked row. */
     font-size: 0.84rem;
     padding: 0.3rem 0.7rem;
   }
@@ -1867,9 +1997,11 @@ section + section {
   padding-inline: var(--gutter);
   margin-inline: calc(-1 * var(--gutter));
   margin-bottom: 0.35rem;
-  background: color-mix(in oklab, var(--bg) 86%, transparent);
-  backdrop-filter: blur(14px) saturate(180%);
-  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  /* Opaque, like the section heads. This was 86% plus blur(14px) saturate(180%),
+     which put a second blurred bar directly under the header's - and the same
+     seam showed up here, at the one place on the site where the two are always
+     touching. */
+  background: var(--bg);
 }
 
 .filters__row {

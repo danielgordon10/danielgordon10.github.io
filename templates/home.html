@@ -15,7 +15,11 @@
 
     <div class="wrap hero__inner">
       <div>
-        <h1 class="hero__name">{{ person.name }}</h1>
+        {# This is the name's old heading, restored exactly - same element, same
+           .hero__name rule, same font and metrics - with different text. The name
+           itself is gone from the hero but still appears in the header brand and
+           the footer, and this is still the page's only h1. #}
+        <h1 class="hero__name">About Me</h1>
 
         <div class="hero__intro">{{ person.intro | md }}</div>
       </div>

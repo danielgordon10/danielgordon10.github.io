@@ -22,7 +22,6 @@ from .models import (
     Site,
     Strict,
     Tag,
-    TYPE_META,
 )
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -44,14 +43,7 @@ class Education(Strict):
     degree: str
     org: str
     years: str
-    detail: str | None = None
     href: str | None = None
-
-
-class GalleryEntry(Strict):
-    src: str
-    alt: str
-    caption: str | None = None
 
 
 # --------------------------------------------------------------------------
@@ -259,19 +251,6 @@ class SiteContext:
     @property
     def papers(self) -> list[Item]:
         return self.of_type(ItemType.PAPER)
-
-    @cached_property
-    def years(self) -> list[int]:
-        return sorted({i.year for i in self.published}, reverse=True)
-
-    @cached_property
-    def type_counts(self) -> list[tuple[ItemType, int]]:
-        counts = Counter(i.type for i in self.published)
-        return [
-            (t, counts[t])
-            for t in TYPE_META
-            if counts.get(t)
-        ]
 
     @cached_property
     def tag_groups(self) -> list[tuple[str, list[Tag]]]:

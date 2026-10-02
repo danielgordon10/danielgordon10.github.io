@@ -82,8 +82,7 @@ function initTheme(): void {
 /* ----------------------------------------------------------------- header -- */
 
 function initHeader(): void {
-  const header = document.querySelector<HTMLElement>("[data-header]");
-  if (header) {
+  {
     /* The veil is driven by scroll distance, not by a boolean.
 
        Three attempts got this wrong before. A constant 55% read as a slab in
@@ -97,12 +96,13 @@ function initHeader(): void {
        value is written as a percentage the stylesheet can drop straight into
        color-mix without doing arithmetic on a unitless number. */
     const RANGE = 140;
-    /* Ceilings, not 100%. A fully opaque bar is a solid slab again, which is the
-       thing this whole exercise is trying to avoid; the blur does the separating
-       and the fill only has to take the edge off. 78% was still too heavy once
-       the blur was doing its job - the two compound, so dropping the fill to 52%
-       keeps the bar reading as glass over the content. */
-    const MAX_VEIL = 52;
+    /* Ceiling, not a floor. The bar goes fully opaque once scrolled, which is a
+       deliberate reversal: two adjacent blurred bars met in a visible line, and
+       the user judged that seam worse than the slab it was avoiding. The ramp
+       still earns its keep - transparent at scrollY 0 so the hero image runs
+       under the header untouched, opaque by the time anything is passing
+       underneath. Only the resting state stays see-through. */
+    const MAX_VEIL = 100;
     const MAX_BLUR = 20;
     let queued = false;
 
@@ -110,12 +110,10 @@ function initHeader(): void {
       queued = false;
       const travelled = Math.min(Math.max(window.scrollY, 0), RANGE);
       const t = travelled / RANGE;
-      /* Written to :root, not to the header element, so the sticky section heads
-         on the homepage can read the same three values. They were a second,
-         independent set of constants at first, which is exactly how the two drift
-         apart - the header dropped to 52% and the heads stayed at whatever they
-         were last set to, and the mismatch read as a seam wherever the two met.
-         One source, so they can only ever agree. */
+      /* Written to :root, where the .site-header rules read them.
+         The sticky section heads used to read these three too, which is how they
+         ended up sharing the header's glass; they are opaque now and take
+         `var(--bg)` directly. */
       const root = document.documentElement.style;
       root.setProperty("--header-veil", `${(t * MAX_VEIL).toFixed(1)}%`);
       /* The blur ramps too. It used to sit at a constant 18px, which was what made
@@ -130,7 +128,6 @@ function initHeader(): void {
          than the strip immediately below it, which is the edge the eye was
          catching. 100% is a no-op, so the top of the page is truly untouched. */
       root.setProperty("--header-sat", `${(100 + t * 60).toFixed(1)}%`);
-      header.dataset.stuck = String(travelled > 0);
     };
 
     const schedule = (): void => {

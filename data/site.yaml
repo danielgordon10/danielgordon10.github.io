@@ -3,7 +3,6 @@
 # as a website.
 
 title: "Daniel Gordon"
-short_title: "Daniel Gordon"
 description: >-
   Daniel Gordon is a machine learning researcher and engineer at Apple working
   on 3D perception and mapping, with a background in reinforcement learning,
@@ -46,8 +45,6 @@ nav:
     href: "/cv.pdf"
     key: "cv"
 
-footer_note: >-
-  Built from a folder of YAML files by a small Python site generator.
 
 # Analytics are off by default - the site makes no third-party requests at all.
 # To turn them on, use a free, cookieless provider and paste its script URL.

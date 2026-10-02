@@ -16,31 +16,21 @@
 
 - id: computer-vision
   label: Computer Vision
-  description: Perception, detection, segmentation and understanding from images.
 - id: embodied-ai
   label: Embodied AI
-  description: Agents that perceive, reason and act inside an environment.
 - id: open-source
   label: Open Source
-  description: Released code or data anyone can use.
 - id: reinforcement-learning
   label: Reinforcement Learning
-  description: Learning behavior from reward or demonstration.
 - id: robotics
   label: Robotics
-  description: Systems that act in and move through the physical world.
 - id: paper
   label: Papers
-  description: Peer-reviewed or preprint publications.
 - id: planning
   label: Planning
-  description: Long-horizon decision making and search over action sequences.
 - id: representation-learning
   label: Representation Learning
-  description: Learning features that transfer to downstream tasks.
 - id: vision-language
   label: Vision & Language
-  description: Grounding natural language in visual environments.
 - id: datasets
   label: Datasets & Benchmarks
-  description: Data and evaluation suites built for the community.

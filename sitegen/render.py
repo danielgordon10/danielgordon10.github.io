@@ -68,11 +68,31 @@ def _build_markdown() -> markdown_it.MarkdownIt:
 
 _markdown = _build_markdown()
 
+_HREF_RE = re.compile(r'(<a\s[^>]*?href=")([^"]*)(")')
 
-def markdown(text: str | None) -> Markup:
+
+def markdown(text: str | None, link=None) -> Markup:
+    """Render Markdown to HTML, optionally rebasing root-absolute hrefs.
+
+    ``link`` is the same page-aware rebasing function templates get as the
+    ``link`` global, and it is applied here to every local ``href`` the
+    Markdown produces. Without it a Markdown link like ``[Apple](/work/apple/)``
+    is emitted verbatim: fine from ``/``, broken from ``/about/``, where it
+    resolves to ``about/work/apple/``. The site's own links all go through
+    ``link`` for the same reason, and ``srcset`` is bound to it in the same way.
+
+    Only root-absolute paths are touched. External URLs, ``mailto:`` and
+    in-page fragments pass through unchanged, and so do relative hrefs, which
+    are already correct relative to wherever the field is rendered.
+    """
     if not text:
         return Markup("")
-    return Markup(_markdown.render(text.strip()))
+    rendered = _markdown.render(text.strip())
+    if link is not None:
+        rendered = _HREF_RE.sub(
+            lambda m: m.group(1) + link(m.group(2)) + m.group(3), rendered
+        )
+    return Markup(rendered)
 
 
 def inline(text: str | None) -> Markup:
@@ -179,9 +199,6 @@ def _icons() -> dict[str, str]:
     """Inline SVG paths, keyed by name. Kept in Python so templates stay clean."""
     return {
         "arrow-right": "M5 12h14M13 6l6 6-6 6",
-        "arrow-up-right": "M7 17 17 7M8 7h9v9",
-        "arrow-left": "M19 12H5M11 18l-6-6 6-6",
-        "check": "M20 6 9 17l-5-5",
         "copy": "M9 9h10v10a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V11a2 2 0 0 1 2-2Z M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1",
         "document": "M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Zm0 0v5h5",
         "cube": "M12 3 3 8v8l9 5 9-5V8Zm0 0v18M3 8l9 5 9-5",
@@ -192,30 +209,17 @@ def _icons() -> dict[str, str]:
         "play": "M8 5.5v13l11-6.5Z",
         "paper": "M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Zm0 0v5h5M9 13h6M9 17h4",
         "demo": "m4 3 7.5 17 2.4-6.6 6.6-2.4Z",
-        "other": "M10.5 13.5a4 4 0 0 0 5.7 0l2.3-2.3a4 4 0 0 0-5.7-5.7l-1 1m1.2 3.5a4 4 0 0 0-5.7 0l-2.3 2.3a4 4 0 0 0 5.7 5.7l1-1",
         "code": "m9 18-6-6 6-6m6-6 6 6-6 6",
         "project": "M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z",
-        "data": "M4 6c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3Z",
-        "poster": "M5 3h14a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Zm3 4h8M8 21v-6h8v6",
-        "video": "M3 6h12a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Zm14 4 5-3v10l-5-3",
-        "slides": "M3 4h18M4 4v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V4M12 15v5m-4 0h8",
         "course": "M12 4 2 9l10 5 10-5Zm-6 8v5c0 1 3 2.5 6 2.5s6-1.5 6-2.5v-5M22 9v6",
         "mail": "M3 6h18a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Zm-1 1 10 7L21 7",
-        "location": "M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Zm0-8.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z",
-        "calendar": "M4 6h16a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Zm3-3v5m10-5v5M3 11h18",
         "sun": "M12 5V2m0 20v-3m7-7h3M2 12h3m11.5-6.5 2-2m-15 15 2-2m0-11 2 2m11 11 2 2M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z",
         "moon": "M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z",
-        "search": "M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm6-2 4 4",
-        "close": "M6 6l12 12M18 6 6 18",
         "menu": "M3 6h18M3 12h18M3 18h18",
-        "quote": "M9 7H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a3 3 0 0 1-3 3m14-11h-4a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a3 3 0 0 1-3 3",
-        "sparkle": "M12 3l1.9 5.6L19.5 10l-5.6 1.9L12 17.5l-1.9-5.6L4.5 10l5.6-1.4Z",
         "github": "M9 19c-4 1.3-4-2.2-6-2.7m12 5.2v-3.4c0-1 .1-1.4-.5-2 2.3-.3 4.5-1.1 4.5-5a3.9 3.9 0 0 0-1.1-2.7 3.6 3.6 0 0 0-.1-2.7s-.9-.3-3 1.1a10.3 10.3 0 0 0-5.4 0c-2.1-1.4-3-1.1-3-1.1a3.6 3.6 0 0 0-.1 2.7A3.9 3.9 0 0 0 4.4 9c0 3.9 2.2 4.7 4.5 5-.6.6-.6 1.2-.5 2v3.7",
         "linkedin": "M6.5 8.5H3.4V21h3.1ZM4.9 3.5a1.8 1.8 0 1 0 0 3.6 1.8 1.8 0 0 0 0-3.6ZM21 13.9c0-3.1-1.7-4.6-3.9-4.6-1.8 0-2.6 1-3 1.7V8.5H11V21h3.1v-6.9c0-1.2.5-1.8 1.4-1.8s1.4.6 1.4 1.8V21H21Z",
         "scholar": "M12 3 1 9l11 6 9-4.9V16h2V9ZM6 11.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5",
         "layers": "m12 3 9 5-9 5-9-5Zm9 9-9 5-9-5m18 4.5-9 5-9-5",
-        "x": "M4 4l7 9-7 7h2.5l5.5-6 4.5 6H20l-7.3-9.5L19.5 4H17l-5 5.5L8 4Z",
-        "filter": "M3 5h18M6 12h12M10 19h4",
     }
 
 

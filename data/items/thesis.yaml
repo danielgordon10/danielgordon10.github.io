@@ -28,10 +28,19 @@ tags:
   - representation-learning
 
 links:
-  - label: "Thesis"
-    href: "https://hdl.handle.net/1773/45931"
+  - label: "Paper"
+    href: "/pdfs/thesis.pdf"
     kind: paper
     primary: true
+  - label: "Publication"
+    href: "https://hdl.handle.net/1773/45931"
+    kind: project
+
+media:
+  image: "images/projects/thesis.jpg"
+  alt: "Figure from the thesis, showing a model learning by watching video and by acting in an environment"
+
+semantic_scholar: c7529d985f272227f8f7435b9afa0f5813dd5701
 
 bibtex: |
   @phdthesis{gordon2020thesis,

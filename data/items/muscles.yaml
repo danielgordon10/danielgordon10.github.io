@@ -34,7 +34,7 @@ abstract: >-
 tags:
   - paper
   - computer-vision
-  - embodied-ai
+  - datasets
   - open-source
   - representation-learning
 
@@ -46,6 +46,12 @@ links:
   - label: "Code & Data"
     href: "https://github.com/ehsanik/muscleTorch"
     kind: code
+  - label: "Project page"
+    href: "https://prior.allenai.org/projects/learn-representation-from-human"
+    kind: project
+
+media:
+  video: "https://www.youtube.com/watch?v=89r7NkKvUuA"
 
 semantic_scholar: 0944c6bd883bf3cf2d7d4f765ab5266dd1482595
 bibtex: |

@@ -54,36 +54,38 @@ class TypeMeta(BaseModel):
     """Presentation metadata for an item type. Not user authored."""
 
     label: str
-    plural: str
     icon: str
     #: short badge text used on cards, e.g. "CVPR 2018"
     badge_prefix: str = ""
 
 
 TYPE_META: dict[ItemType, TypeMeta] = {
-    ItemType.PAPER: TypeMeta(label="Paper", plural="Papers", icon="document"),
-    ItemType.PROJECT: TypeMeta(label="Project", plural="Projects", icon="cube"),
-    ItemType.POSITION: TypeMeta(label="Role", plural="Roles", icon="building"),
-    ItemType.COURSE: TypeMeta(label="Course", plural="Teaching", icon="academic"),
-    ItemType.TALK: TypeMeta(label="Talk", plural="Talks", icon="microphone"),
-    ItemType.DATASET: TypeMeta(label="Dataset", plural="Datasets", icon="database"),
-    ItemType.DEMO: TypeMeta(label="Demo", plural="Demos", icon="play"),
+    ItemType.PAPER: TypeMeta(label="Paper", icon="document"),
+    ItemType.PROJECT: TypeMeta(label="Project", icon="cube"),
+    ItemType.POSITION: TypeMeta(label="Role", icon="building"),
+    ItemType.COURSE: TypeMeta(label="Course", icon="academic"),
+    ItemType.TALK: TypeMeta(label="Talk", icon="microphone"),
+    ItemType.DATASET: TypeMeta(label="Dataset", icon="database"),
+    ItemType.DEMO: TypeMeta(label="Demo", icon="play"),
 }
 
 PUBLICATION_TYPES = {ItemType.PAPER, ItemType.DATASET}
 
 
 class LinkKind(StrEnum):
+    """Picks the button icon. Every link declares one.
+
+    There is no default and no catch-all member. `other` existed as the default
+    for links that did not declare a kind, but every link in the data does
+    declare one, so the default only ever masked a forgotten field behind a
+    generic chain-link icon. Requiring it turns that omission into a build error.
+    """
+
     PAPER = "paper"
     CODE = "code"
     DEMO = "demo"
     PROJECT = "project"
-    DATA = "data"
-    POSTER = "poster"
-    VIDEO = "video"
-    SLIDES = "slides"
     COURSE = "course"
-    OTHER = "other"
 
 
 class Note(Strict):
@@ -108,7 +110,7 @@ class Note(Strict):
 class Link(Strict):
     label: str
     href: str
-    kind: LinkKind = LinkKind.OTHER
+    kind: LinkKind
     primary: bool = False
 
     @field_validator("href")
@@ -121,17 +123,8 @@ class Link(Strict):
         return v
 
     @property
-    def is_external(self) -> bool:
-        return bool(re.match(r"^(?:https?:)?//", self.href))
-
-    @property
     def is_internal(self) -> bool:
         return self.href.startswith("/")
-
-    @property
-    def target_blank(self) -> bool:
-        """PDFs and internal pages stay in the same tab; the rest open out."""
-        return self.is_external
 
 
 class GalleryImage(Strict):
@@ -340,10 +333,6 @@ class Item(Strict):
         return self.venue_short or self.venue or ""
 
     @property
-    def year(self) -> int:
-        return self.date.year
-
-    @property
     def is_publication(self) -> bool:
         return self.type in PUBLICATION_TYPES
 
@@ -373,13 +362,6 @@ class Item(Strict):
             return None
         return f"https://www.semanticscholar.org/paper/{self.semantic_scholar}"
 
-    @property
-    def primary_link(self) -> Link | None:
-        for link in self.links:
-            if link.primary:
-                return link
-        return self.links[0] if self.links else None
-
 
 # --------------------------------------------------------------------------
 # tags
@@ -390,7 +372,6 @@ class Tag(Strict):
     id: str
     label: str
     group: str = "Tags"
-    description: str | None = None
 
     @field_validator("id")
     @classmethod
@@ -406,14 +387,10 @@ class Tag(Strict):
 
 
 class Social(Strict):
-    id: str
     label: str
     href: str
     icon: str
     handle: str | None = None
-    #: show this as a button in the home page hero (the full list lives on
-    #: /about/ and in the footer, so the hero stays uncluttered)
-    hero: bool = False
 
     @field_validator("href")
     @classmethod
@@ -438,13 +415,11 @@ class Cv(Strict):
 
 class Person(Strict):
     name: str
-    headline: str
     role: str
     org: str
     team: str | None = None
     location: str | None = None
     email: str
-    pronouns: str | None = None
     intro: str
     about: list[str] = Field(default_factory=list)
     photo: str
@@ -486,7 +461,7 @@ class Person(Strict):
             raise ValueError("photo must be a local file under static/")
         return v.lstrip("/")
 
-    @field_validator("headline", "intro", "role", "org")
+    @field_validator("intro", "role", "org")
     @classmethod
     def _markdown_ok(cls, v: str) -> str:
         if v and _looks_like_html(v):
@@ -538,7 +513,6 @@ class Analytics(Strict):
 
 class Site(Strict):
     title: str
-    short_title: str
     description: str
     url: str = "https://danielgordon10.github.io"
     locale: str = "en_US"
@@ -546,7 +520,6 @@ class Site(Strict):
     hero_image: str | None = None
     nav: list[NavItem] = Field(default_factory=list)
     keywords: list[str] = Field(default_factory=list)
-    footer_note: str | None = None
     analytics: Analytics | None = None
     #: where the CV lives relative to the site root
     default_theme: str = "dark"

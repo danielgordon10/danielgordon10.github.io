@@ -1,5 +1,5 @@
 # Current role. This is the first card in the experience timeline on the home
-# and about pages, and it is filtered by the `industry` and `3d-perception` tags.
+# and about pages.
 id: apple
 type: position
 title: "Apple Maps 3DV"
@@ -36,5 +36,3 @@ links:
 media:
   image: "images/projects/apple_maps0.png"
   alt: "Detailed 3D geometry, lane markings and building models in Apple Maps"
-
-featured: false

@@ -5,8 +5,7 @@ title: "IQA: Visual Question Answering in Interactive Environments"
 summary: >
   IQA asks questions that require interacting with a scene first, and the
   Hierarchical Interactive Memory Network answers them with controllers at
-  multiple levels of abstraction. Received the NVIDIA Pioneering Research
-  Award at CVPR 2018.
+  multiple levels of abstraction.
 date: 2018-05-01
 
 venue: "Computer Vision and Pattern Recognition"
