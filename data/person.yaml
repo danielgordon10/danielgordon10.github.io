@@ -1,0 +1,107 @@
+# Who this site belongs to. This is the single place any of this is written -
+# the home page, the about page, the header and the footer all read from here.
+
+name: "Daniel Gordon"
+pronouns: "he/him"
+email: "danielgordoncareer@gmail.com"
+
+# Shown as the "currently" line under the name in the hero.
+role: "Senior Machine Learning Engineer"
+org: "Apple"
+team: "Maps 3D Vision"
+
+# The one-line pitch under your name on the home page.
+headline: >-
+  I build perception systems that turn messy real-world imagery into usable 3D
+  understanding - from 3D maps at Apple, to autonomous forklifts, to embodied
+  agents that learn to see and act.
+
+# Short paragraph: the top of the home page and the opening of /about/.
+intro: >-
+  I'm a machine learning researcher and engineer working on perception for
+  robotics and mapping. Right now I'm at **Apple**, on the team that turns
+  street-level imagery into detailed 3D maps. Before that I built the vision
+  stack for autonomous forklifts at **Third Wave Automation**, and before that
+  I did my Ph.D. in computer vision and machine learning at the **University
+  of Washington**, working on reinforcement learning, embodied agents and
+  representation learning.
+
+# Long-form bio, only used on /about/. Write in Markdown. The list of roles
+# below this is generated automatically from the `position` items in
+# data/items/, so you never repeat a job description in two places.
+about:
+  - >-
+    I currently work at **Apple** as a Senior Machine Learning Engineer on the
+    Maps 3D Vision team. The work sits on the Detailed City Experience: taking
+    high resolution street-level imagery and turning it into 3D road geometry,
+    lane markings, crosswalks, bike lanes and painted areas, plus trees and
+    buildings. Much of my time goes into segmentation, detection and diffusion
+    models that have to run over imagery at world scale, and into end-to-end
+    models that predict vectorised 3D maps straight from pixels.
+  - >-
+    Before that I spent four years at **Third Wave Automation** on autonomous
+    forklifts. I led perception and pallet manipulation - detecting pallets and
+    payloads, estimating their poses, scanning barcodes, and handling the
+    forklift's internal state machine and its interface to the warehouse
+    management system. It is a good reminder that production vision is mostly
+    about the last few percent of awkward lighting, a bent pallet and a
+    reflective wrapper.
+  - >-
+    My Ph.D. at the **University of Washington**, advised by Dieter Fox and Ali
+    Farhadi, was about teaching machines to see and act in interactive visual
+    environments. That covered visual semantic planning, hierarchical
+    reinforcement learning, interactive question answering, and learning
+    representations from unlabeled video. I was part of the
+    [RAIVN Lab](https://raivn.cs.washington.edu/) and the
+    [RSE Lab](https://rse-lab.cs.washington.edu/). I also spent research
+    internships at **Facebook AI Research** and the **Allen Institute for AI**,
+    and two summers building things for Google Maps.
+  - >-
+    A thread running through all of it is interest in
+    **representation learning** - what makes features that generalize. Whether
+    that is video as a source of natural augmentation, a factored perception
+    and control model that transfers between simulators, or a recurrent tracker
+    that updates itself online, the question is the same.
+
+photo: "images/profile_old_512.jpg"
+# The 512 file is what a phone-sized card needs; the hero and the about sidebar
+# render it larger, and on a 2-3x display 512 is visibly soft, so the wider
+# renditions come from the same 3998px original.
+photo_srcset:
+  - "images/profile_old_512.jpg 512w"
+  - "images/profile_old_1024.jpg 1024w"
+  - "images/profile_old_1600.jpg 1600w"
+photo_alt: "Portrait of {name}"
+
+# Rendered as the primary buttons in the hero and the about page.
+socials:
+  - id: email
+    label: "Email"
+    href: "mailto:danielgordoncareer@gmail.com"
+    icon: "mail"
+    handle: "danielgordoncareer@gmail.com"
+    hero: true
+  - id: scholar
+    label: "Google Scholar"
+    href: "https://scholar.google.com/citations?user=MlxWsaIAAAAJ"
+    icon: "scholar"
+    hero: true
+  - id: semanticscholar
+    label: "Semantic Scholar"
+    href: "https://www.semanticscholar.org/author/Daniel-Gordon/152462964"
+    icon: "layers"
+  - id: linkedin
+    label: "LinkedIn"
+    href: "https://www.linkedin.com/in/daniel-gordon-531862141"
+    icon: "linkedin"
+  - id: github
+    label: "GitHub"
+    href: "https://github.com/danielgordon10"
+    icon: "github"
+    handle: "danielgordon10"
+    hero: true
+
+cv:
+  label: "Curriculum Vitae"
+  href: "/cv.pdf"
+  note: "PDF"

@@ -1,0 +1,51 @@
+# Shifting the Baseline - a paper about being sceptical of baselines.
+id: shiftingbaseline
+type: paper
+title: "Shifting the Baseline: Single Modality Performance on Visual Navigation & QA"
+summary: >
+  Unimodal baselines beat the random and majority-class ones typically reported, by up to 29% absolute, and are the right comparison for multimodal claims.
+date: 2019-04-01
+
+venue: "North American Chapter of the Association for Computational Linguistics, Short Papers"
+venue_short: "NAACL 2019"
+
+authors:
+  - Jesse Thomason
+  - Daniel Gordon
+  - Yonatan Bisk
+
+abstract: |
+  We demonstrate the surprising strength of unimodal baselines in multimodal
+  domains, and make concrete recommendations for best practices in future
+  research. Where existing work often compares against **random** or **majority
+  class** baselines, we argue that unimodal approaches better capture and
+  reflect dataset biases and therefore provide an important comparison when
+  assessing the performance of multimodal techniques.
+
+  We present unimodal ablations on three recent datasets in visual navigation
+  and QA, seeing an up to 29% absolute gain in performance over published
+  baselines.
+
+tags:
+  - paper
+  - embodied-ai
+  - vision-language
+
+links:
+  - label: "Paper"
+    href: "/pdfs/shifting_baseline.pdf"
+    kind: paper
+    primary: true
+
+media:
+  image: "images/projects/shifting-baseline.png"
+  alt: "Bar chart comparing unimodal baseline performance against published multimodal results"
+
+semantic_scholar: b033400e9a80915a928f4603582e5e8bf7656a85
+bibtex: |
+  @inproceedings{thomason2018shifting,
+    title={Shifting the Baseline: Single Modality Performance on Visual Navigation \& QA},
+    author={Thomason, Jesse and Gordon, Daniel and Bisk, Yonatan},
+    booktitle={NAACL-HLT 2019 Short Papers},
+    year={2019}
+  }

@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% from 'partials/ui.html' import icon, tag_chip, contact_card %}
+{% from 'partials/card.html' import work_row, role_row, degree_row %}
+
+{% block content %}
+  <section class="hero grain">
+    {# The image has to be set inline on the element: a url() inside a CSS
+       custom property resolves against the stylesheet, not the document, and
+       would 404 from every page. #}
+    {% if site.hero_image %}
+      <div class="hero__bg" aria-hidden="true"
+           style="background-image: url('{{ link('/' + site.hero_image) }}')"></div>
+    {% endif %}
+    <div class="hero__glow" aria-hidden="true"></div>
+
+    <div class="wrap hero__inner">
+      <div>
+        <h1 class="hero__name">{{ person.name }}</h1>
+
+        <div class="hero__intro">{{ person.intro | md }}</div>
+      </div>
+
+      {# The contact card carries the portrait and every link, so the hero does
+         not need a separate round portrait plus a row of buttons saying the
+         same things twice. #}
+      {{ contact_card(eager=true) }}
+    </div>
+  </section>
+
+  <div class="wrap">
+    {# ---- featured ------------------------------------------------- #}
+    <section id="selected">
+      {# Sticky heads. Each one parks under the header for the length of its own
+         section and is then pushed up and out by the section below it, so the
+         heading for whatever you are reading stays at the top while you read it
+         and hands over cleanly to the next one. Native `sticky` gives the
+         handover for free: each head is constrained by its parent's box, so it
+         cannot outlive the content it labels. #}
+      <div class="section-head section-head--sticky">
+        <div>
+          <h2 class="section-title">Featured</h2>
+        </div>
+        <a class="btn btn--sm" href="{{ link('/work/') }}">
+          All work {{ icon('arrow-right') }}
+        </a>
+      </div>
+
+      {# Rows here too, not a card grid: the featured set is four items, and
+         four cards in a three-column grid leaves the last one stranded on its
+         own row. A stacked list also reads as a preview of the work index.
+         and the same .rows card styling the work index uses, so an entry looks
+         the same wherever it appears. #}
+      <div class="rows">
+        {% for item in featured %}{{ work_row(item) }}{% endfor %}
+      </div>
+    </section>
+
+    {# ---- experience ---------------------------------------------------- #}
+    <section id="experience">
+      <div class="section-head section-head--sticky">
+        <div>
+          <h2 class="section-title">Experience</h2>
+        </div>
+        <a class="btn btn--sm" href="{{ link('/about/') }}">More about me {{ icon('arrow-right') }}</a>
+      </div>
+
+      {# One timeline: jobs, then degrees, newest first. Degrees were their own
+         section on /about/ with their own heading and their own visual
+         treatment; here they are the same rows on the same spine, because
+         "when did this person do what" is one question and 2014-2020 answers
+         it the same way whether it was a job or a degree. #}
+      <div class="roles roles--timeline">
+        {% for item in positions %}{{ role_row(item) }}{% endfor %}
+        {% for entry in education %}{{ degree_row(entry) }}{% endfor %}
+      </div>
+    </section>
+
+  </div>
+{% endblock %}

@@ -1,0 +1,71 @@
+# Build the site with the same commands you run locally, then publish dist/ to
+# GitHub Pages. Nothing in the repository root is served: the legacy hand-written
+# HTML is left in place only so the live site keeps working until this workflow
+# has run for the first time.
+name: Deploy site
+
+on:
+  push:
+    branches: [master]
+  # Lets a deploy be re-run from the Actions tab without pushing a commit.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deploy at a time; queue rather than cancel, so a push is never lost.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install esbuild
+        run: npm ci
+
+      - name: Install Python dependencies
+        run: uv sync --frozen
+
+      # Fail the deploy on bad content rather than shipping it.
+      - name: Validate the data
+        run: uv run site check
+
+      - name: Type-check the client
+        run: npm run typecheck
+
+      - name: Build
+        run: uv run site build --force
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

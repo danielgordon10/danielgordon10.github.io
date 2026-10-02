@@ -1,0 +1,96 @@
+{# Inline SVG icon. `name` must exist in sitegen.render._icons(); enums such as
+   LinkKind are accepted too, and a typo fails the build rather than shipping. #}
+{% macro icon(name, cls='') -%}
+  {%- set key = name.value if name is not string else name -%}
+  {%- if key not in icons -%}
+    {{- raise_unknown_icon(key) -}}
+  {%- endif -%}
+<svg class="{{ cls }}" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+     stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"
+     aria-hidden="true" focusable="false"><path d="{{ icons[key] }}"/></svg>
+{%- endmacro %}
+
+{# Render an author list, bolding the site owner and marking equal
+   contribution. A trailing `*` on a name is the co-first-author convention. #}
+{% macro authors(names, me, limit=none) -%}
+  {%- set shown = names if limit is none else names[:limit] -%}
+  {%- for name in shown -%}
+    {%- set equal = name.endswith('*') -%}
+    {%- set clean = name.rstrip('*').strip() -%}
+    {%- set mine = person.is_me(clean) -%}
+    <span{% if mine %} class="me"{% endif %}>{{ clean }}{% if equal %}<span class="star" title="Equal contribution">*</span>{% endif %}</span>{% if not loop.last %}, {% endif %}
+  {%- endfor -%}
+  {%- if limit is not none and names|length > limit -%}
+    +{{ names|length - limit }} more
+  {%- endif -%}
+{%- endmacro %}
+
+{# A tag chip. On the work index these become filter buttons, elsewhere they
+   link to the filtered index. #}
+{% macro tag_chip(tag_id, style='link', count=none) -%}
+  {%- set t = tag(tag_id) -%}
+  {%- if style == 'button' -%}
+    <button type="button" class="chip chip--link" data-tag="{{ tag_id }}"
+            aria-pressed="false">{{ t.label }}{% if count is not none %}<span class="chip__count">{{ count }}</span>{% endif %}</button>
+  {%- else -%}
+    <a class="chip" href="{{ link('/work/') }}?tags={{ tag_id }}">{{ t.label }}</a>
+  {%- endif -%}
+{%- endmacro %}
+
+{% macro type_badge(item) -%}
+  <span class="badge badge--type">{{ icon(item.meta.icon) }}{{ item.meta.label }}</span>
+{%- endmacro %}
+
+{# The contact card: portrait, every social link, and the CV.
+
+   One macro, used by both the home hero and the /about/ sidebar, so the two
+   can't drift apart. `compact` drops the section heading for the hero, where
+   the card is the whole right-hand column rather than a sidebar panel.
+
+   The email is entity-encoded so it is not readable as plain text in the
+   served HTML; the browser decodes it, so the copy button and the mailto
+   both work without any JavaScript being involved. #}
+{# `eager` is a loading hint, not a look: the homepage's portrait is its LCP
+   element, so it gets fetchpriority there and lazy on /about/. Everything that
+   renders - same markup, same classes, same styles - is identical either way. #}
+{% macro contact_card(eager=false) -%}
+  <div class="panel contact-card contact-card--compact">
+    {# srcset, not a single 512px file: the hero renders this up to 320px wide,
+       which on a 2-3x display needs 640-960 real pixels to stay sharp.
+       `sizes` is capped because the photo is square and never exceeds the
+       card's own width. #}
+    {# The frame is what insets the photo: 5px of the card's own surface on all
+       four sides, so the photo's rounded corners have something to sit against. #}
+    <div class="contact-card__frame">
+      <img class="contact-card__photo" src="{{ link('/' + person.photo) }}"
+           {% if person.photo_srcset %}srcset="{{ person.photo_srcset | srcset }}"{% endif %}
+           sizes="(max-width: 720px) calc(100vw - 3rem), 320px"
+           alt="{{ person.photo_alt_text }}" width="512" height="512"
+           {% if eager %}fetchpriority="high"{% else %}loading="lazy"{% endif %}
+           decoding="async" />
+    </div>
+    <ul class="contact-list">
+      {% for social in person.socials %}
+        <li>
+          {% if social.is_email %}
+            <button type="button" data-copy-email="{{ person.email | entity }}">
+              {{ icon('mail') }}<span>{{ person.email | entity }}</span>
+              {{ icon('copy') }}
+            </button>
+          {% else %}
+            <a href="{{ social.href }}" target="_blank" rel="noopener me">
+              {{ icon(social.icon) }}<span>{{ social.label }}</span>
+              {% if social.handle %}<span class="handle">{{ social.handle }}</span>{% endif %}
+            </a>
+          {% endif %}
+        </li>
+      {% endfor %}
+      <li>
+        <a href="{{ link(person.cv.href) }}" target="_blank" rel="noopener">
+          {{ icon('document') }}<span>{{ person.cv.label }}</span>
+          {% if person.cv.note %}<span class="handle">{{ person.cv.note }}</span>{% endif %}
+        </a>
+      </li>
+    </ul>
+  </div>
+{%- endmacro %}

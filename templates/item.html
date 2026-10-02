@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+{% from 'partials/ui.html' import icon, authors, tag_chip %}
+
+{% block og_type %}article{% endblock %}
+
+{% block json_ld %}
+  <script type="application/ld+json">
+    {{ item_json_ld | safe }}
+  </script>
+{% endblock %}
+
+{% block content %}
+  <div class="item-head">
+    <div class="wrap">
+      {# The type badge is the way back out to a filtered index, so it is a
+         link. The long venue name used to sit next to it in muted text, which
+         repeated the short badge ("NAACL 2019" / "North American Chapter of
+         the Association for Computational Linguistics") and made the whole line
+         look like four links when only the badge was one. The full venue is
+         still in the Details panel. #}
+      <div class="item-meta">
+        <a class="badge badge--type" href="{{ link(item.type_badge_url) }}">
+          {{ icon(item.meta.icon) }} {{ item.meta.label }}
+        </a>
+        {% if item.badge %}<span class="badge">{{ item.badge }}</span>{% endif %}
+        {% if item.is_current %}<span class="badge">Current</span>{% endif %}
+      </div>
+
+      <h1 class="item-title">{{ item.title }}</h1>
+
+      {% if item.authors %}
+        {% if item.authors | has_equal_contribution %}
+          <p class="item-authors">{{ authors(item.authors, person) }}</p>
+          <p class="muted" style="font-size:.8rem; margin-top:.4rem">* Equal contribution</p>
+        {% else %}
+          <p class="item-authors">{{ authors(item.authors, person) }}</p>
+        {% endif %}
+      {% elif item.role %}
+        <p class="item-authors">{{ item.role }}{% if item.org %} &middot; {{ item.org }}{% endif %}</p>
+      {% endif %}
+
+      {% if item.instructor or item.collaborators %}
+        <p class="item-authors">
+          {% if item.instructor %}<span class="muted">Instructor</span> {{ item.instructor }}{% endif %}
+          {% if item.instructor and item.collaborators %} &middot; {% endif %}
+          {% if item.collaborators %}
+            <span class="muted">With</span>
+            {{ authors(item.collaborators, person) }}
+          {% endif %}
+        </p>
+      {% endif %}
+
+      {# The Scholar button lives in this row, last, so it reads Paper, Code,
+         Semantic Scholar. It was a small link beside the copy-BibTeX button,
+         which is a smaller and easier-to-miss target than the destinations it
+         sits next to. #}
+      {% if item.links or item.semantic_scholar_url %}
+        <div class="item-links">
+          {% for l in item.links %}
+            <a class="btn {% if l.primary %}btn--primary{% endif %}"
+               href="{{ link(l.href) }}" target="_blank" rel="noopener">
+              {{ icon(l.kind) }} {{ l.label }}
+            </a>
+          {% endfor %}
+          {% if item.semantic_scholar_url %}
+            <a class="btn btn--ghost" href="{{ item.semantic_scholar_url }}"
+               target="_blank" rel="noopener">
+              {{ icon('scholar') }} Semantic Scholar
+            </a>
+          {% endif %}
+        </div>
+      {% endif %}
+
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="item-layout">
+      <div>
+        {% if item.abstract %}
+          <div class="prose mt-lg">{{ item.abstract | md }}</div>
+        {% endif %}
+
+        {% if item.media.video %}
+          <figure class="media" data-youtube="{{ item.media.video }}">
+            <div class="media__frame">
+              {# No YouTube request is made until the visitor clicks, so the
+                 page loads fast and no third-party cookies are set on arrival. #}
+              <button type="button" class="media__poster" data-youtube-play
+                      aria-label="Play video: {{ item.title }}"
+                      {% if item.media.thumbnail %}
+                      style="background-image: url('{{ link('/' + item.media.thumbnail) }}'); background-size: cover; background-position: center"
+                      {% endif %}>
+                <span class="play">{{ icon('play') }}</span>
+                <span class="label">Play video</span>
+              </button>
+            </div>
+          </figure>
+        {% elif item.media.image %}
+          <figure class="media media--contain">
+            <div class="media__frame">
+              <img src="{{ link('/' + item.media.image) }}"
+                   alt="{{ item.media.alt or item.title }}" loading="lazy" decoding="async" />
+            </div>
+            {% if item.media.alt %}<figcaption>{{ item.media.alt }}</figcaption>{% endif %}
+          </figure>
+        {% endif %}
+
+        {% if item.notes %}
+          {# A div, not a <section>: the global `section` rule reserves page-level
+             padding, which stacked with mt-lg to put 165px above the heading. #}
+          <div class="item-section">
+            <h2 class="h3">Lecture notes</h2>
+            <ul class="notes-list">
+              {% for n in item.notes %}
+                <li><a href="{{ link(n.href) }}" target="_blank" rel="noopener">{{ n.title }}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+
+        {% if item.media.gallery %}
+          <div class="gallery">
+            {% for shot in item.media.gallery %}
+              <figure>
+                <img src="{{ link('/' + shot.src) }}" alt="{{ shot.alt }}"
+                     loading="lazy" decoding="async" />
+                {% if shot.caption %}<figcaption>{{ shot.caption }}</figcaption>{% endif %}
+              </figure>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+      </div>
+
+      <aside class="aside">
+        {% if item.tags %}
+          <div class="panel">
+            <h2 class="panel__title">Tags</h2>
+            <ul class="chips">
+              {% for tag_id in item.tags %}
+                <li>{{ tag_chip(tag_id) }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+
+        {% if item.bibtex %}
+          <div class="panel bibtex">
+            <h2 class="panel__title">Cite this</h2>
+            <pre data-bibtex><code>{{ item.bibtex }}</code></pre>
+            <button type="button" class="copy-btn" data-copy-target="[data-bibtex]">
+              {{ icon('copy') }} <span>Copy BibTeX</span>
+            </button>
+          </div>
+        {% endif %}
+
+        <div class="panel">
+          <h2 class="panel__title">Details</h2>
+          <div class="stack-sm">
+            <div class="fact"><span class="fact__k">{{ "Published" if item.is_publication else "Date" }}</span><span class="fact__v">{{ item.date_label }}</span></div>
+            {% if item.is_publication and item.venue %}<div class="fact"><span class="fact__k">Venue</span><span class="fact__v">{{ item.venue }}</span></div>{% endif %}
+            {% if item.role %}<div class="fact"><span class="fact__k">Role</span><span class="fact__v">{{ item.role }}</span></div>{% endif %}
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+{% endblock %}

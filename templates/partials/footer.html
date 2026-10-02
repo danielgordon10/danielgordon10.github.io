@@ -1,0 +1,14 @@
+{# Deliberately minimal: one centred line, matching the footer of the previous
+   version of the site. The contact card carries every link, so repeating them
+   down here only added noise.
+
+   `built` is the time this build ran, not the newest item date - the old
+   footer was rewritten by a script on every export and reported the month the
+   site was last regenerated. #}
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="site-footer__line">
+      &copy; {{ built.year }} {{ person.name }}. Last updated {{ built.strftime('%B %Y') }}.
+    </p>
+  </div>
+</footer>

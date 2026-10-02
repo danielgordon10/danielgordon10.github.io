@@ -1,0 +1,67 @@
+# Collaborative imaging of urban forest dynamics - undergraduate research at WashU.
+id: collaborative
+type: paper
+title: "Collaborative Imaging of Urban Forest Dynamics: Augmenting Rephotography to Visualize Changes over Time"
+summary: >
+  Augmented rephotography combined with LiDAR monitors the urban tree canopy, a community-based way to measure and visualise ecological change over time.
+date: 2013-02-01
+
+venue: "IS&T/SPIE Electronic Imaging"
+venue_short: "IS&T/SPIE 2013"
+
+authors:
+  - Ruth West
+  - Abby Halley
+  - "Jarlath O'Neil-Dunne"
+  - Daniel Gordon
+  - Robert Pless
+
+abstract: |
+  The ecological sciences face the challenge of making measurements to detect
+  subtle changes sometimes over large areas across varied temporal scales. The
+  challenge is thus to measure patterns of slow, subtle change occurring along
+  multiple spatial and temporal scales, and then to visualize those changes in a
+  way that makes important variations visceral to the observer. Imaging plays an
+  important role in ecological measurement but existing techniques often rely on
+  approaches that are limited with respect to their spatial resolution, view
+  angle, and/or temporal resolution. Furthermore, integrating imaging acquired
+  through different modalities is often difficult, if not impossible.
+
+  This research envisions a community-based and participatory approach based
+  around augmented rephotography of ecosystems. We show a case study for the
+  purpose of monitoring the urban tree canopy. The goal is to explore, for a set
+  of urban locations, the integration of ground level rephotography with
+  available LiDAR data, and to create a dynamic view of the urban forest, and
+  its changes across various spatial and temporal scales. This case study gives
+  the opportunity to explore various augments to improve the ground level image
+  capture process, protocols to support 3D inference from the contributed
+  photography, and both in-situ and web based visualizations of the temporal
+  change over time.
+
+tags:
+  - paper
+  - computer-vision
+
+links:
+  - label: "Paper"
+    href: "/pdfs/collaborative_imaging.pdf"
+    kind: paper
+    primary: true
+
+media:
+  image: "images/projects/collaborative-imaging.png"
+  alt: "Rephotographs of urban trees aligned against LiDAR data to show canopy change"
+
+semantic_scholar: 2ddd902e3d3f7d90901929788ceffc0d91715b56
+bibtex: |
+  @inproceedings{west2013collaborative,
+    title={Collaborative imaging of urban forest dynamics: augmenting re-photography
+            to visualize changes over time},
+    author={West, Ruth and Halley, Abby and O'Neil-Dunne, Jarlath
+            and Gordon, Daniel and Pless, Robert},
+    booktitle={The Engineering Reality of Virtual Reality 2013},
+    volume={8649},
+    pages={86490L},
+    year={2013},
+    organization={International Society for Optics and Photonics}
+  }

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30"
+     role="img" aria-label="DG">
+  <!--
+    Matches the .brand__mark in assets/css/site.css: a 30px tile with a 9px
+    radius, filled with the same 145deg accent -> warm gradient, and the same
+    Inter 700 initials.
+
+    The gradient endpoints are the CSS 145deg angle expressed in user units.
+    A CSS angle A points along (sin A, -cos A); for 145deg that is
+    (0.5736, 0.8192), projected through the centre of the tile.
+
+    The initials sit at 15px rather than the header's 13px so the wordmark
+    survives being drawn 16px wide in a tab strip.
+
+    Two palettes, because the light gradient is dark enough that the white
+    initials need the dark text of the dark-theme gradient:
+
+      light  #4a56d2 -> #a94e0b  (--accent / --warm)
+      dark   #93a1ff -> #ffb782  with #0a0c12 text (--accent / --warm / --accent-ink)
+
+    The dark values are applied by the prefers-color-scheme block below, so an
+    OS in dark mode gets the right mark without a second file. Sites with a
+    manual toggle cannot reach into an SVG document from CSS, so
+    favicon-dark.svg carries the same dark mark explicitly and site.ts points
+    the <link> at it when the page theme is dark.
+  -->
+  <defs>
+    <linearGradient id="g" gradientUnits="userSpaceOnUse"
+                    x1="3.02" y1="-2.12" x2="26.98" y2="32.12">
+      <stop offset="0" class="g-start" stop-color="#4a56d2" />
+      <stop offset="1" class="g-end" stop-color="#a94e0b" />
+    </linearGradient>
+  </defs>
+  <style>
+    @media (prefers-color-scheme: dark) {
+      .g-start { stop-color: #93a1ff; }
+      .g-end { stop-color: #ffb782; }
+      .initials { fill: #0a0c12; }
+    }
+  </style>
+  <rect width="30" height="30" rx="9" fill="url(#g)" />
+  <text class="initials" x="15" y="15.35" fill="#ffffff"
+        font-family="Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+        font-size="15" font-weight="700" letter-spacing="-0.45"
+        text-anchor="middle" dominant-baseline="central">DG</text>
+</svg>

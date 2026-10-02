@@ -9,3 +9,20 @@ old
 *.mp4
 *.DS_Store
 .~lock*
+
+# --- site generator -------------------------------------------------------
+.venv/
+node_modules/
+dist/
+
+# compiled from assets/ts/site.ts by esbuild; never edit or commit the output
+assets/js/site.js
+assets/js/*.map
+*.pyc
+
+# Note: static/fonts/*.woff2 are committed on purpose. They are only ~300 KB
+# and committing them keeps the build hermetic, so CI never depends on an
+# external font CDN. tools/fetch_fonts.py updates them.
+
+# local scratch
+notes.txt

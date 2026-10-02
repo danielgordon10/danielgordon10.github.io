@@ -1,0 +1,75 @@
+# AI2-THOR, the simulator the embodied vision community works in.
+id: ai2thor
+type: dataset
+title: "AI2-THOR: An Interactive 3D Environment for Visual AI"
+summary: >
+  AI2-THOR is a framework of near photo-realistic 3D indoor scenes where agents navigate and interact, spanning RL, planning, question answering and detection.
+date: 2017-12-14
+
+venue: "Allen Institute for Artificial Intelligence Technical Report"
+venue_short: "AI2 TR 2017"
+
+authors:
+  - Eric Kolve
+  - Roozbeh Mottaghi
+  - Daniel Gordon
+  - Winson Han
+  - Eli VanderBilt
+  - Luca Weihs
+  - Alvaro Herrasti
+  - Matt Deitke
+  - Kiana Ehsani
+  - Yuke Zhu
+  - Abhinav Gupta
+  - Ali Farhadi
+
+abstract: |
+  We introduce The House Of inteRactions (THOR), a framework for visual AI
+  research, available at [ai2thor.allenai.org](https://ai2thor.allenai.org/).
+  AI2-THOR consists of near photo-realistic 3D indoor scenes, where AI agents
+  can navigate in the scenes and interact with objects to perform tasks.
+
+  AI2-THOR enables research in many different domains including but not
+  limited to deep reinforcement learning, imitation learning, learning by
+  interaction, planning, visual question answering, unsupervised representation
+  learning, object detection and segmentation, and learning models of cognition.
+  The goal of AI2-THOR is to facilitate building visually intelligent models and
+  push the research forward in this domain.
+
+tags:
+  - computer-vision
+  - datasets
+  - embodied-ai
+  - open-source
+  - reinforcement-learning
+  - robotics
+
+links:
+  - label: "arXiv"
+    href: "https://arxiv.org/abs/1712.05474"
+    kind: paper
+    primary: true
+  - label: "Project page"
+    href: "https://ai2thor.allenai.org/"
+    kind: project
+  - label: "Code"
+    href: "https://github.com/allenai/ai2thor"
+    kind: code
+  - label: "Online demo"
+    href: "https://ai2thor.allenai.org/demo/"
+    kind: demo
+
+media:
+  video: "MvvAhF4HZ8s"
+
+semantic_scholar: 89c8aad71433f7638d2e2c009e1ea20e039f832d
+bibtex: |
+  @article{ai2thor,
+    title={{AI2-THOR: An Interactive 3D Environment for Visual AI}},
+    author={Kolve, Eric and Mottaghi, Roozbeh and Gordon, Daniel and Han, Winson
+            and VanderBilt, Eli and Weihs, Luca and Herrasti, Alvaro
+            and Deitke, Matt and Ehsani, Kiana and Zhu, Yuke and Gupta, Abhinav
+            and Farhadi, Ali},
+    journal={arXiv preprint arXiv:1712.05474},
+    year={2017}
+  }

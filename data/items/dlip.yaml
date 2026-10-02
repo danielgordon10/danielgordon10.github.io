@@ -1,0 +1,31 @@
+# The deep learning in practice seminar I ran at UW.
+id: dlip
+type: talk
+title: "Deep Learning in Practice"
+summary: >
+  A seminar on applying modern deep learning to real research problems, including the unglamorous parts that decide whether a model ships.
+org: "University of Washington"
+role: "Organizer and Speaker"
+date: 2017-06-01
+
+venue: "Graduate seminar series"
+
+authors:
+  - Daniel Gordon
+
+tags: []
+abstract: |
+  I organized a seminar on using deep learning in practice. We discussed how to
+  apply modern techniques to real research problems, and worked through the
+  effectiveness of various methods - including a lot of the unglamorous parts
+  that decide whether a model actually ships.
+
+links:
+  - label: "Project page"
+    href: "https://sites.google.com/cs.washington.edu/deeplearninginpractice/"
+    kind: project
+    primary: true
+
+media:
+  image: "images/projects/dlip.png"
+  alt: "Title slide for the deep learning in practice seminar"

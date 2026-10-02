@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30"
+     role="img" aria-label="DG">
+  <!--
+    The dark-theme twin of favicon.svg. Identical geometry; the light palette is
+    swapped for the dark one from assets/css/site.css:
+
+      --accent #93a1ff  ->  --warm #ffb782, with --accent-ink #0a0c12 text.
+
+    favicon.svg can switch itself on prefers-color-scheme, but a page that sets
+    the theme by hand (or has a stored preference that disagrees with the OS)
+    cannot change an SVG document it merely links to. site.ts swaps the <link>
+    href to this file when data-theme is dark.
+  -->
+  <defs>
+    <linearGradient id="g" gradientUnits="userSpaceOnUse"
+                    x1="3.02" y1="-2.12" x2="26.98" y2="32.12">
+      <stop offset="0" stop-color="#93a1ff" />
+      <stop offset="1" stop-color="#ffb782" />
+    </linearGradient>
+  </defs>
+  <rect width="30" height="30" rx="9" fill="url(#g)" />
+  <text x="15" y="15.35" fill="#0a0c12"
+        font-family="Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+        font-size="15" font-weight="700" letter-spacing="-0.45"
+        text-anchor="middle" dominant-baseline="central">DG</text>
+</svg>

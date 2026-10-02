@@ -1,0 +1,131 @@
+{% from 'partials/ui.html' import icon, authors, tag_chip %}
+
+{# One item in a work list.
+
+   A row rather than a card. Both the home page and the work index use this:
+   a three-column card grid left the fourth featured item stranded on its own
+   row, and made a long index something to hunt through rather than scan down.
+   The date is pinned to the right so the eye can run down one edge and read the
+   chronology.
+
+   The whole row is clickable. The title anchor is stretched over it with
+   ::after rather than wrapping the row in a <a>: nesting the tag chips - which
+   are links themselves, to a filtered view - inside a link is invalid HTML and
+   breaks keyboard navigation. The chips are lifted above the overlay in CSS so
+   they stay independently clickable.
+#}
+{% macro work_row(item) %}
+  <article class="row"
+           data-item="{{ item.id }}"
+           data-tags="{{ item.tags | join(' ') }}"
+           data-reveal>
+    <div class="row__thumb">
+      {% if item.media.image %}
+        <img src="{{ link('/' + item.media.image) }}" loading="lazy" decoding="async"
+             alt="{{ item.media.alt or item.title }}" />
+      {% elif item.media.thumbnail %}
+        {# Vendored poster frame, so no request reaches YouTube before a click. #}
+        <img src="{{ link('/' + item.media.thumbnail) }}" loading="lazy" decoding="async"
+             alt="" />
+        <span class="row__play">{{ icon('play') }}</span>
+      {% elif item.media.video %}
+        <span class="row__play row__play--bare">{{ icon('play') }}</span>
+      {% endif %}
+    </div>
+
+    <div class="row__main">
+      <h3 class="row__title">
+        <a href="{{ link(item.url) }}">{{ item.title }}</a>
+      </h3>
+
+      {% if item.type == 'position' %}
+        <p class="row__sub">{{ item.role }}</p>
+      {% elif item.authors %}
+        <p class="row__sub">{{ authors(item.authors, person, limit=3) }}</p>
+      {% endif %}
+
+      {% if item.venue_short %}
+        <p class="row__venue">{{ item.venue_short }}</p>
+      {% endif %}
+
+      {# The written one-sentence summary, not a truncated abstract. #}
+      {% if item.summary %}
+        <p class="row__abstract">{{ item.summary }}</p>
+      {% endif %}
+
+      {% if item.tags %}
+        {# Every tag, not a capped subset: the point of tagging is that the list
+           is the item's whole subject area, and hiding the tail made a
+           well-tagged entry look like a lightly-tagged one. #}
+        <ul class="chips chips--tight">
+          {% for tag_id in item.tags %}
+            <li>{{ tag_chip(tag_id) }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+
+    <div class="row__when">
+      <span>{{ item.date_label }}</span>
+    </div>
+  </article>
+{% endmacro %}
+
+
+{# A role in the experience timeline.
+
+   The spine and dots are applied by the .roles--timeline wrapper, which only the
+   home page's "Where I've worked" section carries; /about/ lists the same roles
+   as a plain list, where a timeline would just be a rule beside the text. #}
+{% macro role_row(item) %}
+  {# The whole entry is the link, not just the org name. As on a work row, the
+     title anchor is stretched over the grid box with ::after rather than the
+     markup being wrapped in an <a>: the badge inside it is inline content and
+     a wrapping <a> would swallow it. One anchor, one tab stop, and the
+     underline shows on hover where you are actually pointing. #}
+  <div class="role {% if item.is_current %}role--current{% endif %}" data-reveal>
+    <div class="role__when">
+      {# The dot lives inside the date cell rather than beside it, so it is
+         positioned off the date's own box: centred on the date's line in the
+         two-column desktop layout and in the stacked mobile one alike, with no
+         per-breakpoint offsets to keep in sync. Decorative - the date already
+         states when. #}
+      <span class="role__node" aria-hidden="true"></span>
+      {{ item.date_label }}
+    </div>
+    <div class="role__body">
+      <h3 class="role__org">
+        <a href="{{ link(item.url) }}">{{ item.org or item.title }}</a>
+        {% if item.is_current %}<span class="badge">Current</span>{% endif %}
+      </h3>
+      <p class="role__title">{{ item.role }}</p>
+    </div>
+    {% if item.abstract %}
+      <div class="role__detail">{{ item.abstract | md }}</div>
+    {% endif %}
+  </div>
+{% endmacro %}
+
+
+{# A degree on the same timeline.
+
+   Same rows, same spine, same reading order as the jobs above it, because a
+   degree is another thing that happened over a span of years and a reader
+   scanning this section does not care which of the two kinds it is. There is no
+   detail page for a degree, so it links out to the university's own site. #}
+{% macro degree_row(entry) %}
+  <div class="role role--degree" data-reveal>
+    <div class="role__when">
+      <span class="role__node role__node--degree" aria-hidden="true"></span>
+      {{ entry.years }}
+    </div>
+    <div class="role__body">
+      <h3 class="role__org">
+        {% if entry.href %}
+          <a href="{{ entry.href }}" target="_blank" rel="noopener">{{ entry.org }}</a>
+        {% else %}{{ entry.org }}{% endif %}
+      </h3>
+      <p class="role__title">{{ entry.degree }}</p>
+    </div>
+  </div>
+{% endmacro %}

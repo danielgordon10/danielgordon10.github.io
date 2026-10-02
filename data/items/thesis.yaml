@@ -1,0 +1,42 @@
+# My Ph.D. thesis, on the unifying idea behind most of my academic work.
+id: thesis
+type: paper
+title: "Learning by Watching and Learning by Doing"
+summary: >
+  My PhD thesis, on learning representations from unlabeled video and transferring them to embodied tasks.
+date: 2020-08-14
+
+venue: "Ph.D. Thesis, University of Washington"
+venue_short: "Ph.D. Thesis 2020"
+
+authors:
+  - Daniel Gordon
+
+abstract: >-
+  When we are babies, we learn how to see by watching how the world changes and
+  by interacting with it. Can we use these same signals to train vision models?
+  In this thesis I outline several works which use these paradigms as a basis for
+  learning algorithms: first, learning by watching, in which video data is
+  directly used to learn about the visual world, and second, learning by doing,
+  in which agents learn by interacting with their surroundings in embodied
+  environments.
+
+tags:
+  - paper
+  - computer-vision
+  - embodied-ai
+  - representation-learning
+
+links:
+  - label: "Thesis"
+    href: "https://hdl.handle.net/1773/45931"
+    kind: paper
+    primary: true
+
+bibtex: |
+  @phdthesis{gordon2020thesis,
+    title={Learning by Watching and Learning by Doing},
+    author={Gordon, Daniel},
+    school={University of Washington},
+    year={2020},
+  }

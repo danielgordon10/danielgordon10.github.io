@@ -1,0 +1,46 @@
+# Every tag any item is allowed to use.
+#
+# Adding a tag here is the *only* step needed to make it appear in the filter
+# bar on /work/. The build fails if an item uses a tag that is not listed, and
+# also if a tag here is never used by anything, so this file cannot rot.
+#
+# There is deliberately only one group. The filter used to split tags into
+# Contribution / Scope / Topic, but every tag outside that set either had one or
+# two items behind it - a filter chip that narrow is noise, not navigation -
+# or duplicated what the item itself already says. Open Source survived as the
+# one genuinely useful extra tag, so it sits alongside the rest.
+#
+# Keep this list short. A tag that applies to almost everything (Machine
+# Learning) or to almost nothing filters nothing out, and both are worse than
+# not having it.
+
+- id: computer-vision
+  label: Computer Vision
+  description: Perception, detection, segmentation and understanding from images.
+- id: embodied-ai
+  label: Embodied AI
+  description: Agents that perceive, reason and act inside an environment.
+- id: open-source
+  label: Open Source
+  description: Released code or data anyone can use.
+- id: reinforcement-learning
+  label: Reinforcement Learning
+  description: Learning behavior from reward or demonstration.
+- id: robotics
+  label: Robotics
+  description: Systems that act in and move through the physical world.
+- id: paper
+  label: Papers
+  description: Peer-reviewed or preprint publications.
+- id: planning
+  label: Planning
+  description: Long-horizon decision making and search over action sequences.
+- id: representation-learning
+  label: Representation Learning
+  description: Learning features that transfer to downstream tasks.
+- id: vision-language
+  label: Vision & Language
+  description: Grounding natural language in visual environments.
+- id: datasets
+  label: Datasets & Benchmarks
+  description: Data and evaluation suites built for the community.

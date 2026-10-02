@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30">
+  <!--
+    Safari pinned-tab / mask icon. Safari paints this silhouette with the
+    `color` set on the <link rel="mask-icon"> in base.html and tints it to match
+    the browser chrome, so the file itself must be a flat shape with real alpha
+    holes rather than coloured artwork.
+
+    The initials are knocked out with a mask instead of being drawn in white:
+    a white <text> would still be opaque, and Safari would tint it the same as
+    the tile, making the letters disappear.
+  -->
+  <defs>
+    <mask id="knockout">
+      <rect width="30" height="30" rx="9" fill="#ffffff" />
+      <text x="15" y="15.35" fill="#000000"
+            font-family="Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+            font-size="15" font-weight="700" letter-spacing="-0.45"
+            text-anchor="middle" dominant-baseline="central">DG</text>
+    </mask>
+  </defs>
+  <rect width="30" height="30" rx="9" fill="#000000" mask="url(#knockout)" />
+</svg>

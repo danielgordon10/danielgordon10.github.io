@@ -1,0 +1,57 @@
+# Site-wide configuration: titles, navigation and metadata.
+# Everything personal lives in person.yaml - this file is only about the site
+# as a website.
+
+title: "Daniel Gordon"
+short_title: "Daniel Gordon"
+description: >-
+  Daniel Gordon is a machine learning researcher and engineer at Apple working
+  on 3D perception and mapping, with a background in reinforcement learning,
+  computer vision and embodied AI.
+
+# Canonical origin. Used for Open Graph tags, the sitemap and JSON-LD, so
+# links you share show a proper preview.
+url: "https://danielgordon10.github.io"
+locale: "en_US"
+theme_color: "#0a0c12"
+default_theme: dark
+
+# Which theme to use before the visitor has made a choice.
+#   system - follow the operating system (nice for recruiters on any machine)
+#   fixed  - always use default_theme above
+theme_policy: system
+
+# Used as a soft, heavily scrimmed texture behind the home page hero. Path is
+# relative to static/. Comment it out for a pure gradient hero.
+hero_image: "images/homepage/sunset.jpg"
+
+keywords:
+  - machine learning researcher
+  - computer vision
+  - 3D perception
+  - reinforcement learning
+  - embodied AI
+  - robotics
+  - deep learning
+
+# Rendered as the header navigation. `key` marks which page gets the active pill.
+nav:
+  - label: "Work"
+    href: "/work/"
+    key: "work"
+  - label: "About"
+    href: "/about/"
+    key: "about"
+  - label: "CV"
+    href: "/cv.pdf"
+    key: "cv"
+
+footer_note: >-
+  Built from a folder of YAML files by a small Python site generator.
+
+# Analytics are off by default - the site makes no third-party requests at all.
+# To turn them on, use a free, cookieless provider and paste its script URL.
+# analytics:
+#   provider: plausible
+#   domain: danielgordon10.github.io
+#   script_url: "https://plausible.io/js/script.js"

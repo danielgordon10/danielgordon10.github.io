@@ -1,0 +1,16 @@
+{
+  "name": "danielgordon-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TypeScript client for danielgordon10.github.io",
+  "scripts": {
+    "build": "esbuild assets/ts/site.ts --bundle --format=esm --target=es2020 --minify --outfile=assets/js/site.js",
+    "watch": "esbuild assets/ts/site.ts --bundle --format=esm --target=es2020 --outfile=assets/js/site.js --watch",
+    "typecheck": "tsc --noEmit",
+    "check": "npm run typecheck && uv run site check"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.12",
+    "typescript": "^5.7.0"
+  }
+}

@@ -1,0 +1,64 @@
+# SplitNet, from an internship at Facebook AI Research.
+id: splitnet
+type: paper
+title: "SplitNet: Sim2Sim and Task2Task Transfer for Embodied Visual Navigation"
+summary: >
+  SplitNet decouples perception from policy learning, transferring between simulators and generalising to unseen environments faster than end-to-end baselines.
+date: 2019-05-01
+
+venue: "International Conference on Computer Vision"
+venue_short: "ICCV 2019"
+
+authors:
+  - Daniel Gordon
+  - Abhishek Kadian
+  - Devi Parikh
+  - Judy Hoffman
+  - Dhruv Batra
+
+abstract: |
+  We propose SplitNet, a method for decoupling visual perception and policy
+  learning. By incorporating auxiliary tasks and selective learning of portions
+  of the model, we explicitly decompose the learning objectives for visual
+  navigation into perceiving the world and acting on that perception.
+
+  We show dramatic improvements over baseline models on transferring between
+  simulators, an encouraging step towards Sim2Real. Additionally, SplitNet
+  generalizes better to unseen environments from the same simulator and
+  transfers faster and more effectively to novel embodied navigation tasks.
+  Further, given only a small sample from a target domain, SplitNet can match
+  the performance of traditional end-to-end pipelines which receive the entire
+  dataset.
+
+tags:
+  - paper
+  - computer-vision
+  - embodied-ai
+  - open-source
+  - planning
+  - robotics
+
+links:
+  - label: "Paper"
+    href: "/pdfs/splitnet.pdf"
+    kind: paper
+    primary: true
+  - label: "Code"
+    href: "https://github.com/facebookresearch/splitnet"
+    kind: code
+
+media:
+  video: "AKQE9RyOIMY"
+
+semantic_scholar: 980d6820831d5cadfd0f1699b06145efa975f9fd
+bibtex: |
+  @inproceedings{gordon2019splitnet,
+    title={SplitNet: Sim2Sim and Task2Task Transfer for Embodied Visual Navigation},
+    author={Gordon, Daniel and Kadian, Abhishek and Parikh, Devi and Hoffman, Judy
+            and Batra, Dhruv},
+    booktitle={The IEEE International Conference on Computer Vision (ICCV)},
+    month={October},
+    year={2019},
+  }
+
+featured: false

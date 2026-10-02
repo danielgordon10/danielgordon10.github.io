@@ -1,0 +1,69 @@
+# Re3 - recurrent regression for fast, self-updating object tracking.
+id: re3
+type: paper
+title: "Re3: Real-Time Recurrent Regression Networks for Visual Tracking of Generic Objects"
+summary: >
+  A real-time deep tracker that pretrains on many objects and updates its appearance model on the fly in one forward pass, tracking at 150 FPS.
+date: 2018-05-01
+
+venue: "IEEE Robotics and Automation Letters"
+venue_short: "RA-L 2018"
+
+authors:
+  - Daniel Gordon
+  - Ali Farhadi
+  - Dieter Fox
+
+abstract: |
+  Robust object tracking requires knowledge and understanding of the object being
+  tracked: its appearance, its motion, and how it changes over time. A tracker
+  must be able to modify its underlying model and adapt to new observations.
+
+  We present **Re3**, a real-time deep object tracker capable of incorporating
+  temporal information into its model. Rather than focusing on a limited set of
+  objects or training a model at test-time to track a specific instance, we
+  pretrain our generic tracker on a large variety of objects and efficiently
+  update on the fly; Re3 simultaneously tracks and updates the appearance model
+  with a single forward pass.
+
+  This lightweight model is capable of tracking objects at 150 FPS, while
+  attaining competitive results on challenging benchmarks. We also show that our
+  method handles temporary occlusion better than other comparable trackers using
+  experiments that directly measure performance on sequences with occlusion.
+
+tags:
+  - paper
+  - computer-vision
+  - open-source
+  - representation-learning
+  - robotics
+
+links:
+  - label: "Paper"
+    href: "/pdfs/re3.pdf"
+    kind: paper
+    primary: true
+  - label: "TensorFlow"
+    href: "https://github.com/danielgordon10/re3-tensorflow"
+    kind: code
+  - label: "PyTorch"
+    href: "https://github.com/danielgordon10/re3-pytorch"
+    kind: code
+
+media:
+  video: "RByCiOLlxug"
+
+semantic_scholar: 1bbedeec388ca94ae7d6131c42ad816bbbc58f92
+bibtex: |
+  @article{gordon2018re3,
+    title={Re3: Real-Time Recurrent Regression Networks for Visual Tracking of Generic Objects},
+    author={Gordon, Daniel and Farhadi, Ali and Fox, Dieter},
+    journal={IEEE Robotics and Automation Letters},
+    volume={3},
+    number={2},
+    pages={788--795},
+    year={2018},
+    publisher={IEEE}
+  }
+
+featured: true

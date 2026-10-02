@@ -1,0 +1,59 @@
+# What Can You Learn from Your Muscles? - Ehsani et al., from the AI2 PRIOR team.
+id: muscles
+type: paper
+title: "What Can You Learn from Your Muscles? Learning Visual Representation from Human Interactions"
+summary: >
+  A visual representation learned from unlabeled human interaction video, where camera movement and object deformation come free rather than being imposed.
+date: 2021-03-01
+
+venue: "International Conference on Learning Representations"
+venue_short: "ICLR 2021"
+
+authors:
+  - Kiana Ehsani
+  - Daniel Gordon
+  - Thomas Nguyen
+  - Roozbeh Mottaghi
+  - Ali Farhadi
+
+abstract: >-
+  Learning effective representations of visual data that generalize to a variety
+  of downstream tasks has been a long quest for computer vision. Most
+  representation learning approaches rely solely on visual data such as images or
+  videos. In this paper, we explore a novel approach, where we use human
+  interaction and attention cues to investigate whether we can learn better
+  representations compared to visual-only representations. For this study, we
+  collect a dataset of human interactions capturing body part movements and gaze
+  in their daily lives. Our experiments show that our "muscly-supervised"
+  representation that encodes interaction and attention cues outperforms a
+  visual-only state-of-the-art method MoCo, on a variety of target tasks: scene
+  classification (semantic), action recognition (temporal), depth estimation
+  (geometric), dynamics prediction (physics) and walkable surface estimation
+  (affordance).
+
+tags:
+  - paper
+  - computer-vision
+  - embodied-ai
+  - open-source
+  - representation-learning
+
+links:
+  - label: "Paper"
+    href: "https://arxiv.org/abs/2010.08539"
+    kind: paper
+    primary: true
+  - label: "Code & Data"
+    href: "https://github.com/ehsanik/muscleTorch"
+    kind: code
+
+semantic_scholar: 0944c6bd883bf3cf2d7d4f765ab5266dd1482595
+bibtex: |
+  @inproceedings{ehsani2021muscles,
+    title={What Can You Learn from Your Muscles? Learning Visual Representation
+           from Human Interactions},
+    author={Ehsani, Kiana and Gordon, Daniel and Nguyen, Thomas and
+            Mottaghi, Roozbeh and Farhadi, Ali},
+    booktitle={International Conference on Learning Representations (ICLR)},
+    year={2021},
+  }

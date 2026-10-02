@@ -1,0 +1,30 @@
+{% from 'partials/ui.html' import icon %}
+<header class="site-header" data-header>
+  <div class="wrap">
+    <a class="brand" href="{{ link('/') }}">
+      <span class="brand__mark" aria-hidden="true">{{ person.first_name[0] }}{{ person.name.split()[-1][0] }}</span>
+      <span>{{ person.name }}</span>
+    </a>
+
+    <nav class="nav" id="site-nav" data-nav aria-label="Main">
+      {% for entry in nav %}
+        {% set external = entry.href.endswith('.pdf') %}
+        <a class="nav__link{% if external %} nav__link--external{% endif %}"
+           href="{{ link(entry.href) }}"
+           {%- if entry.key == active %} aria-current="page"{% endif %}
+           {%- if external %} target="_blank" rel="noopener"{% endif %}>{{ entry.label }}</a>
+      {% endfor %}
+    </nav>
+
+    <button type="button" class="icon-btn theme-toggle" data-theme-toggle
+            aria-label="Switch between light and dark theme" title="Switch theme">
+      <span class="icon-sun">{{ icon('sun') }}</span>
+      <span class="icon-moon">{{ icon('moon') }}</span>
+    </button>
+
+    <button type="button" class="icon-btn nav-toggle" data-nav-toggle
+            aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+      {{ icon('menu') }}
+    </button>
+  </div>
+</header>

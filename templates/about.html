@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% from 'partials/ui.html' import icon, contact_card %}
+
+{% block content %}
+  <div class="page-head">
+    <div class="wrap">
+      <h1 class="page-head__title">About</h1>
+      <p class="page-head__lede">{{ person.current_role_line }}</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="about-grid">
+      {# Prose only. The education list used to live here as its own section,
+         duplicating what the Experience timeline on the home page already says,
+         with a "Degrees" heading on top of an "Education" eyebrow. Degrees are
+         timeline entries now - same rows, same dots, same reading order as the
+         jobs they sit next to. #}
+      <div>
+        <div class="prose">
+          {{ person.intro | md }}
+          {% for para in person.about %}{{ para | md }}{% endfor %}
+        </div>
+      </div>
+
+      {# ---- sticky sidebar ---------------------------------------------- #}
+      <aside class="aside">
+        {{ contact_card() }}
+      </aside>
+    </div>
+  </div>
+{% endblock %}

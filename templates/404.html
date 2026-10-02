@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% from 'partials/ui.html' import icon %}
+
+{% block content %}
+  <div class="wrap notfound">
+    <p class="notfound__code">404</p>
+    <h1 class="section-title">This page doesn't exist</h1>
+    <p class="muted">
+      The link may be out of date. Everything on the site is reachable from the
+      work index.
+    </p>
+    <div class="hero__actions" style="justify-content:center; margin-top:0">
+      <a class="btn btn--primary" href="{{ link('/work/') }}">{{ icon('arrow-right') }} Browse all work</a>
+      <a class="btn" href="{{ link('/') }}">Go home</a>
+    </div>
+  </div>
+{% endblock %}

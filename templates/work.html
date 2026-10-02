@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% from 'partials/ui.html' import tag_chip %}
+{% from 'partials/card.html' import work_row %}
+
+{% block content %}
+  <div class="page-head">
+    <div class="wrap">
+      <h1 class="page-head__title">Work</h1>
+    </div>
+  </div>
+
+  <div class="wrap">
+    {# Filters only, no search box and no result counter: with 18 items the
+       full list already fits on a screen or two, so counting them told the
+       reader nothing they couldn't see, and full-text search over abstracts
+       was never worth the index it needed shipping. Topic and Year are what
+       people actually navigate by. #}
+    <form class="filters" data-filters aria-label="Filter work">
+      <p class="noscript-note">
+        Filtering needs JavaScript. Everything is already listed below.
+      </p>
+
+      {# Topics and Clear share one line: the button sits at the trailing edge
+         of the chip row rather than on a line of its own above it. #}
+      <div class="filters__bar">
+        {% for group, group_tags in tag_groups %}
+          <div class="filter-group">
+            <span class="filter-group__label">{{ group }}</span>
+            <div class="filter-group__chips">
+              {% for tag in group_tags %}
+                {{ tag_chip(tag.id, style='button', count=tag_counts[tag.id]) }}
+              {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
+
+        <div class="filter-status">
+          <button type="button" class="btn btn--sm btn--ghost" data-clear-filters hidden>Clear</button>
+        </div>
+      </div>
+
+    </form>
+
+    <section class="work-results" aria-label="Results">
+      <h2 class="visually-hidden">Results</h2>
+      <div class="rows" data-results>
+        {% for item in items %}{{ work_row(item) }}{% endfor %}
+      </div>
+
+      <div class="empty" data-empty>
+        <p><strong>Nothing matches those filters.</strong></p>
+        <p class="muted">Try removing a topic.</p>
+        <button type="button" class="btn btn--sm" data-clear-filters>Clear all filters</button>
+      </div>
+    </section>
+  </div>
+{% endblock %}

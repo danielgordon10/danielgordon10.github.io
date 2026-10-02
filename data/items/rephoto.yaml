@@ -1,0 +1,62 @@
+# Collaborative rephotography - undergraduate research at WashU.
+id: rephoto
+type: paper
+title: "Collaborative Rephotography"
+summary: >
+  Collaborative rephotography lets many people revisit many sites over time, from nation-scale scenic overlooks to NYC street trees.
+date: 2013-01-01
+
+venue: "ACM SIGGRAPH Studio Talks"
+venue_short: "SIGGRAPH 2013"
+
+authors:
+  - Ruth West
+  - Abby Halley
+  - Daniel Gordon
+  - "Jarlath O'Neil-Dunne"
+  - Robert Pless
+
+abstract: |
+  Rephotography is the process of capturing the same scene at a different time,
+  in order to capture changes. Previous work at SIGGRAPH demonstrated the
+  ability for smartphone apps to guide a user to the correct viewpoint, here we
+  promote the use of such tools distributed widely over space and time, by
+  enabling collaborative projects that allow multiple users to rephotograph
+  multiple sites over time. These sites may be architectural, social, urban
+  scenes or ecological.
+
+  Current projects utilizing our mobile tools range from nation-scale
+  rephotography of scenic overlooks, to monitoring of urban street trees in NYC
+  by local conservancy group volunteers. Rephotography directly connects pictures
+  at one time to pictures at another time. It also connects a photographer at
+  one time to a photographer at another time, by providing a mechanism to
+  collaboratively record the story of how our world changes.
+
+tags:
+  - paper
+  - computer-vision
+
+links:
+  - label: "Paper"
+    href: "/pdfs/collaborative_rephotography.pdf"
+    kind: paper
+    primary: true
+  - label: "Project page"
+    href: "http://projectrephoto.com/projectRephoto"
+    kind: project
+
+media:
+  image: "images/projects/collaborative-rephotography.png"
+  alt: "Matched rephotograph pairs of a location taken years apart"
+
+semantic_scholar: 7fa4a4244e744d37d59802f8f148794d210e3d6c
+bibtex: |
+  @inproceedings{west2013collaborative,
+    title={Collaborative rephotography},
+    author={West, Ruth and Halley, Abby and Gordon, Daniel
+            and O'Neil-Dunne, Jarlath and Pless, Robert},
+    booktitle={ACM SIGGRAPH 2013 Studio Talks},
+    pages={20},
+    year={2013},
+    organization={ACM}
+  }

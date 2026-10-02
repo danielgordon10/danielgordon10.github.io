@@ -1,0 +1,86 @@
+# The deep learning course I organized and head-taught at UW.
+id: dlclass
+type: course
+title: "Introduction to Deep Learning"
+summary: >
+  I was head TA and organizer for the University of Washington's Introduction to Deep Learning course, including a from-scratch neural network library in NumPy.
+org: "University of Washington"
+role: "Head TA and Organizer"
+instructor: "Ali Farhadi"
+date: 2019-09-01
+end: 2019-12-01
+
+venue: "CSE 490 / 599 G1"
+
+tags:
+  - computer-vision
+  - open-source
+  - vision-language
+
+abstract: |
+  I was head TA and organizer for the Introduction to Deep Learning course at
+  the University of Washington in Fall 2019, teaching the basics of deep
+  learning to more than 160 students.
+
+  I wrote the homeworks, including an assignment in which students implement a
+  neural network library using only Python, NumPy and Numba - no frameworks.
+  We also used Colab notebooks and PyTorch to train real models on GPUs.
+
+  I taught alongside Ali Farhadi, who ran the course, and nine other TAs. The
+  lecture notes below are the ones I used; if you are an instructor and would
+  like to reuse the solutions and tests, get in touch.
+
+notes:
+  - title: "Machine Learning Review"
+    href: "https://drive.google.com/open?id=1WlYMQEkjh6oGeNAUawMo8Ai2L8lraB4HDJgcnIItaHM"
+  - title: "Neural Networks and Optimization"
+    href: "https://drive.google.com/open?id=11LFS9l4gZkg0M8e1O5XqZUfq3_1DR_wtcTLJbSpRlQk"
+  - title: "Neural Networks in Practice"
+    href: "https://drive.google.com/open?id=1OLFSPt2OSFjgHT72LXSgi291mUKFi7ecD8l5J1agcAw"
+  - title: "Convolutional Neural Networks"
+    href: "https://drive.google.com/open?id=1sK26Y68-ROfIxa2ZM2ZC7RhmecF8k2TgjhDX7PckWnU"
+  - title: "Image Classification"
+    href: "https://drive.google.com/open?id=1nBfmHxc5A4oXpzJEzaqkVevd-zisEkPCTe2wqZuAmDU"
+  - title: "Network Architectures"
+    href: "https://drive.google.com/open?id=1YsmebjuD8vfBY9-WtYj8BXcJmcUkAgF64wc84uB4W4c"
+  - title: "Segmentation and Detection"
+    href: "https://drive.google.com/open?id=11Tyoo8ZjJshY5NDgWgL4daaydHCcO8ZudCimAvPIaJE"
+  - title: "Dealing with Sequential Data"
+    href: "https://drive.google.com/open?id=1zlyBQkI91hphhn5zgMgFc_ZrV2zH0_ySwo1h4GAk5t4"
+  - title: "BERT / Transformers"
+    href: "https://drive.google.com/open?id=1C-m0jYyR2KVkUNjJF84_FB0ltAmSmJ2gHBXyBVr4ypU"
+  - title: "Optimizers"
+    href: "https://drive.google.com/open?id=1EuchrJf-b1I2q6NkIQmHAux51VU5qleoBetb-0M4228"
+  - title: "Making Deep Learning Work"
+    href: "https://drive.google.com/open?id=1MDiMVRXDNMxFrjNTu2fdw_Shgfxk9g-uGuFK9SSnUKA"
+  - title: "Deep Reinforcement Learning"
+    href: "https://drive.google.com/open?id=1ivJlH48_tsCjpqSAUdTQZIOUurWRIImKgkVkC--m-oY"
+  - title: "Generative Adversarial Networks"
+    href: "https://drive.google.com/open?id=1tYoIO4kaN1oU0eJvVg1NyQoSqpMWtNtAgnT6E8eN49w"
+
+# Me first: this is the list of TAs I taught with, and I was the head one, so
+# the page should not open with someone else's name.
+collaborators:
+  - "Daniel Gordon"
+  - "Aaron Walsman"
+  - "Jifan Zhang"
+  - "James Park"
+  - "Samuel Gehman"
+  - "Satvik Shukla"
+  - "Samuel Ainsworth"
+  - "Hessam Bagherinezhad"
+  - "Shobhit Hathi"
+  - "Felix Leeb"
+
+links:
+  - label: "Course page"
+    href: "https://courses.cs.washington.edu/courses/cse599g1/19au/"
+    kind: course
+    primary: true
+  - label: "Homework code"
+    href: "https://gitlab.com/danielgordon10/dl-class-2019a"
+    kind: code
+
+media:
+  image: "images/projects/dl-class.jpg"
+  alt: "Slides from the deep learning course"
