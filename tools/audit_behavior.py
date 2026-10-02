@@ -6,7 +6,7 @@ that the video facade does not contact YouTube until it is clicked, and that
 copy buttons put the right text on the clipboard.
 
     (cd dist && python3 -m http.server 8899) &
-    uv run --with playwright python tools/audit_behaviour.py http://localhost:8899
+    uv run --with playwright python tools/audit_behavior.py http://localhost:8899
 """
 
 from __future__ import annotations
@@ -131,7 +131,7 @@ def test_filters(page: Page) -> None:
 
     # Two tags are OR-ed: a card carrying either one is shown. Asserted as a
     # union rather than "every card has both", which is what the old AND check
-    # did and which is exactly the behaviour this replaced.
+    # did and which is exactly the behavior this replaced.
     page.click('[data-tag="robotics"]')
     page.wait_for_timeout(200)
     union = page.eval_on_selector_all(
@@ -234,7 +234,7 @@ def test_favicon_follows_theme(page: Page) -> None:
     page.goto(f"{BASE}/", wait_until="networkidle")
 
     def icon_for(theme: str) -> str:
-        # Clicking the toggle flips whatever is showing, so read it afterwards.
+        # Clicking the toggle flips whatever is showing, so read it afterward.
         before = page.get_attribute("html", "data-theme")
         page.click("[data-theme-toggle]")
         page.wait_for_timeout(150)
@@ -278,7 +278,7 @@ def test_contact_card(page: Page) -> None:
     )
     check("the GitHub handle is rendered whole", full == 1, str(full))
 
-    # The frame, not the photo: the photo is scaled up 1.12 to crop a coloured
+    # The frame, not the photo: the photo is scaled up 1.12 to crop a colored
     # band baked into the source JPEG, so its box is larger than what is visible
     # and sub-pixel rounding makes width != height by a fraction of a pixel.
     photo = page.eval_on_selector(
@@ -371,7 +371,7 @@ def test_structural_css(page: Page) -> None:
         }"""),
     )
     check(
-        "the filter group is labelled Tags, not Topic",
+        "the filter group is labeled Tags, not Topic",
         page.eval_on_selector(".filter-group__label", "e => e.textContent.trim()") == "Tags",
     )
     check(
@@ -398,7 +398,7 @@ def test_structural_css(page: Page) -> None:
         == "none",
     )
     check(
-        "the footer wraps into a centred block",
+        "the footer wraps into a centered block",
         page.eval_on_selector(".site-footer .wrap", "e => getComputedStyle(e).justifyContent")
         == "center",
     )
@@ -466,7 +466,7 @@ def test_work_cards(page: Page) -> None:
             border: cs.borderTopWidth,
             bg: cs.backgroundColor,
             align: cs.alignItems,
-            centredDate: Math.abs(
+            centeredDate: Math.abs(
               (when.top + when.height / 2) - (rr.top + rr.height / 2)) < 2,
             gap: getComputedStyle(row.parentElement).gap,
             thumb: Math.round(row.querySelector('.row__thumb').getBoundingClientRect().width),
@@ -480,9 +480,96 @@ def test_work_cards(page: Page) -> None:
             styles["home"][key] == styles["work"][key],
             f"home={styles['home'][key]!r} work={styles['work'][key]!r}",
         )
-    check("the dates are centred in the cards", styles["home"]["centredDate"])
+    check("the dates are centered in the cards", styles["home"]["centeredDate"])
     check("the thumbnails are large", styles["home"]["thumb"] >= 176, f"{styles['home']['thumb']}px")
     check("the cards have margin around them", styles["home"]["gap"] != "normal")
+
+
+def test_row_text_selectable(page: Page) -> None:
+    """Row and timeline text can be highlighted and copied.
+
+    The whole row is clickable via a stretched overlay on the title anchor. That
+    overlay used to paint *over* the row's content, so a drag landed on an empty
+    absolutely-positioned box and the browser began a click instead of a
+    selection - none of the text could be selected. It is now painted behind the
+    content (`z-index: -1` plus `isolation: isolate` on the row), so text is hit
+    as text and only the background, the gaps and the thumbnail navigate.
+
+    Link text is deliberately not tested: Chrome starts a link-drag instead of a
+    selection when a drag begins on an anchor, on this site and everywhere else,
+    and no CSS changes that. Only non-link text is asserted here.
+    """
+    print("\nrow text selection")
+    for path, selector in (
+        ("/work/", ".row__abstract"),
+        ("/", ".role__detail p"),
+    ):
+        page.goto(f"{BASE}{path}", wait_until="networkidle")
+        # Let the 600ms reveal transition finish, otherwise the element is still
+        # moving and the measured rect is stale by the time the drag runs.
+        page.evaluate("(s) => document.querySelector(s)?.scrollIntoView({ block: 'center' })", selector)
+        page.wait_for_timeout(1000)
+        page.evaluate("() => window.getSelection().removeAllRanges()")
+
+        box = page.evaluate(
+            """(s) => {
+              const el = document.querySelector(s);
+              if (!el) return null;
+              const r = document.createRange();
+              r.selectNodeContents(el);
+              const rects = [...r.getClientRects()].filter((x) => x.height > 0);
+              if (!rects.length) return null;
+              const c = rects[0];
+              return { x1: c.left + 1, y: c.top + c.height / 2, x2: c.right - 1 };
+            }""",
+            selector,
+        )
+        if box is None:
+            check(f"text is selectable ({path} {selector})", False, "element or text rect not found")
+            continue
+
+        page.mouse.move(box["x1"], box["y"])
+        page.mouse.down()
+        for i in range(1, 12):
+            page.mouse.move(box["x1"] + (box["x2"] - box["x1"]) * i / 11, box["y"])
+        page.mouse.up()
+        selected = page.evaluate("() => window.getSelection().toString()")
+        check(
+            f"text is selectable ({path} {selector})",
+            len(selected.strip()) > 3,
+            f"drag selected {selected!r}",
+        )
+
+    # And the click targets the fix had to keep working.
+    page.goto(f"{BASE}/work/", wait_until="networkidle")
+    thumb = page.evaluate(
+        """() => {
+          const t = document.querySelector('.row__thumb').getBoundingClientRect();
+          return { x: t.left + t.width / 2, y: t.top + t.height / 2 };
+        }"""
+    )
+    page.mouse.click(thumb["x"], thumb["y"])
+    page.wait_for_timeout(600)
+    check(
+        "the thumbnail still opens the item",
+        page.url.rstrip("/").endswith("/work/apple"),
+        f"url={page.url}",
+    )
+
+    page.goto(f"{BASE}/work/", wait_until="networkidle")
+    gap = page.evaluate(
+        """() => {
+          const r = document.querySelector('.row').getBoundingClientRect();
+          return { x: r.left + 5, y: r.top + r.height / 2 };
+        }"""
+    )
+    page.mouse.click(gap["x"], gap["y"])
+    page.wait_for_timeout(600)
+    check(
+        "the empty background still opens the item",
+        page.url.rstrip("/").endswith("/work/apple"),
+        f"url={page.url}",
+    )
 
 
 def test_contact_cards_match(page: Page) -> None:
@@ -583,6 +670,7 @@ def main() -> int:
         test_structural_css(page)
         test_home_timeline(page)
         test_work_cards(page)
+        test_row_text_selectable(page)
         test_contact_cards_match(page)
         test_video_facade(page)
         test_copy(page)

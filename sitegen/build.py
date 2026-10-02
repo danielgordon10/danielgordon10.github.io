@@ -275,7 +275,7 @@ class SiteBuilder:
             "about.html",
             Path("about/index.html"),
             active="about",
-            title="About",
+            title="Info",
             description=f"About {self.ctx.person.name}: background and experience.",
             tag_groups=self.ctx.tag_groups,
             page_class="page-about",

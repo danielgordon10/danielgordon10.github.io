@@ -3,8 +3,8 @@ id: iqa
 type: paper
 title: "IQA: Visual Question Answering in Interactive Environments"
 summary: >
-  IQA asks questions that require interacting with a scene first, and the
-  Hierarchical Interactive Memory Network answers them with controllers at
+  IQA asks questions that require both seeing and interacting with a scene. We develop the
+  Hierarchical Interactive Memory Network to answer these questions with controllers at
   multiple levels of abstraction.
 date: 2018-05-01
 

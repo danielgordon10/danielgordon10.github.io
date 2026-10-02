@@ -3,7 +3,7 @@ id: splitnet
 type: paper
 title: "SplitNet: Sim2Sim and Task2Task Transfer for Embodied Visual Navigation"
 summary: >
-  SplitNet decouples perception from policy learning, transferring between simulators and generalising to unseen environments faster than end-to-end baselines.
+  SplitNet decouples perception from policy learning, transferring between simulators and generalizing to unseen environments faster than end-to-end baselines.
 date: 2019-05-01
 
 venue: "International Conference on Computer Vision"

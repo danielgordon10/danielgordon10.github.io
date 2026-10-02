@@ -216,7 +216,7 @@ AUDIT_JS = r"""
     });
   }
 
-  // --- colour contrast -------------------------------------------------
+  // --- color contrast -------------------------------------------------
   // Walk up for the first non-transparent background, resolve alpha properly,
   // and check the ratio. This is the check that matters most for a site with a
   // dark and a light theme, because one theme can pass while the other fails.
@@ -265,7 +265,7 @@ AUDIT_JS = r"""
   };
 
   const seen = new Set();
-  // A gradient or image background cannot be reduced to one colour, so those
+  // A gradient or image background cannot be reduced to one color, so those
   // elements are skipped rather than reported with a made-up ratio. The two
   // places this is used deliberately (the avatar gradient and the image
   // caption scrim) are designed against white text.

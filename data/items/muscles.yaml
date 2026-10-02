@@ -3,7 +3,8 @@ id: muscles
 type: paper
 title: "What Can You Learn from Your Muscles? Learning Visual Representation from Human Interactions"
 summary: >
-  A visual representation learned from unlabeled human interaction video, where camera movement and object deformation come free rather than being imposed.
+  A visual representation learned from unlabeled human interaction video, where gaze and 
+  IMUs provide the labels as opposed to human-made annotations to learn human-centric representations.
 date: 2021-03-01
 
 venue: "International Conference on Learning Representations"
@@ -43,12 +44,12 @@ links:
     href: "https://arxiv.org/abs/2010.08539"
     kind: paper
     primary: true
-  - label: "Code & Data"
-    href: "https://github.com/ehsanik/muscleTorch"
-    kind: code
   - label: "Project page"
     href: "https://prior.allenai.org/projects/learn-representation-from-human"
     kind: project
+  - label: "Code"
+    href: "https://github.com/ehsanik/muscleTorch"
+    kind: code
 
 media:
   video: "https://www.youtube.com/watch?v=89r7NkKvUuA"

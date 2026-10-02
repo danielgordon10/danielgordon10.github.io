@@ -86,7 +86,7 @@
   <div class="role {% if item.is_current %}role--current{% endif %}" data-reveal>
     <div class="role__when">
       {# The dot lives inside the date cell rather than beside it, so it is
-         positioned off the date's own box: centred on the date's line in the
+         positioned off the date's own box: centered on the date's line in the
          two-column desktop layout and in the stacked mobile one alike, with no
          per-breakpoint offsets to keep in sync. Decorative - the date already
          states when. #}
@@ -101,7 +101,12 @@
       <p class="role__title">{{ item.role }}</p>
     </div>
     {% if item.abstract %}
-      <div class="role__detail">{{ item.abstract | md }}</div>
+      {# First paragraph only. The abstract is written for the item page, where
+         there is room for the whole thing; in a timeline the entries are already
+         tall and the later paragraphs are a second and third layer of detail
+         that push the rest of the timeline off the screen. The item page still
+         renders the full abstract - this is the only place it is trimmed. #}
+      <div class="role__detail">{{ item.abstract.split('\n\n')[0].strip() | md }}</div>
     {% endif %}
   </div>
 {% endmacro %}

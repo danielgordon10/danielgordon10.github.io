@@ -117,13 +117,13 @@ uv run site serve &
 #         and WCAG AA text contrast in both light and dark
 uv run --with playwright python tools/audit_layout.py http://localhost:8000
 
-# behaviour: theme persistence, filtering, search, video facade, copy buttons
-uv run --with playwright python tools/audit_behaviour.py http://localhost:8000
+# behavior: theme persistence, filtering, search, video facade, copy buttons
+uv run --with playwright python tools/audit_behavior.py http://localhost:8000
 ```
 
 Both exit non-zero on failure, so they can be wired into a pre-commit hook or CI
 if you want them to run automatically. The contrast check skips elements that sit
-on a gradient or an image, since a ratio cannot be reduced to a single colour
+on a gradient or an image, since a ratio cannot be reduced to a single color
 there.
 
 ## Deployment

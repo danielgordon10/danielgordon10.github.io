@@ -20,9 +20,7 @@
     {%- set mine = person.is_me(clean) -%}
     <span{% if mine %} class="me"{% endif %}>{{ clean }}{% if equal %}<span class="star" title="Equal contribution">*</span>{% endif %}</span>{% if not loop.last %}, {% endif %}
   {%- endfor -%}
-  {%- if limit is not none and names|length > limit -%}
-    +{{ names|length - limit }} more
-  {%- endif -%}
+  {%- if limit is not none and names|length > limit %} + {{ names|length - limit }} more{%- endif -%}
 {%- endmacro %}
 
 {# A tag chip. On the work index these become filter buttons, elsewhere they

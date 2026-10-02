@@ -3,7 +3,7 @@ id: hiprl
 type: paper
 title: "What Should I Do Now? Marrying Reinforcement Learning and Symbolic Planning"
 summary: >
-  HIP-RL merges symbolic planning with deep reinforcement learning, reaching state-of-the-art results on three datasets with fewer test-time steps.
+  HIP-RL merges hierarchical symbolic planning with deep reinforcement learning, reaching state-of-the-art results on three datasets with fewer test-time steps.
 date: 2018-12-01
 
 venue: "arXiv"

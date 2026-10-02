@@ -3,7 +3,9 @@ id: vince
 type: paper
 title: "Watching the World Go By: Representation Learning from Unlabeled Videos"
 summary: >
-  Unlabeled video is a free source of augmentation, and Video Noise Contrastive Estimation learns image representations from it that beat supervised ImageNet pretraining.
+  Videos provide a free source of semantically meaningful temporal labels, and Video Noise Contrastive Estimation 
+  uses that signal to learn robust image representations that outperform supervised ImageNet 
+  pretraining with similar dataset sizes.
 date: 2020-03-17
 
 venue: "arXiv"
@@ -57,7 +59,7 @@ links:
 
 media:
   image: "images/projects/vince.jpg"
-  alt: "Video frames sampled as augmentations for contrastive representation learning"
+  alt: "Video frames provide semantically meaningful temporal labels for contrastive representation learning"
 
 semantic_scholar: 98b6ee83697d1e722ec60d693f1c8b33b6f566fa
 bibtex: |

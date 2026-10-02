@@ -11,51 +11,50 @@ team: "Maps 3D Vision"
 
 # Short paragraph: the top of the home page and the opening of /about/.
 intro: >-
-  I'm a machine learning researcher and engineer working on perception for
-  robotics and mapping. Right now I'm at **[Apple](/work/apple/)**, on the team
-  that turns street-level imagery into detailed 3D maps. Before that I built
+  I'm a machine learning researcher and engineer working on interesting problems that 
+  need real-world solutions. Right now I'm at [Apple](/work/apple/), producing 
+  the most visually accurate and detailed maps in the world. Before that I built
   the vision stack for autonomous forklifts at
-  **[Third Wave Automation](/work/thirdwave/)**, and before that
-  I did my Ph.D. in computer vision and machine learning at the **University
-  of Washington**, working on reinforcement learning, embodied agents and
-  representation learning.
+  [Third Wave Automation](/work/thirdwave/). During my Ph.D. I studied 
+  computer vision and machine learning at the **University
+  of Washington**, working on embodied agents, representation learning, and anything 
+  else I found interesting.
 
 # Long-form bio, only used on /about/. Write in Markdown. The list of roles
 # below this is generated automatically from the `position` items in
 # data/items/, so you never repeat a job description in two places.
 about:
   - >-
-    I currently work at **Apple** as a Senior Machine Learning Engineer on the
-    Maps 3D Vision team. The work sits on the Detailed City Experience: taking
-    high resolution street-level imagery and turning it into 3D road geometry,
-    lane markings, crosswalks, bike lanes and painted areas, plus trees and
-    buildings. Much of my time goes into segmentation, detection and diffusion
-    models that have to run over imagery at world scale, and into end-to-end
-    models that predict vectorised 3D maps straight from pixels.
+    I currently work at [Apple](/work/apple/) as a Senior Machine Learning Engineer on the
+    Maps 3D Vision team. We make the visually stunning maps for the Detailed City 
+    Experience product available in over 40 cities around the world. We develop 
+    algorithms to go from pixels to beautiful and centimeter accurte 3D map data at city, 
+    and even country scale for roads, buildings, trees, lane markings, crosswalks, and 
+    much more.
   - >-
-    Before that I spent four years at **Third Wave Automation** on autonomous
-    forklifts. I led perception and pallet manipulation - detecting pallets and
-    payloads, estimating their poses, scanning barcodes, and handling the
-    forklift's internal state machine and its interface to the warehouse
-    management system. It is a good reminder that production vision is mostly
-    about the last few percent of awkward lighting, a bent pallet and a
-    reflective wrapper.
+    Before that I spent four years at [Third Wave Automation](/work/thirdwave/) on autonomous
+    forklifts. As head of Perception and Manipulation, I led the development of a 
+    real-time vision stack for object detection, pose estimation, planning, and 
+    manipulation. If you thought autonomous driving was hard, try having the vehicle 
+    pick up something half its size weighing 3000 pounds, lift it 30 feet into the air, 
+    then place it with centimeter tolerances.
   - >-
-    My Ph.D. at the **University of Washington**, advised by Dieter Fox and Ali
-    Farhadi, was about teaching machines to see and act in interactive visual
-    environments. That covered visual semantic planning, hierarchical
-    reinforcement learning, interactive question answering, and learning
-    representations from unlabeled video. I was part of the
-    [RAIVN Lab](https://raivn.cs.washington.edu/) and the
-    [RSE Lab](https://rse-lab.cs.washington.edu/). I also spent research
-    internships at **Facebook AI Research** and the **Allen Institute for AI**,
-    and two summers building things for Google Maps.
+    At the **University of Washington**, I was part of Dieter Fox's [RSE Lab](https://rse-lab.cs.washington.edu/)
+    and Ali Farhadi's [RAIVN Lab](https://raivn.cs.washington.edu/).
+    I researched teaching machines to see and act in interactive visual
+    environments. I also had research internships at **Facebook AI Research** with 
+    Dhruv Batra on [Habitat](https://aihabitat.org/) and **The Allen Institute for AI** 
+    with Roozbeh Mottaghi and Ani Kembhavi on [Prior](https://prior.allenai.org/).
   - >-
     A thread running through all of it is interest in
     **representation learning** - what makes features that generalize. Whether
-    that is video as a source of natural augmentation, a factored perception
-    and control model that transfers between simulators, or a recurrent tracker
-    that updates itself online, the question is the same.
+    that is video as a source of temporal unsupervised labeling, a factored perception
+    and control model, or a recurrent tracking memory that updates itself online, I'm 
+    always thinking how data can be processed efficiently into meaningful 
+    higher-dimensional spaces.
+  - >-
+    In my spare time, I enjoy whittling little animal figurines, getting lost in nature, 
+    playing piano, and petting cats.
 
 photo: "images/profile_old_512.jpg"
 # The 512 file is what a phone-sized card needs; the hero and the about sidebar

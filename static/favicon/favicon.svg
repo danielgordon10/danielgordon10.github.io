@@ -7,7 +7,7 @@
 
     The gradient endpoints are the CSS 145deg angle expressed in user units.
     A CSS angle A points along (sin A, -cos A); for 145deg that is
-    (0.5736, 0.8192), projected through the centre of the tile.
+    (0.5736, 0.8192), projected through the center of the tile.
 
     The initials sit at 15px rather than the header's 13px so the wordmark
     survives being drawn 16px wide in a tab strip.

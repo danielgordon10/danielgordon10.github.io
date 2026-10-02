@@ -3,7 +3,7 @@ id: thesis
 type: paper
 title: "Learning by Watching and Learning by Doing"
 summary: >
-  My PhD thesis, on learning representations from unlabeled video and transferring them to embodied tasks.
+  My PhD thesis, on learning visual representations from videos and embodied agents.
 date: 2020-08-14
 
 venue: "Ph.D. Thesis, University of Washington"
@@ -38,7 +38,7 @@ links:
 
 media:
   image: "images/projects/thesis.jpg"
-  alt: "Figure from the thesis, showing a model learning by watching video and by acting in an environment"
+  alt: "Unsupervised embedding just from temporal alignment results in semantic features"
 
 semantic_scholar: c7529d985f272227f8f7435b9afa0f5813dd5701
 

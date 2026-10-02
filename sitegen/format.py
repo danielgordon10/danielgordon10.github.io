@@ -28,7 +28,7 @@ def date_range(start: dt.date, end: dt.date | None, current: bool = False) -> st
     ``current`` has to be passed explicitly rather than inferred from ``end``
     being ``None``. Most items have no end date because they are finished -
     a paper from 2020 is not "ongoing" - so treating a missing end as "Present"
-    labelled every publication on the site with a range that never ends. Only a
+    labeled every publication on the site with a range that never ends. Only a
     current role gets that treatment.
     """
     if current:

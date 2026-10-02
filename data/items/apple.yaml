@@ -4,28 +4,29 @@ id: apple
 type: position
 title: "Apple Maps 3DV"
 summary: >
-  I build the models behind Apple's Detailed City Experience: segmentation, detection and diffusion over street imagery, and pixel-to-vectorised-3D-map models.
+  I build the models behind Apple's Detailed City Experience: segmentation, detection and diffusion over street imagery, and pixel-to-vectorized-3D-map models.
 org: "Apple"
 role: "Senior Machine Learning Engineer"
 date: 2024-04-01
 # no `end` - this is the current role
 
-venue: "Maps - Detailed City Experience"
+venue: "3D Vision"
 
 tags:
   - computer-vision
   - vision-language
+  - roles
 
 abstract: |
   I work on the **Detailed City Experience**, which upgrades the maps from a flat
   low-detail view to an immersive, highly detailed one. Using high resolution
   imagery we extract 3D road shape and features like lane markings, crosswalks
-  and medians, and even painted color areas like bike lanes. Alongside that we
-  build tree and building data for a rich 3D experience.
+  and medians, and even painted color areas like bike lanes all at centimeter accuracy. 
+  Alongside that we build tree and building data for a rich 3D experience.
 
   My focus is the models that make this work at world scale: segmentation,
-  detection and diffusion models run over street-level imagery, and end-to-end
-  models that predict vectorised 3D maps straight from pixels.
+  detection, diffusion, and VLM models running on multiple sources of imagery and geometric 
+  data, producing end-to-end vectorized 3D maps.
 
 links:
   - label: "Try Detailed City Experience"

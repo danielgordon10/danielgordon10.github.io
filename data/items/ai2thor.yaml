@@ -3,7 +3,8 @@ id: ai2thor
 type: dataset
 title: "AI2-THOR: An Interactive 3D Environment for Visual AI"
 summary: >
-  AI2-THOR is a framework of near photo-realistic 3D indoor scenes where agents navigate and interact, spanning RL, planning, question answering and detection.
+  AI2-THOR is a framework of procedurally generated synthetic 3D indoor scenes where 
+  agents navigate and interact, spanning RL, planning, question answering and detection.
 date: 2017-12-14
 
 venue: "Allen Institute for Artificial Intelligence Technical Report"

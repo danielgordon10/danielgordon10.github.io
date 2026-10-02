@@ -3,9 +3,9 @@ id: thirdwave
 type: position
 title: "Third Wave Automation"
 summary: >
-  I led Perception and Pallet Manipulation on an autonomous forklift, from pallet detection and pose estimation to barcode scanning and the vehicle's state machine.
+  I led Perception and Manipulation on Third Wave's autonomous forklift platform, from pallet detection and pose estimation to barcode scanning and the vehicle's state machine.
 org: "Third Wave Automation"
-role: "Team Lead, Perception and Pallet Manipulation"
+role: "Head of Perception and Manipulation"
 date: 2020-06-01
 end: 2024-03-01
 
@@ -13,25 +13,22 @@ venue: "Autonomous forklifts"
 
 tags:
   - computer-vision
-  - embodied-ai
   - planning
   - robotics
+  - roles
 
 abstract: |
-  An autonomous forklift - a self-driving material handling vehicle - navigates
-  and operates without a human driver, using cameras, other sensors and
-  software to load and unload goods in and out of racking.
-
-  I led the **Perception and Pallet Manipulation** team, which covered everything
-  from detecting pallets and payloads and estimating their poses, through
-  barcode scanning, to the forklift's internal state machine and its interface
-  with the warehouse management system. Over my four years the scope grew from
-  individual perception contributions, to tech lead for the core perception
-  product, to managing a team of five.
+  I led the **Perception and Manipulation** team, which covered everything
+  from detecting pallets and payloads and estimating their sizes, weights, and poses, 
+  autonomously scanning barcodes, critical safety features, and even managing the 
+  forklift's internal state machine and its interface with the warehouse management system.
+  Over my four years the scope grew from individual perception contributions, to tech 
+  lead for the core perception product, to managing a team of five engineers.
 
   The work mixed learned approaches with classical vision and robotics
   algorithms, and the goal was always the same: a best-in-class system that
-  operates for real in difficult warehouses, at close to human reliability.
+  operates in production warehouses safely among other humans and forklifts, 
+  all at human quality.
 
 links:
   - label: "Company"

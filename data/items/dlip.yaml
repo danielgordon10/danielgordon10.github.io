@@ -1,6 +1,6 @@
 # The deep learning in practice seminar I ran at UW.
 id: dlip
-type: talk
+type: course 
 title: "Deep Learning in Practice"
 summary: >
   A seminar on applying modern deep learning to real research problems, including the unglamorous parts that decide whether a model ships.
@@ -9,6 +9,13 @@ role: "Organizer and Speaker"
 date: 2017-06-01
 
 venue: "Graduate seminar series"
+
+tags:
+  - computer-vision
+  - vision-language
+  - representation-learning
+  - reinforcement-learning
+  - roles
 
 authors:
   - Daniel Gordon

@@ -3,7 +3,7 @@
    Hand-written CSS. No framework, no build step beyond copying this file.
 
    Theme switching works by setting data-theme on <html> from a tiny inline
-   script in <head>, so there is never a flash of the wrong theme. Every colour
+   script in <head>, so there is never a flash of the wrong theme. Every color
    below is a custom property; the dark and light palettes define the same set
    of names, which is what makes the toggle a one-line change.
    ========================================================================== */
@@ -74,7 +74,7 @@
   --shadow-2: 0 18px 40px -22px #000000cc;
   --shadow-3: 0 40px 80px -40px #000000e6;
   /* The tint exists to keep the intro text legible over the photo, not to
-     grey the photo out. It was at 90% by 62% of the hero's height, which
+     gray the photo out. It was at 90% by 62% of the hero's height, which
      buried the image; it now ramps in later and tops out much lower. */
   --hero-tint: linear-gradient(180deg, #0a0c1200 0%, #0a0c1299 46%, #0a0c1266 78%, var(--bg) 100%);
   --scrim: #0a0c12cc;
@@ -94,7 +94,7 @@
 
   --text: #131722;
   --text-2: #4a5162;
-  /* 4.7:1 on the lightest surface. The muted greys carry a lot of small text
+  /* 4.7:1 on the lightest surface. The muted grays carry a lot of small text
      - eyebrows, card authors, captions, footer - so this cannot go any lighter
      without dropping below the 4.5:1 minimum. */
   --text-3: #666e80;
@@ -269,7 +269,16 @@ section + section {
    outgoing one is still on its way out. */
 #selected {
   padding-top: 10px;
-  padding-bottom: 0;
+  /* 16px, not 0. The last featured row was losing its bottom border: `.rows`
+     has an 8px bottom margin, and the Experience section's sticky head has a
+     -11.2px margin-top that lets it reach the header bar. Because this section
+     had zero bottom padding, those two collapsed together to -3.2px, pulling
+     `#experience` up so it covered the last 3px of the final row - its border
+     included. A non-zero padding stops the collapse, which leaves a net
+     16 + 8 - 11.2 = ~13px between the row and the next section.
+     Kept small on purpose: the reason the 112px of padding was removed in the
+     first place is the sticky handover, and 16px barely registers against that. */
+  padding-bottom: 16px;
 }
 
 .section-head {
@@ -299,7 +308,7 @@ section + section {
      the same material - and that is exactly what made them look wrong together.
      Blurred and adjacent, the header and the head met in a visible line, which
      read as a seam between them. The head now paints `var(--bg)` flat, the same
-     colour as the page behind it, so the only edge at the boundary is the
+     color as the page behind it, so the only edge at the boundary is the
      header's own hairline. Opaque also means no reliance on JS: with no
      backdrop-filter there is nothing for a no-JS visit to lose, where the glass
      version needed a fallback fill on the ramp's ceiling just to stay legible
@@ -483,7 +492,7 @@ section + section {
 
    The fill now does all the separating. At scrollY > 0 the bar is fully opaque
    `var(--bg)`, and everything it can sit over - the hero, the section heads, the
-   /work/ filter bar - is that same colour, so there is nothing for a rule to be
+   /work/ filter bar - is that same color, so there is nothing for a rule to be
    telling the eye. Keeping the border property around would only leave a
    transparent one that paints nothing. */
 
@@ -500,12 +509,12 @@ section + section {
 
 .brand {
   display: inline-flex;
-  /* center, so the mark and the name sit at the same vertical centre at any
+  /* center, so the mark and the name sit at the same vertical center at any
      size. Baseline used to tie the two together and it worked only because the
-     30px mark and the 17px name happened to land centre-on-centre. Growing the
+     30px mark and the 17px name happened to land center-on-center. Growing the
      mark to 34px to match the icon buttons breaks that coincidence - under
      baseline alignment the mark is hung off the name's baseline, so a taller
-     square pushes its own centre up and the name ends up sitting low inside it.
+     square pushes its own center up and the name ends up sitting low inside it.
      The mark opts out of the baseline below, so this change does not disturb the
      name's baseline relationship with the nav links - see the comments there. */
   align-items: center;
@@ -531,9 +540,9 @@ section + section {
 
      And it has to clear the nav links' 36px boxes to land exactly. The header
      `.wrap` is baseline-aligned, so the line box is as tall as its tallest
-     item: at 34px the nav links still set the height and the buttons centring
+     item: at 34px the nav links still set the height and the buttons centering
      in that box left the mark 0.6px high. At 38px the mark is the tallest item,
-     so everything - mark, name, both buttons - centres on one line. */
+     so everything - mark, name, both buttons - centers on one line. */
   width: 38px;
   height: 38px;
   /* Opts out of the brand's baseline calculation (see .brand above), so the
@@ -563,7 +572,7 @@ section + section {
      brand's baseline up with it and left the nav 1.2px high of the name - a
      regression against the value this site tuned to (+1.00px). Shifting the nav
      down by the same amount restores it exactly and leaves the mark and name
-     perfectly centred, which are the two things that matter more. */
+     perfectly centered, which are the two things that matter more. */
   position: relative;
   top: 1.2px;
 }
@@ -625,7 +634,7 @@ section + section {
   /* Opt out of the header's baseline alignment. The bar now aligns items by
      their first baseline; a fixed-size square button has no text baseline, so
      Chrome would align it by its bottom margin edge and drop the icon below the
-     words. Re-centring it against the tallest text in the row is correct here. */
+     words. Re-centering it against the tallest text in the row is correct here. */
   align-self: center;
   border: 1px solid var(--line);
   border-radius: 10px;
@@ -668,7 +677,7 @@ section + section {
   /* Pulled up under the sticky header so the background image runs behind the
      bar instead of starting at a hard line beneath it. Without this the hero's
      box began below the header, leaving the top 62px showing bare --bg - which
-     is what made the glass bar read as a solid slab over a different colour. The
+     is what made the glass bar read as a solid slab over a different color. The
      padding adds the same height back, so the name, intro and contact card sit
      exactly where they did before. */
   margin-top: calc(-1 * var(--header-h));
@@ -867,6 +876,14 @@ section + section {
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
+  /* Rows need more air than columns. Only this list wraps: the gap between the
+     "Tags" heading and the first row is the panel title's 0.9rem margin (15.6px
+     measured), but when the chips wrap - which is what a squeezed item page
+     does - the 0.4rem row gap left them crowded, the pill borders nearly
+     touching. 0.75rem puts a real gap between rows without loosening the
+     label-to-chips relationship any further. Card chips keep the tighter
+     `.chips--tight` gap, which is declared after this and resets row-gap. */
+  row-gap: 0.75rem;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -940,7 +957,7 @@ section + section {
    that should be scannable down one column, and the featured set is four items,
    which in a three-column grid left the last one stranded on its own row.
 
-   thumb | title + detail | date. The date is pinned right and centred against
+   thumb | title + detail | date. The date is pinned right and centered against
    the entry so the eye can run down one edge and read the chronology. */
 /* The results list sits under the sticky filter bar, which is already the
    boundary above it. The generic `section` padding was adding a further 7rem
@@ -961,6 +978,12 @@ section + section {
 
 .row {
   position: relative;
+  /* Contains the stretched title overlay's negative z-index. Without a stacking
+     context here, `z-index: -1` on that overlay resolves against the root and
+     puts it behind this card's own background, where it stops being clickable
+     and stops being visible. `isolation` is the cheapest way to establish one -
+     it creates the context without changing layout or paint order of siblings. */
+  isolation: isolate;
   display: grid;
   /* Twice the old clamp (88/124px): the thumbnail was reading as a
      postage stamp next to the title rather than as the work itself. */
@@ -971,7 +994,7 @@ section + section {
      ones. The 8rem floor keeps a lone "Mar 2020" from collapsing the column. */
   grid-template-columns: clamp(224px, 24vw, 360px) minmax(0, 1fr) minmax(8rem, max-content);
   gap: clamp(1rem, 0.5rem + 2vw, 2rem);
-  /* stretch, not center: the date is one line either way, and centring the
+  /* stretch, not center: the date is one line either way, and centering the
      content cell left the thumbnail stranded at the top of a taller row. */
   align-items: stretch;
   padding: 1.15rem 1.25rem;
@@ -999,10 +1022,28 @@ section + section {
   position: absolute;
   inset: 0;
   border-radius: inherit;
+  /* Behind the row's own content, not over it. The overlay exists so the empty
+     parts of the card are clickable, but painted on top it also covered every
+     word in the row - and a drag that starts on an empty absolutely-positioned
+     box begins a click, not a selection, so none of the text could be
+     highlighted or copied.
+     `z-index: -1` puts it above `.row`'s background and below all of its
+     content, which is exactly the split wanted: the background, the thumbnail
+     and the gaps around the text navigate; the text itself is hit as text.
+     The title is a real anchor, so it stays clickable as well.
+     Needs `.row { isolation: isolate }` above - a negative z-index escapes to
+     the nearest ancestor stacking context otherwise, which here is the root, so
+     it would land behind `.row`'s own background and become invisible. */
+  z-index: -1;
 }
 
 .row__thumb {
   position: relative;
+  /* The thumbnail is content, so it paints above the stretched title overlay -
+     which means it also swallows clicks on the image, the one part of a row that
+     most obviously should open the item. Nothing inside is interactive, so the
+     pointer is let through to the overlay underneath. */
+  pointer-events: none;
   /* Landscape, but never taller than its cell. Stretching alone let a row full
      of chips drive the image to 433px tall on a 390px screen - a portrait-shaped
      column rather than a thumbnail. 4:3 is the widest of the two box ratios that
@@ -1085,8 +1126,11 @@ section + section {
   margin-top: 0.6rem;
 }
 
-/* The stretched title anchor covers the whole card, so the chips have to be
-   lifted above it to stay independently clickable. */
+/* The stretched title anchor spans the whole card, so the chips are lifted above
+   it to stay independently clickable. Now that it is painted behind the row's
+   content rather than over it, they would win the hit test anyway - kept
+   explicit so that adding anything above them later cannot quietly put a chip
+   under a dead overlay. */
 .row__main .chips a {
   position: relative;
   z-index: 2;
@@ -1101,7 +1145,7 @@ section + section {
   /* Inset from the card's right edge so the date does not sit flush against
      the border, where it read as a printer's mark. */
   padding-right: 1.5rem;
-  /* One line of text, centred on the row. The row stretches its cells so the
+  /* One line of text, centered on the row. The row stretches its cells so the
      thumbnail can fill them, which would otherwise pin the date to the top. */
   align-self: center;
 }
@@ -1135,7 +1179,7 @@ section + section {
     row-gap: 0.15rem;
     padding: 0.95rem 1rem 1.1rem;
   }
-  .row__thumb {
+.row__thumb {
     /* 16:9 rather than the desktop's 4:3. Full width, a 4:3 box came out 268px
        tall on a 390px screen and pushed the title below the fold; 16:9 keeps it
        to about 200px and still reads as a wide shot of the project. */
@@ -1414,7 +1458,7 @@ section + section {
 }
 
 /* Your own name in an author list is the one name worth finding, so it is
-   weight rather than colour alone - on a row the author line is already
+   weight rather than color alone - on a row the author line is already
    secondary text and a shade shift alone disappears. */
 .card__authors .me,
 .row__sub .me {
@@ -1458,6 +1502,9 @@ section + section {
 
 .role {
   position: relative;
+  /* As on `.row` - keeps the org link's stretched overlay behind this entry's
+     text so it can be selected. */
+  isolation: isolate;
   display: grid;
   grid-template-columns: 8.5rem minmax(0, 1fr);
   gap: 0.35rem 1.5rem;
@@ -1482,7 +1529,7 @@ section + section {
 /* --- roles on a timeline: home page "Where I've worked" ----------------- */
 
 /* A spine down a left gutter with a dot per entry. Both the dot and the date
-   are centred in the row rather than sitting at its top edge: the date is what
+   are centered in the row rather than sitting at its top edge: the date is what
    the dot marks, so the two have to be level with each other, and a date
    floating in the middle of a three-line entry looks accidental. */
 .roles--timeline {
@@ -1526,6 +1573,10 @@ section + section {
   position: absolute;
   inset: 0;
   border-radius: 6px;
+  /* Same treatment as the work row's overlay, for the same reason - see
+     `.row__title a::after`. Without it none of the text in a timeline entry can
+     be selected. */
+  z-index: -1;
 }
 
 .role:hover .role__org a {
@@ -1541,7 +1592,7 @@ section + section {
 }
 
 /* A degree sits on the same spine, but there is nothing to click into, so its
-   dot is a ring in the same grey as the roles rather than the accent-coloured
+   dot is a ring in the same gray as the roles rather than the accent-colored
    one that means "this leads somewhere". */
 .role__node--degree {
   border-color: var(--line-strong, var(--line));
@@ -1564,7 +1615,7 @@ section + section {
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  /* Hollow, and the same on every entry. A --bg centre inside an --accent ring
+  /* Hollow, and the same on every entry. A --bg center inside an --accent ring
      reads as a dot on the spine; filling the current role's dot instead made
      the two markers look like different kinds of thing. That role already
      carries a "Current" badge, so the dot has nothing left to disambiguate. */
@@ -1735,18 +1786,10 @@ section + section {
   object-fit: cover;
 }
 
-.media--contain .media__frame img {
-  object-fit: contain;
-  background: var(--surface-2);
-}
-
-.media figcaption {
-  padding: 0.7rem 1rem;
-  border-top: 1px solid var(--line);
-  background: var(--surface-2);
-  color: var(--text-3);
-  font-size: 0.82rem;
-}
+/* Image-only items render in `.panel--media` in the sidebar, so nothing uses
+   `.media--contain` or a `.media` caption any more. Both existed only to
+   letterbox a non-16:9 image into the video's frame and to draw a rule above
+   the caption. Videos keep `.media__frame` at its own true 16:9. */
 
 /* lazy facade: the YouTube iframe is only inserted once the poster is clicked,
    so no third-party cookies or requests happen until then */
@@ -1758,7 +1801,7 @@ section + section {
   border: 0;
   padding: 0;
   /* Fallback artwork for any video with no vendored still: abstract shapes
-     rather than a grey box. When static/images/video/<id>.jpg exists the
+     rather than a gray box. When static/images/video/<id>.jpg exists the
      template sets background-image inline to use the real frame instead. */
   background:
     radial-gradient(120% 110% at 28% 18%, #6366f160 0%, transparent 58%),
@@ -1912,6 +1955,52 @@ section + section {
   .aside {
     position: static;
   }
+}
+
+/* On an item page the sidebar is a set of panels hanging off the bottom of the
+   header, and the header ends with the row of buttons (Paper / Code / Semantic
+   Scholar). The aside had no top margin, so the first panel's top border landed
+   on exactly the same line as the bottom of that button row - on a wide screen
+   the Semantic Scholar button ended level with the Tags panel and the two looked
+   joined. The offset matches `.prose.mt-lg`, which is what the article column
+   uses, so the sidebar's first panel now starts level with the abstract's first
+   line instead of floating above it. Scoped to `.item-layout`: on /about/ the
+   contact card and the bio are meant to start together. */
+@media (min-width: 861px) {
+  .item-layout > .aside {
+    margin-top: clamp(2rem, 1.5rem + 2vw, 3.5rem);
+  }
+}
+
+/* An image-only item's figure, in its own panel above the tags. Modelled on
+   `.contact-card`: the panel's own padding is what insets the picture, so the
+   rounded corners have card surface to sit against rather than being clipped by
+   the panel's own edge. */
+.panel--media {
+  padding: var(--pad);
+}
+
+.panel__media-frame {
+  border-radius: calc(var(--radius) - 4px);
+  overflow: hidden;
+  background: var(--surface-2);
+}
+
+.panel__media-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: inherit;
+}
+
+/* Space above the caption instead of a 1px rule under the image. The rule ran
+   the full width of the panel and read as a border splitting the card in two,
+   where the gap reads as "this line explains the picture above it". */
+.panel__media-cap {
+  margin: 0.7rem 0 0;
+  color: var(--text-3);
+  font-size: 0.82rem;
+  line-height: 1.5;
 }
 
 .panel {
@@ -2210,7 +2299,7 @@ section + section {
   }
 }
 
-/* The source JPEG has a coloured band baked into its outer ~6%: the edge
+/* The source JPEG has a colored band baked into its outer ~6%: the edge
    pixels average (88,136,130), a teal, against a neutral (85,85,83)
    interior. It settles to neutral around 24-30px into the 512px file. Left
    alone, that band sits under the rounded corners and reads as a hard frame
@@ -2536,7 +2625,7 @@ a.badge--type:hover {
   text-decoration: none;
 }
 
-/* A course's lecture notes: thirteen destinations of equal weight, so a list
+/* A course's slides: thirteen destinations of equal weight, so a list
    with rules between them rather than another row of buttons. */
 /* A block grouping inside the item body: the abstract, then a media figure,
    then whatever else an item carries. Enough to separate two blocks, not the
@@ -2560,7 +2649,11 @@ a.badge--type:hover {
   display: flex;
   align-items: baseline;
   gap: 0.5rem;
-  padding: 0.6rem 0.15rem;
+  /* 0.15rem inset the text and the arrow both sat almost on the row edges: the
+     title hard against the rule above it and the arrow hard against the page
+     margin, which made the row read as two loose ends rather than one link.
+     0.75rem matches the inset other rows in this page already use. */
+  padding: 0.6rem 0.75rem;
   color: var(--text);
   text-decoration: none;
 }

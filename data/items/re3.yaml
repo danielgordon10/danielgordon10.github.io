@@ -3,7 +3,8 @@ id: re3
 type: paper
 title: "Re3: Real-Time Recurrent Regression Networks for Visual Tracking of Generic Objects"
 summary: >
-  A real-time deep tracker that pretrains on many objects and updates its appearance model on the fly in one forward pass, tracking at 150 FPS.
+  We develop a real-time generic deep object tracker that uses an LSTM to update its 
+  appearance model on the fly in one forward pass, tracking at 150 FPS.
 date: 2018-05-01
 
 venue: "IEEE Robotics and Automation Letters"

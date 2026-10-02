@@ -3,7 +3,7 @@ id: collaborative
 type: paper
 title: "Collaborative Imaging of Urban Forest Dynamics: Augmenting Rephotography to Visualize Changes over Time"
 summary: >
-  Augmented rephotography combined with LiDAR monitors the urban tree canopy, a community-based way to measure and visualise ecological change over time.
+  Augmented rephotography combined with LiDAR monitors the urban tree canopy, a community-based way to measure and visualize ecological change over time.
 date: 2013-02-01
 
 venue: "IS&T/SPIE Electronic Imaging"
@@ -50,7 +50,7 @@ links:
 
 media:
   image: "images/projects/collaborative-imaging.png"
-  alt: "Rephotographs of urban trees aligned against LiDAR data to show canopy change"
+  alt: "Rephotography of urban trees aligned against LiDAR data to show canopy change"
 
 semantic_scholar: 2ddd902e3d3f7d90901929788ceffc0d91715b56
 bibtex: |

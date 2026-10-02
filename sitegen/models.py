@@ -71,6 +71,10 @@ TYPE_META: dict[ItemType, TypeMeta] = {
 
 PUBLICATION_TYPES = {ItemType.PAPER, ItemType.DATASET}
 
+# Types whose badge names a job rather than an artifact: a position, or a course
+# taught. Both carry the `roles` tag, so both badges select the roles view.
+ROLE_TYPES = {ItemType.POSITION, ItemType.COURSE}
+
 
 class LinkKind(StrEnum):
     """Picks the button icon. Every link declares one.
@@ -89,10 +93,10 @@ class LinkKind(StrEnum):
 
 
 class Note(Strict):
-    """One labelled external resource rendered as a list row.
+    """One labeled external resource rendered as a list row.
 
     `links` are the big buttons under a title - Paper, Code, Demo - and a page
-    with thirteen of them stops being a page. A course's lecture notes are the
+    with thirteen of them stops being a page. A course's slides are the
     opposite case: many small, same-weight destinations that belong in a list.
     """
 
@@ -344,9 +348,17 @@ class Item(Strict):
         'Course' or 'Talk'. Papers all carry the `paper` tag, so that one links
         to a real filtered view and the rest fall back to the plain index rather
         than to a filter that does not exist.
+
+        'Role' works the same way, and so does 'Course': every position and every
+        course taught carries the `roles` tag, so both badges select the roles
+        view instead of dumping the visitor on all 18 items. Keyed off the type
+        as well as the tag so a type that does not name a job can never land on
+        that filter by accident.
         """
         if "paper" in self.tags:
             return "/work/?tags=paper"
+        if self.type in ROLE_TYPES and "roles" in self.tags:
+            return "/work/?tags=roles"
         return "/work/"
 
     @property

@@ -3,7 +3,7 @@ id: dlclass
 type: course
 title: "Introduction to Deep Learning"
 summary: >
-  I was head TA and organizer for the University of Washington's Introduction to Deep Learning course, including a from-scratch neural network library in NumPy.
+  I was head TA for the University of Washington's Introduction to Deep Learning course, creating homeworks in a from-scratch Pytorch-autograd-style neural network library pure Python, NumPy, and Numba.
 org: "University of Washington"
 role: "Head TA and Organizer"
 date: 2019-09-01
@@ -15,19 +15,20 @@ tags:
   - computer-vision
   - open-source
   - vision-language
+  - roles
 
 abstract: |
   I was head TA and organizer for the Introduction to Deep Learning course at
   the University of Washington in Fall 2019, teaching the basics of deep
   learning to more than 160 students.
 
-  I wrote the homeworks, including an assignment in which students implement a
-  neural network library using only Python, NumPy and Numba - no frameworks.
+  I wrote the homeworks, including an assignment in which students implement
+  layers in a neural network library I created using only Python, NumPy and Numba.
   We also used Colab notebooks and PyTorch to train real models on GPUs.
 
   I taught alongside Ali Farhadi, who ran the course, and nine other TAs. The
-  lecture notes below are the ones I used; if you are an instructor and would
-  like to reuse the solutions and tests, get in touch.
+  slides below are the ones used in the course. If you are an instructor and would
+  like to reuse the course materials, get in touch.
 
 notes:
   - title: "Machine Learning Review"
@@ -87,4 +88,4 @@ links:
 
 media:
   image: "images/projects/dl-class.jpg"
-  alt: "Slides from the deep learning course"
+  alt: "Deep Learning. Is it magic or is it math?"

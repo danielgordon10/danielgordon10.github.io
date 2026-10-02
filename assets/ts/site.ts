@@ -1,5 +1,5 @@
 /**
- * Client-side behaviour for the site.
+ * Client-side behavior for the site.
  *
  * Everything here is progressive enhancement: the HTML that arrives from the
  * generator is already complete and readable. This file only adds the things
@@ -108,8 +108,8 @@ function initHeader(): void {
 
     const paint = (): void => {
       queued = false;
-      const travelled = Math.min(Math.max(window.scrollY, 0), RANGE);
-      const t = travelled / RANGE;
+      const traveled = Math.min(Math.max(window.scrollY, 0), RANGE);
+      const t = traveled / RANGE;
       /* Written to :root, where the .site-header rules read them.
          The sticky section heads used to read these three too, which is how they
          ended up sharing the header's glass; they are opaque now and take
@@ -169,7 +169,7 @@ function initHeader(): void {
 
 /* --------------------------------------------------------------- filtering -- */
 
-const normalise = (value: string): string =>
+const normalize = (value: string): string =>
   value
     .toLowerCase()
     .normalize("NFD")
@@ -239,7 +239,7 @@ class WorkFilter {
   }
 
   private toggleTag(tag: string): void {
-    const key = normalise(tag);
+    const key = normalize(tag);
     if (!key) return;
     if (this.activeTags.has(key)) {
       this.activeTags.delete(key);
@@ -254,7 +254,7 @@ class WorkFilter {
 
   private syncPressed(): void {
     this.tagButtons.forEach((button) => {
-      const on = this.activeTags.has(normalise(button.dataset.tag ?? ""));
+      const on = this.activeTags.has(normalize(button.dataset.tag ?? ""));
       button.setAttribute("aria-pressed", String(on));
     });
   }
@@ -278,7 +278,7 @@ class WorkFilter {
     this.activeTags = new Set(
       (params.get("tags") ?? "")
         .split(",")
-        .map((t) => normalise(t.trim()))
+        .map((t) => normalize(t.trim()))
         .filter(Boolean),
     );
     this.syncPressed();

@@ -3,7 +3,8 @@ id: tetris
 type: project
 title: "Learning to Perform a Tetris with Deep Reinforcement Learning"
 summary: >
-  An RL agent that clears four Tetris lines at once, which needs planning many moves ahead rather than greedily clearing what is available.
+  An RL agent trained end-to-end to play Tetris discovers super-human policies, 
+  planning many moves ahead rather than greedily clearing what is available.
 date: 2018-06-01
 
 venue: "Class report"

@@ -96,21 +96,16 @@
               </button>
             </div>
           </figure>
-        {% elif item.media.image %}
-          <figure class="media media--contain">
-            <div class="media__frame">
-              <img src="{{ link('/' + item.media.image) }}"
-                   alt="{{ item.media.alt or item.title }}" loading="lazy" decoding="async" />
-            </div>
-            {% if item.media.alt %}<figcaption>{{ item.media.alt }}</figcaption>{% endif %}
-          </figure>
         {% endif %}
+        {# An image-only item renders its figure in the sidebar instead - see the
+           `.panel--media` block below. Only the video branch stays in the
+           article column, where the 16:9 frame is the poster's own shape. #}
 
         {% if item.notes %}
           {# A div, not a <section>: the global `section` rule reserves page-level
              padding, which stacked with mt-lg to put 165px above the heading. #}
           <div class="item-section">
-            <h2 class="h3">Lecture notes</h2>
+            <h2 class="h3">Slides</h2>
             <ul class="notes-list">
               {% for n in item.notes %}
                 <li><a href="{{ link(n.href) }}" target="_blank" rel="noopener">{{ n.title }}</a></li>
@@ -134,6 +129,27 @@
       </div>
 
       <aside class="aside">
+        {% if item.media.image and not item.media.video %}
+          {# An image-only item puts its figure here, in its own panel above the
+             tags, matching how the contact card sits in the same column on
+             /about/. In the article column it had to live in the video's 16:9
+             frame, which for an image that is not 16:9 meant `object-fit:
+             contain` letterboxing it - dead bands down both sides that read as
+             a mistake rather than as padding. Nothing constrains the frame
+             here, so the image fills the panel at its own aspect ratio. #}
+          <div class="panel panel--media">
+            <div class="panel__media-frame">
+              <img class="panel__media-img" src="{{ link('/' + item.media.image) }}"
+                   alt="{{ item.media.alt or item.title }}"
+                   loading="lazy" decoding="async" />
+            </div>
+            {# A caption with space above it, not a 1px rule. The rule read as a
+               border between two halves of one panel; the space says the same
+               thing without drawing a line across the card. #}
+            {% if item.media.alt %}<p class="panel__media-cap">{{ item.media.alt }}</p>{% endif %}
+          </div>
+        {% endif %}
+
         {% if item.tags %}
           <div class="panel">
             <h2 class="panel__title">Tags</h2>

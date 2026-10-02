@@ -4,7 +4,8 @@ id: vsp
 type: paper
 title: "Visual Semantic Planning using Deep Successor Representations"
 summary: >
-  Visual semantic planning predicts action sequences that transform an environment, learned by bootstrapping RL with imitation over a successor representation model.
+  We develop the deep successor representation for decoupling perception and action
+  in order to learn end-to-end policies that transfer to unseen items and environments.
 date: 2017-07-01
 
 venue: "International Conference on Computer Vision"
