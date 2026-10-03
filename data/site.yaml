@@ -47,8 +47,9 @@ nav:
 
 
 # Analytics are off by default - the site makes no third-party requests at all.
-# To turn them on, use a free, cookieless provider and paste its script URL.
+# To turn them on, uncomment this and paste in the script URL and site domain
+# from a free, cookieless provider (Plausible, Fathom, GoatCounter, ...). The
+# build only reads the two fields below.
 # analytics:
-#   provider: plausible
 #   domain: danielgordon10.github.io
 #   script_url: "https://plausible.io/js/script.js"

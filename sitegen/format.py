@@ -14,10 +14,6 @@ MONTHS = (
 )
 
 
-def month_year(value: dt.date) -> str:
-    return f"{MONTHS[value.month - 1]} {value.year}"
-
-
 def short_date(value: dt.date) -> str:
     return f"{MONTHS[value.month - 1][:3]} {value.year}"
 

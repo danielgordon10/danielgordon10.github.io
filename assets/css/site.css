@@ -244,10 +244,6 @@ hr {
   padding-inline: var(--gutter);
 }
 
-.wrap--narrow {
-  max-width: 52rem;
-}
-
 main {
   flex: 1 0 auto;
 }
@@ -340,23 +336,8 @@ section + section {
   z-index: 1;
 }
 
-.eyebrow {
-  font-size: var(--step--1);
-  font-weight: 600;
-  letter-spacing: 0.11em;
-  text-transform: uppercase;
-  color: var(--text-3);
-  margin-bottom: 0.6rem;
-}
-
 .section-title {
   font-size: var(--step-3);
-}
-
-.section-note {
-  color: var(--text-2);
-  max-width: 34ch;
-  font-size: var(--step--1);
 }
 
 .prose {
@@ -865,11 +846,6 @@ section + section {
   font-size: 0.8rem;
 }
 
-.btn--block {
-  width: 100%;
-  justify-content: center;
-}
-
 /* ---------------------------------------------------------------- chips --- */
 
 .chips {
@@ -918,12 +894,6 @@ section + section {
 }
 
 .chip[aria-pressed="true"],
-.chip.is-active {
-  background: var(--accent-soft);
-  border-color: var(--accent-line);
-  color: var(--accent);
-}
-
 .chip__count {
   font-variant-numeric: tabular-nums;
   font-size: 0.72rem;
@@ -933,17 +903,6 @@ section + section {
 .chip[aria-pressed="true"] .chip__count {
   color: inherit;
   opacity: 0.75;
-}
-
-.chip--static {
-  background: transparent;
-  cursor: default;
-}
-
-.chip--static:hover {
-  background: transparent;
-  color: var(--text-2);
-  border-color: var(--line);
 }
 
 /* ------------------------------------------------------------------ rows --- */
@@ -1293,19 +1252,6 @@ section + section {
 
 /* ---------------------------------------------------------------- cards --- */
 
-.grid {
-  display: grid;
-  gap: clamp(0.9rem, 0.7rem + 0.8vw, 1.4rem);
-}
-
-.grid--2 {
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 21rem), 1fr));
-}
-
-.grid--3 {
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
-}
-
 /* --- work card --- */
 
 .card {
@@ -1325,83 +1271,6 @@ section + section {
   border-color: var(--line-strong);
   translate: 0 -3px;
   box-shadow: var(--shadow-2);
-}
-
-.card__media {
-  position: relative;
-  aspect-ratio: 16 / 10;
-  background: var(--surface-2);
-  overflow: hidden;
-}
-
-.card__media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: scale 0.5s var(--ease);
-}
-
-.card:hover .card__media img {
-  scale: 1.035;
-}
-
-.card__media--video {
-  display: grid;
-  place-items: center;
-  background: linear-gradient(150deg, var(--surface-2), var(--bg-2));
-}
-
-.card__media--video .play {
-  display: grid;
-  place-items: center;
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  background: color-mix(in oklab, var(--surface) 82%, transparent);
-  border: 1px solid var(--line-strong);
-  color: var(--text);
-  backdrop-filter: blur(6px);
-  transition: scale var(--dur) var(--ease), background var(--dur) var(--ease);
-}
-
-.card:hover .card__media--video .play {
-  scale: 1.08;
-  background: var(--accent);
-  color: var(--accent-ink);
-  border-color: transparent;
-}
-
-.card__media--video .play svg {
-  width: 20px;
-  height: 20px;
-  margin-left: 2px;
-}
-
-.card__media--video .glyph {
-  position: absolute;
-  right: 0.9rem;
-  bottom: 0.9rem;
-  width: 30px;
-  height: 30px;
-  color: var(--text-3);
-  opacity: 0.5;
-}
-
-.card__body {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  padding: var(--pad);
-  flex: 1;
-}
-
-.card__meta {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  font-size: var(--step--1);
-  color: var(--text-3);
 }
 
 .badge {
@@ -1424,78 +1293,12 @@ section + section {
   border: 1px solid var(--line);
 }
 
-.badge--award {
-  background: color-mix(in oklab, var(--warm) 16%, transparent);
-  color: var(--warm);
-}
-
-.card__title {
-  font-family: var(--font-display);
-  font-size: var(--step-1);
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  line-height: 1.22;
-}
-
-.card__title a {
-  color: var(--text);
-  text-decoration: none;
-}
-
-/* Whole card is clickable, but only the title is a real link, so keyboard
-   users get one stop per card and the accessible name is just the title. */
-.card__title a::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-}
-
-.card__authors {
-  color: var(--text-3);
-  font-size: 0.85rem;
-  line-height: 1.5;
-}
-
 /* Your own name in an author list is the one name worth finding, so it is
-   weight rather than color alone - on a row the author line is already
-   secondary text and a shade shift alone disappears. */
-.card__authors .me,
-.row__sub .me {
+     weight rather than color alone - on a row the author line is already
+     secondary text and a shade shift alone disappears. */
+  .row__sub .me {
   color: var(--text-2);
   font-weight: 600;
-}
-
-.card__abstract {
-  color: var(--text-2);
-  font-size: 0.9rem;
-  line-height: 1.6;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.card__tags {
-  margin-top: auto;
-  padding-top: 0.35rem;
-  position: relative;
-  z-index: 2;
-}
-
-.card__foot {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.75rem var(--pad);
-  border-top: 1px solid var(--line);
-  background: var(--surface-2);
-  font-size: 0.8rem;
-  color: var(--text-3);
-}
-
-.card--flat {
-  background: var(--surface-2);
 }
 
 /* --- role card --- */
@@ -1687,10 +1490,6 @@ section + section {
    above the prose and the contact card alike and read as a stray line rather
    than as a divider between anything. The extra padding below replaces the
    space the border used to imply. The rule stays on the other page heads. */
-.page-about .page-head {
-  padding-bottom: clamp(2rem, 1.5rem + 2vw, 3.5rem);
-}
-
 .page-head {
   padding-block: clamp(2.5rem, 2rem + 3vw, 4.5rem) clamp(0.75rem, 0.5rem + 1vw, 1.25rem);
   background: radial-gradient(
@@ -1816,11 +1615,13 @@ section + section {
   content: "";
   position: absolute;
   inset: 0;
+  /* Light enough to read the poster frame through, dark enough at the bottom
+     to keep the play button and its label legible over a bright frame. */
   background: linear-gradient(
     180deg,
-    #0a0c1222,
-    #0a0c1299 55%,
-    #0a0c12d9
+    #0a0c1214,
+    #0a0c124d 55%,
+    #0a0c1299
   );
 }
 
@@ -1868,41 +1669,6 @@ section + section {
   width: 1.05em;
   height: 1.05em;
   flex: none;
-}
-
-.btn__note {
-  font-size: 0.78em;
-  font-weight: 400;
-  opacity: 0.65;
-  padding-left: 0.15em;
-}
-
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
-  gap: 0.9rem;
-  margin-top: 2.2rem;
-}
-
-.gallery figure {
-  margin: 0;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  overflow: hidden;
-  background: var(--surface);
-}
-
-.gallery img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-}
-
-.gallery figcaption {
-  padding: 0.6rem 0.8rem;
-  color: var(--text-3);
-  font-size: 0.8rem;
-  border-top: 1px solid var(--line);
 }
 
 /* --- about layout --- */
@@ -2091,13 +1857,6 @@ section + section {
      seam showed up here, at the one place on the site where the two are always
      touching. */
   background: var(--bg);
-}
-
-.filters__row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.7rem;
 }
 
 /* One line: the topic chips on the left, Clear hard against the trailing edge.
@@ -2401,39 +2160,14 @@ section + section {
   color: var(--accent);
 }
 
-.footer-links {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.35rem 1.1rem;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-links a {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-
-.footer-links svg {
-  width: 14px;
-  height: 14px;
-  opacity: 0.7;
-}
-
 /* ---------------------------------------------------------- tap targets --- */
 /* WCAG 2.2 asks for 24px minimum. `min-height` is ignored on inline boxes, so
    each target is first made a flex/inline-flex box. Written late so it can
    tighten up the defaults above without those rules having to know. */
 
-.footer-links a,
 .contact-list a,
-.contact-list button,
-.card__foot a,
-.card__title a,
-.row__title a,
+  .contact-list button,
+  .row__title a,
 .chip,
 .role__org a {
   display: inline-flex;
@@ -2446,9 +2180,8 @@ section + section {
 @media (pointer: coarse) {
   .nav__link,
   .brand,
-  .footer-links a,
-  .contact-list a,
-  .contact-list button {
+.contact-list a,
+    .contact-list button {
     min-height: 44px;
   }
 }
@@ -2492,14 +2225,6 @@ section + section {
 
 .stack > * + * {
   margin-top: 1rem;
-}
-
-.row-between {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem var(--gap);
 }
 
 .mt-lg {
@@ -2593,9 +2318,6 @@ section + section {
      request, not a mobile-only convenience. */
   .nav-toggle {
     display: none;
-  }
-  .site-header__inner {
-    gap: var(--space-6);
   }
 }
 

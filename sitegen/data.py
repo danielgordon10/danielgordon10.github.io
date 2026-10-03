@@ -310,8 +310,6 @@ class SiteContext:
             # video without one still renders, on the gradient fallback.
             if thumb and (STATIC_DIR / thumb).is_file():
                 refs.add(thumb)
-            for image in item.media.gallery:
-                refs.add(image.src.lstrip("/"))
             for link in item.links:
                 if link.is_internal and "." in link.href:
                     refs.add(link.href.lstrip("/"))
@@ -320,11 +318,16 @@ class SiteContext:
 
     @property
     def missing_thumbnails(self) -> list[str]:
-        """Video ids with no vendored poster still under ``static/images/video``."""
+        """Videos with neither an explicit ``poster:`` nor a vendored still.
+
+        A video that names its own poster never needs a copy of YouTube's
+        frame, so it must not be reported as missing one.
+        """
         return [
             item.media.video
             for item in self.items
             if item.media.video
+            and not item.media.poster
             and not (STATIC_DIR / item.media.thumbnail).is_file()  # type: ignore[arg-type]
         ]
 

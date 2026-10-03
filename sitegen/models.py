@@ -47,7 +47,6 @@ class ItemType(StrEnum):
     COURSE = "course"
     TALK = "talk"
     DATASET = "dataset"
-    DEMO = "demo"
 
 
 class TypeMeta(BaseModel):
@@ -55,8 +54,6 @@ class TypeMeta(BaseModel):
 
     label: str
     icon: str
-    #: short badge text used on cards, e.g. "CVPR 2018"
-    badge_prefix: str = ""
 
 
 TYPE_META: dict[ItemType, TypeMeta] = {
@@ -66,7 +63,6 @@ TYPE_META: dict[ItemType, TypeMeta] = {
     ItemType.COURSE: TypeMeta(label="Course", icon="academic"),
     ItemType.TALK: TypeMeta(label="Talk", icon="microphone"),
     ItemType.DATASET: TypeMeta(label="Dataset", icon="database"),
-    ItemType.DEMO: TypeMeta(label="Demo", icon="play"),
 }
 
 PUBLICATION_TYPES = {ItemType.PAPER, ItemType.DATASET}
@@ -131,24 +127,26 @@ class Link(Strict):
         return self.href.startswith("/")
 
 
-class GalleryImage(Strict):
-    src: str
-    alt: str
-    caption: str | None = None
-
-    @field_validator("src")
-    @classmethod
-    def _src_relative(cls, v: str) -> str:
-        if v.startswith(("http://", "https://", "//")):
-            raise ValueError("gallery images must be local files under static/")
-        return v.lstrip("/")
-
-
 class Media(Strict):
     video: str | None = None
     image: str | None = None
+    poster: str | None = None
     alt: str | None = None
-    gallery: list[GalleryImage] = Field(default_factory=list)
+
+    @field_validator("poster")
+    @classmethod
+    def _poster_relative(cls, v: str | None) -> str | None:
+        """Accept a local path under ``static/``; reject remote URLs.
+
+        The poster is painted as a CSS background on a button, so a hot-linked
+        https:// URL would reintroduce exactly the third-party request on page
+        load that the click-to-play facade exists to avoid.
+        """
+        if v is None or not v.strip():
+            return None
+        if v.startswith(("http://", "https://", "//")):
+            raise ValueError("poster must be a local file under static/")
+        return v.lstrip("/")
 
     @field_validator("video")
     @classmethod
@@ -168,22 +166,27 @@ class Media(Strict):
 
     @property
     def has_any(self) -> bool:
-        return bool(self.video or self.image or self.gallery)
+        return bool(self.video or self.image)
 
     @property
     def thumbnail(self) -> str | None:
         """Poster frame for :attr:`video`, as a path under ``static/``.
 
-        The stills are vendored into ``static/images/video/<id>.jpg`` rather
-        than hot-linked from ``i.ytimg.com``. Linking YouTube's thumbnails
-        would mean a third-party request on page load, which is exactly what
-        the click-to-play facade exists to avoid - and a crawler or an
-        ad-blocker can block it, leaving a blank frame. Copying them keeps the
-        no-third-party-request property and makes the previews reliable.
+        An explicit ``poster:`` wins, which is how a video whose own YouTube
+        still is a poor preview (a title card, say) borrows a figure from the
+        paper instead. Otherwise the still is the vendored copy under
+        ``static/images/video/<id>.jpg`` rather than a hot link to
+        ``i.ytimg.com``. Linking YouTube's thumbnails would mean a third-party
+        request on page load, which is exactly what the click-to-play facade
+        exists to avoid - and a crawler or an ad-blocker can block it, leaving
+        a blank frame. Copying them keeps the no-third-party-request property
+        and makes the previews reliable.
 
-        Returns ``None`` when no still has been vendored for this id, in which
-        case the template falls back to the abstract gradient poster.
+        Returns ``None`` when nothing is available, in which case the template
+        falls back to the abstract gradient poster.
         """
+        if self.poster:
+            return self.poster
         return f"images/video/{self.video}.jpg" if self.video else None
 
 
@@ -516,9 +519,12 @@ class NavItem(Strict):
 
 
 class Analytics(Strict):
-    """Free, self-hosted-friendly analytics. Left empty unless you want stats."""
+    """Free, self-hosted-friendly analytics. Left empty unless you want stats.
 
-    provider: str  # e.g. "plausible"
+    Only the two fields below reach the page: ``base.html`` emits a single
+    ``<script>`` tag pointing at ``script_url`` and tagged with ``domain``.
+    """
+
     domain: str
     script_url: str
 

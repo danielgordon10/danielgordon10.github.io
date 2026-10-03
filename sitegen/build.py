@@ -127,14 +127,6 @@ def _make_link(root: str):
     return link
 
 
-@dataclass
-class PageContext:
-    out_path: Path
-    active: str
-    title: str
-    description: str
-
-
 class SiteBuilder:
     def __init__(self, ctx: SiteContext, out_dir: Path) -> None:
         self.ctx = ctx

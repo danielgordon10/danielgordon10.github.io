@@ -43,9 +43,8 @@ duplicated between them.
 | [`data/person.yaml`](data/person.yaml) | Name, headline, bio, contact links, socials, CV, portrait |
 | [`data/site.yaml`](data/site.yaml) | Site title, description, navigation, theme, SEO, analytics |
 | [`data/items/*.yaml`](data/items) | One file per publication, position, course, talk or project |
-| [`data/tags.yaml`](data/tags.yaml) | The tag vocabulary and how tags are grouped |
+| [`data/tags.yaml`](data/tags.yaml) | The tag vocabulary items may use |
 | [`data/education.yaml`](data/education.yaml) | Degrees shown on the about page |
-| [`data/gallery.yaml`](data/gallery.yaml) | Image gallery on the about page |
 
 ### Adding a paper
 

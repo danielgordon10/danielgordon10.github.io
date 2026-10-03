@@ -36,6 +36,11 @@ links:
     href: "/pdfs/shifting_baseline.pdf"
     kind: paper
     primary: true
+  # Jesse Thomason's page hosts the conference poster; external so it opens
+  # in a new tab rather than trying to render a 3 MB PDF in place.
+  - label: "Poster"
+    href: "https://jessethomason.com/publication_supplements/NAACL19_poster.pdf"
+    kind: paper
 
 media:
   image: "images/projects/shifting-baseline.png"

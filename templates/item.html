@@ -114,18 +114,6 @@
           </div>
         {% endif %}
 
-        {% if item.media.gallery %}
-          <div class="gallery">
-            {% for shot in item.media.gallery %}
-              <figure>
-                <img src="{{ link('/' + shot.src) }}" alt="{{ shot.alt }}"
-                     loading="lazy" decoding="async" />
-                {% if shot.caption %}<figcaption>{{ shot.caption }}</figcaption>{% endif %}
-              </figure>
-            {% endfor %}
-          </div>
-        {% endif %}
-
       </div>
 
       <aside class="aside">

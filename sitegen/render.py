@@ -17,9 +17,8 @@ Two conventions the templates rely on:
 from __future__ import annotations
 
 import re
-from datetime import date
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Iterable
 
 import markdown_it
 from jinja2 import Environment, FileSystemLoader, StrictUndefined, select_autoescape

@@ -15,7 +15,7 @@ import re
 import sys
 from urllib.parse import urlsplit
 
-from playwright.sync_api import Page, expect, sync_playwright
+from playwright.sync_api import Page, sync_playwright
 
 BASE = sys.argv[1] if len(sys.argv) > 1 else "http://localhost:8899"
 
