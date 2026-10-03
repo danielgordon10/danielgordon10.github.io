@@ -169,11 +169,61 @@ class SiteContext:
             )
 
     def _check_static_files(self) -> None:
+        # Who named each path, so one shared by two items is reported once but
+        # still names both instead of pointing at whichever came first.
+        owners: dict[str, list[tuple[str, str]]] = {}
+        for item in self.items:
+            for field, path in (("media.image", item.media.image),
+                                ("media.poster", item.media.poster)):
+                if path:
+                    owners.setdefault(path, []).append((item.id, field))
+
         for ref in sorted(self.static_refs):
-            if not (STATIC_DIR / ref).is_file():
-                self.errors.append(
-                    f"referenced file static/{ref} does not exist"
+            if (STATIC_DIR / ref).is_file():
+                continue
+            refs_here = owners.get(ref, [])
+            if not any(field == "media.poster" for _, field in refs_here):
+                self.errors.append(f"referenced file static/{ref} does not exist")
+                continue
+
+            who = ", ".join(repr(i) for i, _ in refs_here)
+            fields = " and ".join(sorted({f for _, f in refs_here}))
+            # An exact stem match is the only near miss worth naming. It is a
+            # strong signal - the filename is right and either the extension or
+            # the folder is wrong - and it cannot point at the wrong file,
+            # which fuzzy matching on short names does readily. This repo makes
+            # that worth handling: static/images/info_images/ and
+            # static/images/projects/ both hold re3, vince, vsp and splitnet,
+            # so the folder is genuinely ambiguous when picking a path.
+            # Restricted to images because every paper has a same-named PDF in
+            # static/pdfs/, which would otherwise match every single one.
+            poster_exts = {".jpg", ".jpeg", ".png", ".webp", ".avif", ".gif"}
+            same_name = sorted(
+                p
+                for p in self._static_paths
+                if Path(p).stem == Path(ref).stem
+                and Path(p).suffix.lower() in poster_exts
+            )
+            if len(same_name) == 1:
+                hint = f"did you mean static/{same_name[0]}?"
+            elif same_name:
+                hint = (
+                    f"that filename is in {len(same_name)} folders "
+                    f"({', '.join('static/' + p for p in same_name)}) - "
+                    f"check which one you meant"
                 )
+            else:
+                hint = ""
+            subject, verb = ("item", "sets") if len(refs_here) == 1 else ("items", "set")
+            self.errors.append(
+                f"{subject} {who} {verb} {fields} to static/{ref}, which is not on disk"
+                + (f" - {hint}" if hint else "")
+                + "\n      a declared poster is not optional: with the file "
+                "missing it silently falls back to the gradient artwork on the "
+                "item page and renders a broken image in the work list, and "
+                "nothing else in the build would notice. CI checks out a clean "
+                "tree, so a file you never committed fails the same way there."
+            )
 
     def _check_orphans(self) -> None:
         """A tag nobody uses is dead weight in the filter bar."""
@@ -305,11 +355,16 @@ class SiteContext:
         for item in self.items:
             if item.media.image:
                 refs.add(item.media.image.lstrip("/"))
-            thumb = item.media.thumbnail
-            # Only reference the poster still if it was actually vendored; a
-            # video without one still renders, on the gradient fallback.
-            if thumb and (STATIC_DIR / thumb).is_file():
-                refs.add(thumb)
+            if item.media.poster:
+                # A declared poster is a hard requirement, so it is referenced
+                # unconditionally and `_check_static_files` holds it to
+                # existing. Only the derived YouTube still is optional - a
+                # video without one still renders, on the gradient fallback.
+                refs.add(item.media.poster)
+            elif item.media.thumbnail and (
+                STATIC_DIR / item.media.thumbnail
+            ).is_file():
+                refs.add(item.media.thumbnail)
             for link in item.links:
                 if link.is_internal and "." in link.href:
                     refs.add(link.href.lstrip("/"))
@@ -330,6 +385,19 @@ class SiteContext:
             and not item.media.poster
             and not (STATIC_DIR / item.media.thumbnail).is_file()  # type: ignore[arg-type]
         ]
+
+    @cached_property
+    def _static_paths(self) -> set[str]:
+        """Every file under ``static/``, relative and posix-style.
+
+        Only used to suggest a fix when a referenced path turns out to be a
+        typo, so it deliberately includes files no item references.
+        """
+        return {
+            path.relative_to(STATIC_DIR).as_posix()
+            for path in STATIC_DIR.rglob("*")
+            if path.is_file() and path.name != ".DS_Store"
+        }
 
     @property
     def unreferenced_static(self) -> list[Path]:
