@@ -65,25 +65,24 @@ def cmd_check(args: argparse.Namespace) -> int:
         for video_id in ctx.missing_thumbnails:
             print(f"    static/images/video/{video_id}.jpg  <- i.ytimg.com/vi/{video_id}/maxresdefault.jpg")
 
-    # The CV lives twice: cv.pdf in the repository root is the one you edit and
-    # replace, static/cv.pdf is the one the build serves. Nothing in the build
-    # reads the root copy, so dropping a new version there and rebuilding left
-    # the old PDF live with no error anywhere. This is an error rather than a
-    # note: shipping a CV you did not mean to publish is worse than a failed
-    # check.
+    # The CV lives once, in the repository root, and the build copies that file
+    # over anything static/ supplied. So the root copy is the one that ships:
+    # replace it, commit, and the next deploy carries the new version with no
+    # second file to remember. A missing root CV is an error rather than a note,
+    # because shipping a CV you did not mean to publish is worse than a failed
+    # check; a stale static/cv.pdf is only worth mentioning, since it is ignored.
     root_cv = ROOT / "cv.pdf"
     served_cv = STATIC_DIR / "cv.pdf"
-    if root_cv.is_file() and served_cv.is_file():
-        if root_cv.read_bytes() != served_cv.read_bytes():
-            print(f"\n{RED}error{RESET} cv.pdf differs from static/cv.pdf.")
-            print(f"  {file_size(root_cv.stat().st_size)} cv.pdf (root, the one you edit)")
-            print(f"  {file_size(served_cv.stat().st_size)} static/cv.pdf (the one that is served)")
-            print("  run: cp cv.pdf static/cv.pdf")
-            return 1
-    elif root_cv.is_file() and not served_cv.is_file():
-        print(f"\n{RED}error{RESET} cv.pdf exists but static/cv.pdf does not.")
-        print("  run: cp cv.pdf static/cv.pdf")
+    if not root_cv.is_file():
+        print(f"\n{RED}error{RESET} cv.pdf is missing from the repository root.")
+        print("  that is the file the site serves - replace it with your latest CV")
         return 1
+    if served_cv.is_file() and served_cv.read_bytes() != root_cv.read_bytes():
+        print(f"\n{YELLOW}note{RESET} static/cv.pdf differs from the root cv.pdf and "
+              f"is ignored by the build.")
+        print(f"  {file_size(root_cv.stat().st_size)} cv.pdf (root, the one that is served)")
+        print(f"  {file_size(served_cv.stat().st_size)} static/cv.pdf (stale, unused)")
+        print("  it is safe to delete; nothing reads it")
 
     return 0
 

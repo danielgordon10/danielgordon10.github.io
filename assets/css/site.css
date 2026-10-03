@@ -893,7 +893,27 @@ section + section {
   cursor: pointer;
 }
 
-.chip[aria-pressed="true"],
+/* Inverted: the selected pill is a solid accent fill carrying accent-ink,
+     which each theme pairs for contrast (dark: periwinkle on near-black ink,
+     light: indigo on white). The count inherits this colour at 75%, so it
+     stays legible on the fill.
+
+     Colour only - no font-size, no font-weight, no border-width. Anything that
+     changes a metric here makes the pill visibly jump the moment it is pressed,
+     because the browser reflows every chip after it in the row. */
+.chip[aria-pressed="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+
+/* .chip:hover would otherwise repaint a selected chip back to the unselected
+   surface. Deepen the fill instead, so a selected pill still acknowledges the
+   pointer. */
+.chip[aria-pressed="true"]:hover {
+  background: var(--accent-strong);
+}
+
 .chip__count {
   font-variant-numeric: tabular-nums;
   font-size: 0.72rem;
@@ -902,7 +922,10 @@ section + section {
 
 .chip[aria-pressed="true"] .chip__count {
   color: inherit;
-  opacity: 0.75;
+  /* 0.85, not lower: the count is 11.5px, so it needs 4.5:1. At 0.75 it
+     composited to 4.09:1 on the light theme's #4a56d2 fill - still short.
+     0.85 is the dimmest value that clears AA against both fills. */
+  opacity: 0.85;
 }
 
 /* ------------------------------------------------------------------ rows --- */

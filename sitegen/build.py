@@ -29,6 +29,10 @@ TS_ENTRY = ASSETS / "ts" / "site.ts"
 JS_OUT = ASSETS / "js" / "site.js"
 CSS_IN = ASSETS / "css" / "site.css"
 
+#: The CV is authored once, in the repository root, and served from /cv.pdf.
+#: static/cv.pdf is a leftover that the root file supersedes.
+CV_NAME = "cv.pdf"
+
 #: directories under the output dir that never ship
 IGNORED_DIR_NAMES = {".DS_Store", "__pycache__", ".git"}
 SKIP_SUFFIXES = {".map", ".pyc", ".CR2", ".CR3", ".MOV", ".swp"}
@@ -411,6 +415,11 @@ class SiteBuilder:
         total = 0
 
         for ref in sorted(self.ctx.static_refs):
+            # static/cv.pdf is skipped on purpose: the root copy is copied
+            # below, so taking this one first would only be overwritten, and it
+            # would count the same output file twice.
+            if ref == CV_NAME:
+                continue
             source = STATIC_DIR / ref
             if source.is_file():
                 self._copy(source, Path(ref))
@@ -424,13 +433,15 @@ class SiteBuilder:
                 copied += 1
                 total += orphan.stat().st_size
 
-        for extra in (STATIC_DIR / "cv.pdf",):
-            if extra.is_file():
-                rel = extra.relative_to(STATIC_DIR)
-                if not (self.out_dir / rel).exists():
-                    self._copy(extra, rel)
-                    copied += 1
-                    total += extra.stat().st_size
+        # The CV has one source of truth: the cv.pdf in the repository root, the
+        # one you actually edit. It is copied over whatever static/ supplied, so
+        # replacing that file and committing is the whole update - no second
+        # copy to keep in step and no way to ship a stale CV by forgetting a `cp`.
+        root_cv = ROOT / CV_NAME
+        if root_cv.is_file():
+            self._copy(root_cv, Path(CV_NAME))
+            copied += 1
+            total += root_cv.stat().st_size
 
         for name in ("fonts", "favicon"):
             folder = STATIC_DIR / name
@@ -445,6 +456,16 @@ class SiteBuilder:
                 self._copy(path, rel)
                 copied += 1
                 total += path.stat().st_size
+
+        # Browsers and tools that do not read the <link rel="icon"> tags still
+        # probe /favicon.ico at the origin root, and Firefox caches whatever
+        # that returns for the whole origin - so a 404 here outlives the fix
+        # that would have corrected it. Serve the same .ico at both paths.
+        root_ico = STATIC_DIR / "favicon" / "favicon.ico"
+        if root_ico.is_file():
+            self._copy(root_ico, Path("favicon.ico"))
+            copied += 1
+            total += root_ico.stat().st_size
 
         # compiled front-end
         if CSS_IN.exists():
